@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMIT - n8n Workflow Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: { 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 300:'#93c5fd', 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e3a5f', 900:'#0f172a' },
+        surface: { 50:'#f8fafc', 100:'#f1f5f9', 200:'#e2e8f0' }
+      }
+    }
+  }
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+.card-enter{animation:cardIn .4s ease-out both}
+@keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.filter-btn.active{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.35)}
+.card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.card-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}
+.tag{transition:all .2s}
+.tag:hover{transform:scale(1.05)}
+.search-glow:focus{box-shadow:0 0 0 3px rgba(59,130,246,.3)}
+.img-placeholder{background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 50%,#bfdbfe 100%);position:relative;overflow:hidden}
+.img-placeholder::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 2.5s infinite}
+@keyframes shimmer{to{left:100%}}
+.hero-gradient{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#1d4ed8 100%)}
+.stat-card{backdrop-filter:blur(12px);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.badge-work{background:#dbeafe;color:#1d4ed8}
+.badge-marketing{background:#fce7f3;color:#be185d}
+.badge-content{background:#d1fae5;color:#065f46}
+.badge-lab{background:#fef3c7;color:#92400e}
+.node-tag{background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap}
+#labSection,#labGrid,#mainGrid{overflow:visible!important;max-height:none!important}
+@media(max-width:640px){
+  .node-tag{font-size:10px;padding:2px 6px}
+}
+</style>
+</head>
+<body class="bg-surface-50 text-gray-800">
+
+<!-- ==================== HERO ==================== -->
+<header class="hero-gradient text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-10 right-20 w-96 h-96 bg-indigo-500 rounded-full filter blur-3xl"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6 border border-white/20">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        100 Workflows Automated
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+        n8n Automation<br><span class="text-blue-300">Portfolio</span>
+      </h1>
+      <p class="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto mb-10">
+        AI와 자동화로 비즈니스 프로세스를 혁신합니다.<br>
+        실무에 적용 중인 100개의 n8n 워크플로우를 소개합니다.
+      </p>
+      <div id="stats" class="flex flex-wrap justify-center gap-4 md:gap-6">
+        <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
+          <div class="text-3xl font-bold" id="statTotal">100</div>
+          <div class="text-blue-300 text-sm mt-1">Total Workflows</div>
+        </div>
+        <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
+          <div class="text-3xl font-bold" id="statWork">0</div>
+          <div class="text-blue-300 text-sm mt-1">업무자동화</div>
+        </div>
+        <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
+          <div class="text-3xl font-bold" id="statMarketing">0</div>
+          <div class="text-blue-300 text-sm mt-1">마케팅자동화</div>
+        </div>
+        <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
+          <div class="text-3xl font-bold" id="statContent">0</div>
+          <div class="text-blue-300 text-sm mt-1">컨텐츠자동화</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== FILTER & SEARCH ==================== -->
+<section class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex flex-col md:flex-row items-center gap-4">
+      <!-- Filter -->
+      <div class="flex flex-wrap gap-2" id="filterBtns">
+        <button onclick="setFilter('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 transition-all" data-filter="all">
+          전체 <span class="ml-1 opacity-70" id="cntAll"></span>
+        </button>
+        <button onclick="setFilter('업무자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-blue-50 transition-all" data-filter="업무자동화">
+          업무자동화 <span class="ml-1 opacity-70" id="cntWork"></span>
+        </button>
+        <button onclick="setFilter('마케팅자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-pink-50 transition-all" data-filter="마케팅자동화">
+          마케팅자동화 <span class="ml-1 opacity-70" id="cntMarketing"></span>
+        </button>
+        <button onclick="setFilter('컨텐츠자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-green-50 transition-all" data-filter="컨텐츠자동화">
+          컨텐츠자동화 <span class="ml-1 opacity-70" id="cntContent"></span>
+        </button>
+      </div>
+      <!-- Search -->
+      <div class="relative flex-1 max-w-md w-full">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input id="searchInput" type="text" placeholder="워크플로우 이름 또는 노드 검색 (예: Airtable, Telegram...)" class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 bg-white text-sm focus:outline-none search-glow transition-all" oninput="applyFilters()">
+      </div>
+      <!-- Result count -->
+      <div class="text-sm text-gray-500 whitespace-nowrap">
+        <span id="resultCount">100</span>개 표시 중
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MAIN CARDS ==================== -->
+<main class="max-w-7xl mx-auto px-6 sm:px-8 py-12 md:py-16">
+  <!-- Main Workflows -->
+  <div id="mainGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"></div>
+
+  <!-- Lab Section -->
+  <div id="labSection" class="mt-12 mb-8">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">
+        <span class="text-lg">🧪</span>
+        <span class="font-semibold text-amber-800 text-sm">실험실 / 테스트</span>
+      </div>
+      <div class="flex-1 h-px bg-amber-200"></div>
+      <span class="text-sm text-amber-600" id="labCount"></span>
+    </div>
+    <div id="labGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+  </div>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-brand-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="text-2xl font-bold mb-2">AIMIT</div>
+    <p class="text-blue-300 text-sm mb-6">AI &amp; Automation Solutions</p>
+    <p class="text-gray-500 text-xs">&copy; 2026 AIMIT. Built with n8n &amp; AI.</p>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+//  워크플로우 데이터 (100개 전체)
+//  - 수정: 이 배열에서 항목을 추가/삭제/편집하면 즉시 반영됩니다.
+//  - img: 이미지/GIF 파일 경로를 넣으면 카드에 표시됩니다.
+//         기본값은 빈 문자열("")이며, placeholder가 표시됩니다.
+//  - isLab: true면 하단 실험실 섹션에 표시됩니다.
+// ============================================================
+const workflows = [
+  {
+    id: 1,
+    file: "(실시간)상품이미지_나노바나나 (수동테스트용).json",
+    name: "(실시간)상품이미지_나노바나나 (수동테스트용)",
+    nodes: ["Airtable","Code","ConvertToFile","ExtractFromFile","Google Drive","Google Sheets","HTTP Request","If","Manual Trigger","Merge","Set","Slack","SplitInBatches","Wait","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "에어테이블 상품정보를 기반으로 나노바나나 AI API에 이미지 생성을 요청하고 결과를 구글 드라이브에 업로드하는 수동 테스트용 시스템",
+    nodeCount: 43,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 2,
+    file: "(실시간)상품이미지_나노바나나 test (1).json",
+    name: "(실시간)상품이미지_나노바나나 test",
+    nodes: ["Airtable","Code","ConvertToFile","ExtractFromFile","Google Drive","Google Sheets","HTTP Request","If","Manual Trigger","Merge","Set","Slack","SplitInBatches","Wait","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "나노바나나 AI API를 활용한 상품 이미지 자동 생성 시스템의 테스트 복사본",
+    nodeCount: 43,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 3,
+    file: "(실시간)상품이미지_나노바나나 test.json",
+    name: "(실시간)상품이미지_나노바나나 test",
+    nodes: ["Airtable","Code","ConvertToFile","ExtractFromFile","Google Drive","Google Sheets","HTTP Request","If","Manual Trigger","Merge","Set","Slack","SplitInBatches","Wait","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "나노바나나 AI API를 활용한 상품 이미지 자동 생성 시스템의 테스트 버전",
+    nodeCount: 43,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 4,
+    file: "(실시간)상품이미지_나노바나나.json",
+    name: "(실시간)상품이미지_나노바나나",
+    nodes: ["Airtable","Code","ConvertToFile","ExtractFromFile","Google Drive","Google Sheets","HTTP Request","If","Manual Trigger","Merge","Set","Slack","SplitInBatches","Wait","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "에어테이블 상품정보를 기반으로 나노바나나 AI가 상품 이미지를 실시간 생성하고 구글 드라이브에 업로드 후 슬랙으로 결과를 알리는 메인 시스템",
+    nodeCount: 43,
+    img: ""
+  },
+  {
+    id: 5,
+    file: "0) Start Workflow (trigger) - AI강사양성.json",
+    name: "Start Workflow (trigger) - AI강사양성",
+    nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Webhook"],
+    category: "업무자동화",
+    summary: "AI강사양성 과정용 다양한 트리거(수동/스케줄/폼/웹훅/챗)를 모아둔 워크플로우 시작점 템플릿",
+    nodeCount: 8,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 6,
+    file: "0) Start Workflow (trigger).json",
+    name: "Start Workflow (trigger)",
+    nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Switch","Webhook"],
+    category: "업무자동화",
+    summary: "다양한 트리거 유형을 모아둔 범용 워크플로우 시작점 템플릿",
+    nodeCount: 9,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 7,
+    file: "0단계) Start Workflow (trigger)_25.12.19.json",
+    name: "Start Workflow (trigger)_25.12.19",
+    nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Webhook"],
+    category: "업무자동화",
+    summary: "뉴스레터 파이프라인의 0단계 트리거 모음으로 스케줄/웹훅/폼 등 다양한 시작점을 제공",
+    nodeCount: 10,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 8,
+    file: "1) ai-agent financial-advisor-test(텔레그램_주가분석).json",
+    name: "AI 주가분석 에이전트 (텔레그램)",
+    nodes: ["AI Agent","OpenAI","Memory","Output Parser","Gmail","HTTP Request Tool","Markdown","Set","Switch","Telegram"],
+    category: "업무자동화",
+    summary: "텔레그램 음성/텍스트 입력으로 주가·재무제표(대차대조표/손익계산서/현금흐름)를 실시간 조회·분석하는 AI 금융 에이전트",
+    nodeCount: 24,
+    img: ""
+  },
+  {
+    id: 9,
+    file: "1) task management agent (심플 챗봇) - AI강사양성.json",
+    name: "Task Management Agent (심플 챗봇)",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Gmail Tool","Google Sheets Tool"],
+    category: "업무자동화",
+    summary: "AI 챗봇으로 구글시트 기반 태스크를 생성·조회·수정·삭제하고 Gmail로 알림을 발송하는 업무 관리 에이전트",
+    nodeCount: 11,
+    img: ""
+  },
+  {
+    id: 10,
+    file: "1) 텔레그램 음성메모자산화.json",
+    name: "텔레그램 음성메모 자산화",
+    nodes: ["Code","Google Drive","If","OpenAI Whisper","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "텔레그램으로 받은 음성 메시지를 Whisper로 텍스트 변환 후 AI가 내용을 정리하여 구글 드라이브에 자동 저장",
+    nodeCount: 7,
+    img: ""
+  },
+  {
+    id: 11,
+    file: "1단계) RSS 데이터 수집 (오프라인 강의용1220).json",
+    name: "RSS 데이터 수집 (오프라인 강의용)",
+    nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","SplitInBatches","Switch","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "다수 RSS 피드에서 24시간 이내 최신 글을 수집하고 GPT로 요약하여 텔레그램으로 전송하는 오프라인 강의용 버전",
+    nodeCount: 14,
+    img: ""
+  },
+  {
+    id: 12,
+    file: "1단계) RSS 데이터 수집_25.12.20.json",
+    name: "RSS 데이터 수집 파이프라인",
+    nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","SplitInBatches","Switch","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "다수 RSS 피드에서 24시간 이내 최신 글을 수집하고 GPT로 요약하여 텔레그램으로 전송하는 뉴스 수집 파이프라인",
+    nodeCount: 14,
+    img: ""
+  },
+  {
+    id: 13,
+    file: "2) ai-agent financial-advisor-test(텔레그램_주가분석)-AI강사양성.json",
+    name: "AI 주가분석 에이전트 (AI강사양성)",
+    nodes: ["AI Agent","OpenAI","Memory","Output Parser","Gmail","HTTP Request Tool","Markdown","Set","Switch","Telegram"],
+    category: "업무자동화",
+    summary: "AI강사양성 과정용 텔레그램 기반 AI 주가 분석 에이전트 (강의 버전)",
+    nodeCount: 25,
+    img: ""
+  },
+  {
+    id: 14,
+    file: "2) task management agent (심플 챗봇) 수업용-미리방재 (1).json",
+    name: "Task Management Agent 수업용 (복사본)",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Gmail Tool","Google Sheets Tool","Slack Tool"],
+    category: "업무자동화",
+    summary: "AI 챗봇으로 구글시트 태스크 관리 + Slack/Gmail 연동 업무 관리 에이전트 (수업용 복사본)",
+    nodeCount: 12,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 15,
+    file: "2) task management agent (심플 챗봇) 수업용-미리방재.json",
+    name: "Task Management Agent 수업용",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Gmail Tool","Google Sheets Tool","Slack Tool"],
+    category: "업무자동화",
+    summary: "AI 챗봇으로 구글시트 태스크 관리 + Slack/Gmail 연동 업무 관리 에이전트 (수업용)",
+    nodeCount: 12,
+    img: ""
+  },
+  {
+    id: 16,
+    file: "2단계) 뉴스레터 SNS 데이터 작성 (오프라인 강의용).json",
+    name: "뉴스레터 SNS 콘텐츠 작성 (강의용)",
+    nodes: ["OpenAI","Code","Gmail","HTML","HTML Extract","HTTP Request","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "텔레그램으로 수집된 뉴스 링크를 스크래핑하고 GPT로 분석하여 뉴스레터/SNS 콘텐츠를 자동 작성",
+    nodeCount: 14,
+    img: ""
+  },
+  {
+    id: 17,
+    file: "2단계) 뉴스레터 SNS 데이터 작성_25.12.20.json",
+    name: "뉴스레터 SNS 콘텐츠 작성",
+    nodes: ["OpenAI","Code","Gmail","HTML","HTML Extract","HTTP Request","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "텔레그램으로 수집된 뉴스 링크를 스크래핑하고 GPT로 분석하여 뉴스레터/SNS 콘텐츠를 자동 작성",
+    nodeCount: 17,
+    img: ""
+  },
+  {
+    id: 18,
+    file: "2단계) 협업리포트 _슬랙용(AB조통합)_251117.json",
+    name: "협업 데일리 리포트 (슬랙 AB조통합)",
+    nodes: ["AI Agent","OpenAI","Airtable","Code","Filter","HTTP Request","If","Merge","Schedule Trigger","Set","Switch","Webhook"],
+    category: "업무자동화",
+    summary: "Airtable 기반 A/B조 팀원의 업무 현황을 AI가 요약하여 슬랙으로 데일리 협업 리포트를 자동 발송하는 통합 시스템",
+    nodeCount: 93,
+    img: ""
+  },
+  {
+    id: 19,
+    file: "2단계) 협업리포트 _슬랙용.json",
+    name: "협업 데일리 리포트 (슬랙용)",
+    nodes: ["AI Agent","OpenAI","Airtable","Code","Filter","HTTP Request","If","Merge","Schedule Trigger","Set","Switch","Webhook"],
+    category: "업무자동화",
+    summary: "Airtable 기반 팀 업무 데이터를 AI가 요약하여 슬랙으로 협업 리포트를 자동 발송",
+    nodeCount: 83,
+    img: ""
+  },
+  {
+    id: 20,
+    file: "2단계) 협업리포트 _잔디용.json",
+    name: "협업 데일리 리포트 (잔디용)",
+    nodes: ["AI Agent","OpenAI","Airtable","Code","Filter","HTTP Request","If","Merge","Schedule Trigger","Set","Switch","Webhook"],
+    category: "업무자동화",
+    summary: "Airtable 기반 팀 업무 데이터를 AI가 요약하여 잔디 메신저로 협업 리포트를 자동 발송",
+    nodeCount: 62,
+    img: ""
+  },
+  {
+    id: 21,
+    file: "3) Denny) tally설문 분석발송 (신버전) _강의본(AIMIT).json",
+    name: "Tally 설문 AI 분석발송 (AIMIT 강의본)",
+    nodes: ["LLM Chain","Groq","OpenAI","Code","Discord","Gmail","HTML","HTTP Request","If","Merge","Notion","Set","Slack","Wait","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 응답을 AI(Groq/OpenAI)가 분석하여 맞춤 SMS/이메일/노션/슬랙으로 자동 리포트 발송하는 AIMIT 강의 버전",
+    nodeCount: 40,
+    img: ""
+  },
+  {
+    id: 22,
+    file: "3) Denny) tally설문 분석발송 (신버전).json",
+    name: "Tally 설문 AI 분석발송 (신버전)",
+    nodes: ["LLM Chain","Groq","OpenAI","Code","Discord","Gmail","HTML","HTTP Request","If","Merge","Notion","Set","Slack","Wait","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 응답을 AI가 분석하여 맞춤 SMS/이메일/노션/슬랙으로 자동 리포트를 발송하는 설문 분석 시스템",
+    nodeCount: 40,
+    img: ""
+  },
+  {
+    id: 23,
+    file: "3) YouTube AI 분석기.json",
+    name: "YouTube AI 분석기",
+    nodes: ["Apify","Form","Form Trigger","OpenAI"],
+    category: "컨텐츠자동화",
+    summary: "YouTube URL을 폼에 입력하면 Apify로 영상 데이터를 크롤링하고 ChatGPT가 분석 리포트를 생성",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 24,
+    file: "4) tavily AGENT AI 개인비서.json",
+    name: "Tavily AI 개인비서 에이전트",
+    nodes: ["AI Agent","LLM Chain","OpenAI","Memory","Code","GitHub","Gmail","Google Drive","HTML","HTTP Request Tool","Notion","Telegram"],
+    category: "업무자동화",
+    summary: "텔레그램으로 URL이나 질문을 보내면 Tavily로 웹 리서치 후 노션·구글드라이브·이메일로 자동 정리하는 AI 개인비서",
+    nodeCount: 21,
+    img: ""
+  },
+  {
+    id: 25,
+    file: "5) Tally 설문  sms (SOLAPI) 회신기.json",
+    name: "Tally 설문 SMS 자동 회신기",
+    nodes: ["Code","HTTP Request","OpenAI","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 응답자의 전화번호를 추출하고 GPT가 맞춤 감사 메시지를 작성하여 SOLAPI로 SMS 자동 회신",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 26,
+    file: "AI Image Editor 25 Oct (SK강의) - Agent 기능.json",
+    name: "AI Image Editor (Agent 기능)",
+    nodes: ["OpenAI","Code","ConvertToFile","ExtractFromFile","Form Trigger","Google Drive","HTTP Request","Merge","Set"],
+    category: "컨텐츠자동화",
+    summary: "참조 이미지와 원본을 업로드하면 GPT-4가 프롬프트를 생성하고 나노바나나 API로 AI 이미지 편집을 수행",
+    nodeCount: 11,
+    img: ""
+  },
+  {
+    id: 27,
+    file: "Denny) tally설문 분석발송 (신버전).json",
+    name: "Tally 설문 분석발송 (원본)",
+    nodes: ["LLM Chain","Groq","OpenAI","Code","Discord","Gmail","HTML","HTTP Request","If","Merge","Notion","Set","Slack","Wait","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 응답을 AI가 분석하여 SMS/이메일/노션/슬랙으로 자동 발송하는 설문 분석 시스템 원본",
+    nodeCount: 40,
+    img: ""
+  },
+  {
+    id: 28,
+    file: "ESM 인증메일 슬랙전송.json",
+    name: "ESM 인증메일 슬랙전송",
+    nodes: ["Code","Filter","Gmail Trigger","Slack"],
+    category: "업무자동화",
+    summary: "Gmail에서 ESM 인증메일을 자동 감지하여 슬랙 채널로 즉시 전달",
+    nodeCount: 4,
+    img: ""
+  },
+  {
+    id: 29,
+    file: "ESM 인증메일 슬랙전송_copy.json",
+    name: "ESM 인증메일 슬랙전송 (복사본)",
+    nodes: ["Code","Filter","Gmail Trigger","Slack"],
+    category: "업무자동화",
+    summary: "ESM 인증메일 슬랙전송 워크플로우의 복사본",
+    nodeCount: 4,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 30,
+    file: "FC) 데모단_네이버 키워드 트렌드 AI 분석기.json",
+    name: "네이버 키워드 트렌드 AI 분석기",
+    nodes: ["AI Agent","Chat Trigger","Google Gemini","Output Parser","Code","Date & Time","HTTP Request","If","Slack"],
+    category: "마케팅자동화",
+    summary: "네이버 키워드 트렌드 API 데이터를 Gemini AI가 분석하여 경쟁력 인사이트 리포트를 생성하고 슬랙으로 전달",
+    nodeCount: 14,
+    img: ""
+  },
+  {
+    id: 31,
+    file: "FC)데모단)견적서 계약서 자동 생성 시스템.json",
+    name: "견적서/계약서 자동 생성 시스템",
+    nodes: ["Code","ConvertToFile","Form Trigger","Google Drive","HTML"],
+    category: "업무자동화",
+    summary: "폼에 고객·상품 정보를 입력하면 금액을 자동 계산하고 견적서/계약서 HTML을 생성하여 구글 드라이브에 저장",
+    nodeCount: 6,
+    img: ""
+  },
+  {
+    id: 32,
+    file: "FC)데모단_PRD 자동화.json",
+    name: "PRD 자동 생성 (멀티 에이전트)",
+    nodes: ["AI Agent x5","Google Gemini","Output Parser","Think Tool","Date & Time","Google Drive","Google Sheets","If","Limit","Perplexity","Reddit"],
+    category: "업무자동화",
+    summary: "Reddit 트렌드를 분석하고 멀티 AI 에이전트 체인(Goal/Idea/Persona/PRD)으로 PRD 문서를 자동 생성",
+    nodeCount: 22,
+    img: ""
+  },
+  {
+    id: 33,
+    file: "FC)설문 문자발송.json",
+    name: "설문 기반 맞춤 쿠폰 문자발송",
+    nodes: ["OpenAI","Code","Gmail","Google Sheets Trigger","HTTP Request","If","Notion","Set","Slack","Wait"],
+    category: "마케팅자동화",
+    summary: "구글 폼 설문 응답에 따라 서술형 답변자에게는 30% 할인, 미답변자에게는 15% 할인 쿠폰을 SMS/이메일로 자동 발송",
+    nodeCount: 69,
+    img: ""
+  },
+  {
+    id: 34,
+    file: "MCP로 n8n을 더 똑똑하게.json",
+    name: "MCP 서버 n8n 연동",
+    nodes: ["MCP Trigger","HTTP Request Tool"],
+    category: "업무자동화",
+    summary: "MCP(Model Context Protocol) 서버 트리거를 통해 n8n을 외부 AI 에이전트의 도구로 연결하는 브릿지",
+    nodeCount: 3,
+    img: ""
+  },
+  {
+    id: 35,
+    file: "My workflow 2.json",
+    name: "My workflow 2",
+    nodes: ["Form Trigger"],
+    category: "업무자동화",
+    summary: "폼 트리거만 포함된 빈 테스트 워크플로우",
+    nodeCount: 1,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 36,
+    file: "My workflow 3.json",
+    name: "My workflow 3",
+    nodes: ["Form Trigger"],
+    category: "업무자동화",
+    summary: "폼 트리거만 포함된 빈 테스트 워크플로우",
+    nodeCount: 1,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 37,
+    file: "My workflow 4.json",
+    name: "My workflow 4",
+    nodes: ["Manual Trigger","PostgreSQL"],
+    category: "업무자동화",
+    summary: "PostgreSQL SQL 쿼리를 수동 실행하는 테스트 워크플로우",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 38,
+    file: "My workflow 5.json",
+    name: "My workflow 5",
+    nodes: ["Form Trigger"],
+    category: "업무자동화",
+    summary: "견적서/계약서 입력 폼만 포함된 테스트 워크플로우",
+    nodeCount: 1,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 39,
+    file: "My workflow 6.json",
+    name: "RSS+요즘IT 통합 뉴스 봇",
+    nodes: ["OpenAI","Code","HTTP Request","If","Merge","RSS Feed Read","Schedule Trigger","SplitInBatches","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "RSS 피드와 요즘IT 크롤링을 통합하여 GPT로 요약 후 텔레그램으로 전송하는 뉴스 큐레이션 시스템",
+    nodeCount: 20,
+    img: ""
+  },
+  {
+    id: 40,
+    file: "My workflow.json",
+    name: "My workflow",
+    nodes: ["Code","Webhook"],
+    category: "업무자동화",
+    summary: "웹훅 수신 후 JavaScript 코드를 실행하는 기본 테스트 워크플로우",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 41,
+    file: "MyTally.json",
+    name: "MyTally",
+    nodes: ["Code","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 웹훅을 수신하여 JavaScript로 데이터를 처리하는 테스트 워크플로우",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 42,
+    file: "Start Workflow (trigger).json",
+    name: "Start Workflow (trigger)",
+    nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Webhook"],
+    category: "업무자동화",
+    summary: "다양한 트리거 유형을 모아둔 범용 워크플로우 시작점 템플릿",
+    nodeCount: 8,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 43,
+    file: "Talking Animal_2.json",
+    name: "Talking Animal (말하는 동물 비디오)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "폼 입력으로 AI 이미지·음성·립싱크를 생성하여 말하는 동물 캐릭터 비디오를 자동 제작하고 유튜브에 업로드",
+    nodeCount: 33,
+    img: ""
+  },
+  {
+    id: 44,
+    file: "Talking Baby (원본).json",
+    name: "Talking Baby (말하는 아기 비디오)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "폼 입력으로 AI 아기 이미지·음성을 생성하고 립싱크 비디오를 자동 제작하여 유튜브에 업로드하는 원본 시스템",
+    nodeCount: 28,
+    img: ""
+  },
+  {
+    id: 45,
+    file: "Talking Pet(지은길드장).json",
+    name: "Talking Pet (말하는 반려동물 비디오)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "반려동물 사진에 AI 음성을 합성하여 말하는 펫 비디오를 자동 제작하고 유튜브에 업로드",
+    nodeCount: 33,
+    img: ""
+  },
+  {
+    id: 46,
+    file: "Telegram AI Calendar EX (FC 에이전트 - pt5).json",
+    name: "Telegram AI Calendar 에이전트",
+    nodes: ["AI Agent","Google Gemini","OpenAI","Memory","Google Calendar Tool","Set","Switch","Telegram"],
+    category: "업무자동화",
+    summary: "텔레그램 음성/텍스트로 구글 캘린더 일정을 생성·조회·수정·삭제하는 AI 캘린더 관리 에이전트",
+    nodeCount: 17,
+    img: ""
+  },
+  {
+    id: 47,
+    file: "Telegram RSS 리더 수집(0단계) _ 업그레이드중 RSS subWF.json",
+    name: "RSS 리더 서브 워크플로우",
+    nodes: ["OpenAI","Code","Execute Workflow Trigger","If","RSS Feed Read"],
+    category: "컨텐츠자동화",
+    summary: "다른 워크플로우에서 호출되어 RSS 피드를 읽고 24시간 이내 글을 GPT로 요약하는 서브 워크플로우",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 48,
+    file: "Telegram RSS 리더 수집(0단계)_Tavily연동 (ver.2).json",
+    name: "Telegram RSS + Tavily 큐레이션 봇",
+    nodes: ["OpenAI","Code","HTTP Request","If","Manual Trigger","RSS Feed Read","Schedule Trigger","Set","SplitInBatches","Switch","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "RSS 피드와 Tavily 웹 검색(요즘IT)을 결합하여 최신 뉴스를 수집·GPT 요약 후 텔레그램으로 전송하는 큐레이션 봇",
+    nodeCount: 13,
+    img: ""
+  },
+  {
+    id: 49,
+    file: "UTM Clicks Tracker.json",
+    name: "UTM Clicks Tracker",
+    nodes: ["Airtable","Google Sheets","HTTP Request","Schedule Trigger"],
+    category: "마케팅자동화",
+    summary: "에어테이블의 UTM 단축 링크(dub.co) 클릭 데이터를 주기적으로 수집하여 구글시트에 자동 기록",
+    nodeCount: 4,
+    img: ""
+  },
+  {
+    id: 50,
+    file: "UTM builder (s.brainimpact).json",
+    name: "UTM Builder (자동 단축 링크 생성)",
+    nodes: ["Airtable","Airtable Trigger","HTTP Request"],
+    category: "마케팅자동화",
+    summary: "에어테이블에 UTM 파라미터 입력 시 Shlink API로 단축 URL을 자동 생성하여 레코드를 업데이트",
+    nodeCount: 3,
+    img: ""
+  },
+  {
+    id: 51,
+    file: "[WF-A] Gemini Batch_BANANA — Submit (JSON) - test.json",
+    name: "Gemini Batch 이미지 생성 (Submit)",
+    nodes: ["Code","ConvertToFile","Google Cloud Storage","Google Sheets","HTTP Request","Manual Trigger","Set"],
+    category: "컨텐츠자동화",
+    summary: "구글시트 상품정보를 JSONL로 변환하여 Gemini 배치 API에 대량 이미지 생성을 요청하고 GCS에 업로드",
+    nodeCount: 8,
+    img: ""
+  },
+  {
+    id: 52,
+    file: "[WF-B] Gemini Batch_BANANA — Collect.json",
+    name: "Gemini Batch 이미지 생성 (Collect)",
+    nodes: ["Code","Cron","Google Cloud Storage","Google Drive","Google Sheets","HTTP Request","If","Loop","MoveBinaryData"],
+    category: "컨텐츠자동화",
+    summary: "Gemini 배치 작업 완료를 10분마다 모니터링하고 생성된 이미지를 GCS에서 다운로드하여 구글 드라이브에 저장",
+    nodeCount: 12,
+    img: ""
+  },
+  {
+    id: 53,
+    file: "ai-agent financial-advisor-test(텔레그램_주가분석).json",
+    name: "AI 주가분석 에이전트 (원본)",
+    nodes: ["AI Agent","OpenAI","Memory","Output Parser","Gmail","HTTP Request Tool","Markdown","Set","Switch","Telegram"],
+    category: "업무자동화",
+    summary: "텔레그램 기반 AI 주가 분석 에이전트 (번호 없는 원본 버전)",
+    nodeCount: 24,
+    img: ""
+  },
+  {
+    id: 54,
+    file: "brain impact (고객정보 Sheet동기화).json",
+    name: "고객정보 DB-Sheet 자동 동기화",
+    nodes: ["Google Sheets","PostgreSQL","Schedule Trigger"],
+    category: "업무자동화",
+    summary: "PostgreSQL 고객정보를 구글시트로 주기적으로 자동 동기화하여 최신 데이터를 유지",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 55,
+    file: "brain impact (보고서_viewtable _ DB-Sheet).json",
+    name: "DB 보고서 자동 시트 동기화",
+    nodes: ["Google Sheets","PostgreSQL","Schedule Trigger"],
+    category: "업무자동화",
+    summary: "PostgreSQL DB의 뷰 테이블 5종을 구글시트 보고서로 자동 변환·동기화하는 데이터 파이프라인",
+    nodeCount: 21,
+    img: ""
+  },
+  {
+    id: 56,
+    file: "brainimpact CS DB (user만_라클데이터입력).json",
+    name: "CS DB 고객 데이터 입력",
+    nodes: ["Filter","Google Sheets","Manual Trigger","PostgreSQL","Set"],
+    category: "업무자동화",
+    summary: "라클 설문 데이터에서 전화번호를 10~11자리로 표준화하여 PostgreSQL CS용 user 테이블에 입력",
+    nodeCount: 6,
+    img: ""
+  },
+  {
+    id: 57,
+    file: "brainimpact Class DB.json",
+    name: "강의정보 AI 분석 DB 저장",
+    nodes: ["OpenAI","Form Trigger","PostgreSQL"],
+    category: "업무자동화",
+    summary: "폼으로 입력받은 강의정보를 OpenAI가 분석한 뒤 PostgreSQL classes 테이블에 자동 저장",
+    nodeCount: 3,
+    img: ""
+  },
+  {
+    id: 58,
+    file: "brainimpact _shlink tracking.json",
+    name: "Shlink 단축 URL 트래킹",
+    nodes: ["Code","Google Sheets","HTTP Request","Schedule Trigger"],
+    category: "마케팅자동화",
+    summary: "Shlink 단축 URL의 클릭 통계 데이터를 주기적으로 API 호출하여 구글시트에 자동 기록",
+    nodeCount: 4,
+    img: ""
+  },
+  {
+    id: 59,
+    file: "brainimpact survey DB.json",
+    name: "설문 데이터 DB + 벡터 임베딩",
+    nodes: ["Data Loader","OpenAI Embeddings","OpenAI","PGVector","Filter","Google Sheets","Manual Trigger","PostgreSQL","Set","SplitInBatches"],
+    category: "마케팅자동화",
+    summary: "설문 데이터를 PostgreSQL에 저장하고 OpenAI 임베딩으로 PGVector에 벡터화하여 RAG 검색이 가능하도록 구축",
+    nodeCount: 17,
+    img: ""
+  },
+  {
+    id: 60,
+    file: "brainimpact user_events DB_밀어넣기(라클데이터).json",
+    name: "User Events DB 일괄 입력",
+    nodes: ["Code","Google Sheets","Manual Trigger","PostgreSQL"],
+    category: "업무자동화",
+    summary: "구글시트의 라클 이벤트 데이터를 JavaScript로 파싱하여 PostgreSQL user_events 테이블에 일괄 입력",
+    nodeCount: 4,
+    img: ""
+  },
+  {
+    id: 61,
+    file: "brainimpact 고객정보 내부챗봇 (실무적용중).json",
+    name: "고객정보 RAG 내부챗봇 (실무 적용)",
+    nodes: ["AI Agent","Chat Trigger","OpenAI Embeddings","OpenAI","Memory","Output Parser","Vector Store Tool","PGVector","PostgreSQL Tool","Set","Switch"],
+    category: "업무자동화",
+    summary: "PGVector 벡터DB와 PostgreSQL SQL을 하이브리드로 활용하여 고객정보를 자연어로 조회하는 실무 내부 RAG 챗봇",
+    nodeCount: 13,
+    img: ""
+  },
+  {
+    id: 62,
+    file: "email 자동화.json",
+    name: "Email AI 자동화 시스템",
+    nodes: ["OpenAI","Gmail","Gmail Trigger","Google Calendar","Google Sheets","Set","Slack","Switch","Webhook"],
+    category: "업무자동화",
+    summary: "수신 이메일을 AI가 자동 분류하고 구글시트에 기록, 슬랙 알림, 캘린더 연동, 원클릭 자동 회신까지 처리",
+    nodeCount: 16,
+    img: ""
+  },
+  {
+    id: 63,
+    file: "maily 수신확인 webhook.json",
+    name: "이메일 수신확인 추적",
+    nodes: ["Google Sheets","Respond To Webhook","Webhook"],
+    category: "마케팅자동화",
+    summary: "이메일 수신확인(open tracking) 웹훅을 수신하여 구글시트에 열람 기록을 자동 저장",
+    nodeCount: 3,
+    img: ""
+  },
+  {
+    id: 64,
+    file: "n8n Workflow 백업.json",
+    name: "n8n Workflow 자동 백업",
+    nodes: ["Code","Discord","Function","Google Drive","Google Sheets","HTTP Request","If","Manual Trigger","Schedule Trigger","Set","Slack","SplitInBatches"],
+    category: "업무자동화",
+    summary: "n8n API로 모든 워크플로우를 추출하여 구글 드라이브에 JSON 백업, 구글시트에 목록 기록, 슬랙/디스코드로 결과 알림",
+    nodeCount: 22,
+    img: ""
+  },
+  {
+    id: 65,
+    file: "ㅈㅈ.json",
+    name: "ㅈㅈ",
+    nodes: ["Execute Workflow Trigger"],
+    category: "업무자동화",
+    summary: "서브 워크플로우 트리거만 포함된 빈 테스트 워크플로우",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 66,
+    file: "강의) tavily AGENT AI 개인비서.json",
+    name: "Tavily AI 개인비서 (강의용)",
+    nodes: ["AI Agent","LLM Chain","OpenAI","Memory","Code","GitHub","Gmail","Google Drive","HTML","HTTP Request Tool","Notion","Telegram"],
+    category: "업무자동화",
+    summary: "Tavily 웹 검색 연동 AI 개인비서 에이전트의 강의용 버전",
+    nodeCount: 21,
+    img: ""
+  },
+  {
+    id: 67,
+    file: "강의0단계) RAG CS 워크플로우(구글시트).json",
+    name: "RAG CS 챗봇 (구글시트 기반)",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Google Sheets Tool"],
+    category: "업무자동화",
+    summary: "구글시트 데이터를 기반으로 AI가 고객 문의에 응답하는 RAG CS 챗봇",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 68,
+    file: "강의_1단계) RAG 초기데이터 적재.json",
+    name: "RAG 벡터 데이터 초기 적재",
+    nodes: ["Data Loader","OpenAI Embeddings","Supabase Vector Store","Manual Trigger","Supabase"],
+    category: "업무자동화",
+    summary: "Supabase에서 벡터화되지 않은 데이터를 찾아 OpenAI 임베딩으로 벡터스토어에 초기 적재",
+    nodeCount: 7,
+    img: ""
+  },
+  {
+    id: 69,
+    file: "강의fin) RAG CS 워크플로우(벡터스토어) 웹훅연결(typebot) (1).json",
+    name: "RAG CS 챗봇 Typebot 연동 (복사본)",
+    nodes: ["AI Agent","Data Loader","OpenAI Embeddings","OpenAI","Memory","Vector Store Tool","Supabase Vector Store","Form Trigger","Google Sheets","If","Set","Webhook"],
+    category: "업무자동화",
+    summary: "Supabase 벡터스토어 기반 RAG로 고객 문의에 자동 응답하고 미답변은 담당자에게 전달하는 CS 챗봇 (복사본)",
+    nodeCount: 18,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 70,
+    file: "강의fin) RAG CS 워크플로우(벡터스토어) 웹훅연결(typebot).json",
+    name: "RAG CS 챗봇 (벡터스토어 + Typebot)",
+    nodes: ["AI Agent","Data Loader","OpenAI Embeddings","OpenAI","Memory","Vector Store Tool","Supabase Vector Store","Form Trigger","Google Sheets","If","Set","Webhook"],
+    category: "업무자동화",
+    summary: "Supabase 벡터스토어 기반 RAG로 고객 문의에 자동 응답하고 미답변 건을 구글시트에 기록·담당자에게 전달하는 CS 챗봇",
+    nodeCount: 18,
+    img: ""
+  },
+  {
+    id: 71,
+    file: "강의초안_완성안됨) firecrawl AI 개인비서 (무료 사용불가).json",
+    name: "Firecrawl AI 개인비서 (미완성)",
+    nodes: ["Code","HTTP Request","If","SplitInBatches","Telegram","Wait"],
+    category: "업무자동화",
+    summary: "Firecrawl API로 웹 리서치를 수행하여 보고서를 생성하는 AI 개인비서 (미완성/무료 사용 불가)",
+    nodeCount: 15,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 72,
+    file: "강의후_응용) RAG CS 워크플로우(벡터스토어) 웹훅연결(chatwood).json",
+    name: "RAG CS 챗봇 (벡터스토어 + Chatwoot)",
+    nodes: ["AI Agent","Data Loader","OpenAI Embeddings","OpenAI","Memory","Vector Store Tool","Supabase Vector Store","Code","Form Trigger","Google Sheets","HTTP Request","If","Set","Webhook"],
+    category: "업무자동화",
+    summary: "Supabase 벡터스토어 기반 RAG CS 챗봇에 Chatwoot 고객상담 시스템을 연동하여 실시간 대화 지원",
+    nodeCount: 24,
+    img: ""
+  },
+  {
+    id: 73,
+    file: "강제에러생성.json",
+    name: "강제 에러 생성기",
+    nodes: ["Code","Schedule Trigger"],
+    category: "업무자동화",
+    summary: "스케줄에 따라 의도적으로 에러를 발생시켜 에러 알림 시스템을 테스트하는 유틸리티",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 74,
+    file: "뉴스레터원문생성 and SNS발행 (실행단계).json",
+    name: "뉴스레터 원문생성 & SNS 발행",
+    nodes: ["Claude","Google Gemini","OpenAI","Code","GitHub","Google Drive","HTML Extract","HTTP Request","Switch","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "텔레그램 뉴스 데이터를 3종 AI(GPT·Gemini·Claude)로 병렬 처리하여 뉴스레터 원문을 생성하고 GitHub/드라이브에 저장·SNS 발행",
+    nodeCount: 29,
+    img: ""
+  },
+  {
+    id: 75,
+    file: "대량 문자발송(발송 준비 및 승인 요청).json",
+    name: "대량 문자발송 (승인 요청)",
+    nodes: ["Aggregate","Form","Form Trigger","If","PostgreSQL","Switch","Telegram"],
+    category: "마케팅자동화",
+    summary: "폼에서 대상 그룹(전체/유료/미결제)을 선택하고 암호 확인 후 텔레그램으로 발송 승인을 요청하는 SMS 제어 패널",
+    nodeCount: 9,
+    img: ""
+  },
+  {
+    id: 76,
+    file: "대량 문자발송(실발송).json",
+    name: "대량 문자발송 (SOLAPI 실발송)",
+    nodes: ["HTTP Request","If","PostgreSQL","Set","SplitInBatches","Switch","Telegram","Wait"],
+    category: "마케팅자동화",
+    summary: "텔레그램 승인 후 SOLAPI를 통해 대량 SMS를 실제 발송하고 잔액·성공·실패를 추적하여 결과를 보고",
+    nodeCount: 38,
+    img: ""
+  },
+  {
+    id: 77,
+    file: "매일 아침 날씨 알림 (Slack).json",
+    name: "매일 아침 날씨 알림 (Slack)",
+    nodes: ["OpenWeatherMap","Schedule Trigger","Slack"],
+    category: "업무자동화",
+    summary: "매일 아침 9시 OpenWeatherMap API로 현재 날씨를 가져와 슬랙 채널로 자동 전달",
+    nodeCount: 3,
+    img: ""
+  },
+  {
+    id: 78,
+    file: "미리방재 심플2.json",
+    name: "AI 챗봇 슬랙 연동 (심플)",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Slack"],
+    category: "업무자동화",
+    summary: "OpenAI 기반 AI 챗봇이 대화 후 슬랙으로 메시지를 전송하는 간단한 챗봇",
+    nodeCount: 5,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 79,
+    file: "배포_0826) 한국는지금 _윤형선님(최종).json",
+    name: "한국는지금 (AI 뉴스 비디오 자동화)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","If","Merge","RSS Feed Read","SplitInBatches","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "RSS 한국 뉴스를 수집하고 AI가 이미지(OpenAI)·음성(ElevenLabs)·립싱크 비디오를 자동 생성하는 뉴스 콘텐츠 파이프라인",
+    nodeCount: 58,
+    img: ""
+  },
+  {
+    id: 80,
+    file: "배포_0830) 라솔파미_세계는지금 (유튭자동업로드) _최종 (윤형선님).json",
+    name: "세계는지금 (AI 뉴스 유튜브 자동업로드)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","If","Merge","RSS Feed Read","SplitInBatches","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "해외 뉴스 RSS를 수집하여 AI 이미지·음성·비디오를 자동 생성하고 유튜브에 자동 업로드하는 글로벌 뉴스 파이프라인",
+    nodeCount: 56,
+    img: ""
+  },
+  {
+    id: 81,
+    file: "삼성헬스_인바디 데이터파싱.json",
+    name: "삼성헬스/인바디 AI 데이터 파싱",
+    nodes: ["OpenAI","Code","ExtractFromFile","Form Trigger","Google Drive","HTTP Request","If","Slack","SplitInBatches","Switch","Wait"],
+    category: "업무자동화",
+    summary: "삼성헬스/인바디 캡처 이미지를 Gemini Vision AI로 파싱하여 구조화된 건강 데이터로 변환·구글 드라이브에 저장",
+    nodeCount: 32,
+    img: ""
+  },
+  {
+    id: 82,
+    file: "상주)Day3 5실습 음성메모자산화.json",
+    name: "텔레그램 음성메모 자산화 (상주교육)",
+    nodes: ["Code","Google Drive","If","OpenAI Whisper","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "텔레그램 음성 메시지를 Whisper로 텍스트 변환 후 AI가 정리하여 구글 드라이브에 저장하는 상주교육 실습 버전",
+    nodeCount: 7,
+    img: ""
+  },
+  {
+    id: 83,
+    file: "상주1)_보도자료_카드뉴스_초안생성기(강의전).json",
+    name: "보도자료/카드뉴스 AI 초안 생성기",
+    nodes: ["Code","Form Trigger","Google Drive","OpenAI","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "폼에 입력한 내용을 AI가 보도자료와 카드뉴스 초안으로 자동 생성하여 구글 드라이브에 저장·텔레그램으로 전달",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 84,
+    file: "상주3)Draft 네이버API 1_Sangju_Risk_Alert_System.json",
+    name: "상주 위험 알림 시스템 (네이버 API)",
+    nodes: ["HTTP Request","If","OpenAI","Schedule Trigger","Telegram"],
+    category: "업무자동화",
+    summary: "네이버 블로그를 주기적으로 검색하여 AI가 지역(상주) 위험정보를 감지하고 텔레그램으로 알림 발송",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 85,
+    file: "상주3일차) 실습6 RAG CS 워크플로우(구글시트).json",
+    name: "RAG CS 챗봇 구글시트 (상주교육)",
+    nodes: ["AI Agent","OpenAI","Memory","Google Sheets Tool","Webhook"],
+    category: "업무자동화",
+    summary: "웹훅으로 질문을 받아 구글시트 데이터 기반 AI가 고객 문의에 응답하는 RAG CS 챗봇 (상주교육 실습)",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 86,
+    file: "상품이미지_Google IMAGEN3 테스트_ (나노바나나로 고고).json",
+    name: "Google IMAGEN3 상품 이미지 생성",
+    nodes: ["Code","ConvertToFile","ExtractFromFile","Google Drive","Google Sheets","HTTP Request","Manual Trigger","Slack","SplitInBatches","Wait"],
+    category: "컨텐츠자동화",
+    summary: "구글시트 상품정보를 기반으로 Google IMAGEN3 API로 상품 이미지를 배치 생성하여 구글 드라이브에 저장",
+    nodeCount: 13,
+    img: ""
+  },
+  {
+    id: 87,
+    file: "실시간 나노바나나 (웹훅 스타터) - railway.json",
+    name: "나노바나나 웹훅 스타터 (Railway)",
+    nodes: ["HTTP Request","Manual Trigger"],
+    category: "컨텐츠자동화",
+    summary: "나노바나나 이미지 생성 시스템의 Requeue 프로세스를 시작하는 Railway 환경 웹훅 런처",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 88,
+    file: "실시간 나노바나나 (웹훅 스타터) - rediace.json",
+    name: "나노바나나 웹훅 스타터 (Rediace)",
+    nodes: ["HTTP Request","Manual Trigger"],
+    category: "컨텐츠자동화",
+    summary: "나노바나나 이미지 생성 시스템의 Requeue 프로세스를 시작하는 Rediace 환경 웹훅 런처",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 89,
+    file: "업무자동화) 뉴스레터 구독자 e-book발송(추후연동자동화유료).json",
+    name: "뉴스레터 구독자 e-book 자동 발송",
+    nodes: ["HTTP Request","Webhook"],
+    category: "마케팅자동화",
+    summary: "뉴스레터 구독 웹훅을 수신하여 구독자에게 e-book 파일을 HTTP로 자동 발송하는 리드 마그넷 시스템",
+    nodeCount: 2,
+    img: ""
+  },
+  {
+    id: 90,
+    file: "영수증 입력기 (Denny) (1).json",
+    name: "영수증 AI 입력기 (복사본)",
+    nodes: ["OpenAI","Code","ExtractFromFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","SplitInBatches","Webhook"],
+    category: "업무자동화",
+    summary: "Gemini Vision AI로 영수증 이미지를 OCR 파싱하여 결제 이력을 구글시트에 자동 입력하는 도구 (복사본)",
+    nodeCount: 22,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 91,
+    file: "영수증 입력기 (Denny).json",
+    name: "영수증 AI 입력기",
+    nodes: ["OpenAI","Code","ExtractFromFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","SplitInBatches","Webhook"],
+    category: "업무자동화",
+    summary: "Gemini Vision AI로 영수증 이미지를 OCR 파싱하여 결제 이력/상세 내역을 구글시트에 자동 입력",
+    nodeCount: 22,
+    img: ""
+  },
+  {
+    id: 92,
+    file: "옵시디언 원문생성 (A단계).json",
+    name: "옵시디언 원문생성 (멀티AI)",
+    nodes: ["Claude","Google Gemini","OpenAI","Code","GitHub","Google Drive","HTML Extract","HTTP Request","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "뉴스 링크를 스크래핑하고 3종 AI(GPT·Gemini·Claude)로 원문을 생성하여 옵시디언 호환 마크다운으로 저장",
+    nodeCount: 20,
+    img: ""
+  },
+  {
+    id: 93,
+    file: "워크플로우에러_텔레그램_알림.json",
+    name: "워크플로우 에러 텔레그램 알림",
+    nodes: ["Error Trigger","Telegram"],
+    category: "업무자동화",
+    summary: "n8n 워크플로우에서 에러 발생 시 Error Trigger를 감지하여 텔레그램으로 즉시 알림 전송",
+    nodeCount: 2,
+    img: ""
+  },
+  {
+    id: 94,
+    file: "이메일 정리 일간 메일 리포트.json",
+    name: "이메일 일간 리포트 (Slack)",
+    nodes: ["Code","Gmail","Schedule Trigger","Slack"],
+    category: "업무자동화",
+    summary: "Gmail의 스스라벨/쿠팡라벨 이메일을 매일 수집·요약하여 슬랙으로 일간 이메일 리포트 발송",
+    nodeCount: 7,
+    img: ""
+  },
+  {
+    id: 95,
+    file: "제니) 뉴스레터발송_draft 작업중 (1).json",
+    name: "뉴스레터 자동 작성 시스템 (복사본)",
+    nodes: ["OpenAI","Code","Merge","RSS Feed Read","Set","Split Out","Switch","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "18개 카테고리별 한/영 RSS를 수집하고 AI로 요약하여 뉴스레터를 자동 작성하는 대규모 시스템 (복사본)",
+    nodeCount: 97,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 96,
+    file: "제니) 뉴스레터발송_draft 작업중.json",
+    name: "뉴스레터 자동 작성 시스템 (97노드)",
+    nodes: ["OpenAI","Code","Merge","RSS Feed Read","Set","Split Out","Switch","Webhook"],
+    category: "컨텐츠자동화",
+    summary: "18개 카테고리(AI자동화/ChatGPT/디지털마케팅/커뮤니티/그로스 등)별 한/영 RSS를 수집·AI 요약하여 뉴스레터 자동 작성",
+    nodeCount: 97,
+    img: ""
+  },
+  {
+    id: 97,
+    file: "주식분석_FC기반내용.json",
+    name: "주식 AI 분석 리포트",
+    nodes: ["LLM Chain","Groq","OpenAI","Aggregate","Code","ConvertToFile","Discord","Dropbox","Form Trigger","Gmail","HTML","If","Merge","Perplexity","RSS Feed Read","Set","Switch"],
+    category: "컨텐츠자동화",
+    summary: "TSLA/NVDA/AAPL 주식 뉴스를 RSS로 수집하고 Perplexity/Groq/OpenAI로 분석하여 투자 리포트를 자동 생성",
+    nodeCount: 30,
+    img: ""
+  },
+  {
+    id: 98,
+    file: "쿠팡 메일정리 (draft).json",
+    name: "쿠팡 메일 AI 정리",
+    nodes: ["Code","Gmail","If","Manual Trigger","OpenAI","Schedule Trigger","Set","Slack"],
+    category: "업무자동화",
+    summary: "쿠팡 관련 이메일을 정기적으로 수집하고 OpenAI로 내용을 분류·정리하여 슬랙으로 요약 보고",
+    nodeCount: 9,
+    img: ""
+  },
+  {
+    id: 99,
+    file: "협업) 1단계 업무등록 - 슬랙용.json",
+    name: "협업 업무등록 시스템 (Slack)",
+    nodes: ["Airtable","Code","HTTP Request","If","Set","Split Out","Switch","Wait","Webhook"],
+    category: "업무자동화",
+    summary: "슬랙 웹훅으로 팀 업무를 에어테이블에 등록하고 미제출자를 자동 추적·알림하는 협업 업무 등록 시스템",
+    nodeCount: 68,
+    img: ""
+  },
+  {
+    id: 100,
+    file: "협업)챗봇 채팅응답 _ 텔레그램.json",
+    name: "협업 AI 챗봇 (Telegram)",
+    nodes: ["AI Agent","OpenAI","Memory","Airtable Tool","Switch","Telegram"],
+    category: "업무자동화",
+    summary: "텔레그램 메시지를 AI 에이전트가 분석하여 에어테이블 협업 데이터를 자연어로 조회·응답하는 챗봇",
+    nodeCount: 9,
+    img: ""
+  }
+];
+
+// ============================================================
+//  렌더링 로직
+// ============================================================
+let currentFilter = 'all';
+
+function isLabItem(w) {
+  if (w.isLab) return true;
+  const n = w.name.toLowerCase();
+  const f = w.file.toLowerCase();
+  if (w.nodeCount <= 2) return true;
+  if (n.includes('test') || n.includes('테스트') || f.includes('test')) return true;
+  if (n.startsWith('my workflow')) return true;
+  if (n === 'ㅈㅈ' || n === 'mytally') return true;
+  if (n.includes('복사본') || f.includes('(1)') || f.includes('_copy')) return true;
+  if (n.includes('미완성')) return true;
+  return false;
+}
+
+function getBadgeClass(cat) {
+  if (cat === '업무자동화') return 'badge-work';
+  if (cat === '마케팅자동화') return 'badge-marketing';
+  if (cat === '컨텐츠자동화') return 'badge-content';
+  return '';
+}
+
+function getCatIcon(cat) {
+  if (cat === '업무자동화') return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>';
+  if (cat === '마케팅자동화') return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>';
+  if (cat === '컨텐츠자동화') return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>';
+  return '';
+}
+
+function getImgSrc(w) {
+  if (w.img) return w.img;
+  // placeholder: 파일명 기반 이미지 경로 (나중에 GIF 추가 시 이 경로에 파일을 놓으면 됩니다)
+  const base = w.file.replace('.json', '.gif');
+  return '';
+}
+
+function renderMainCard(w, idx) {
+  const imgSrc = getImgSrc(w);
+  const topNodes = w.nodes.slice(0, 8);
+  const moreCount = Math.max(0, w.nodes.length - 8);
+  return `
+  <div class="card-enter card-hover bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col" style="animation-delay:${Math.min(idx,15)*40}ms" data-id="${w.id}">
+    <!-- Image / GIF Placeholder -->
+    <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl">
+      ${imgSrc
+        ? `<img src="${imgSrc}" alt="${w.name}" class="w-full h-full object-cover rounded-t-2xl">`
+        : `<div class="text-center px-4">
+            <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/60 backdrop-blur flex items-center justify-center text-2xl shadow-sm">
+              ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
+            </div>
+            <p class="text-xs text-blue-400 font-medium">${w.file.replace('.json','')}.gif</p>
+          </div>`
+      }
+    </div>
+    <!-- Content -->
+    <div class="p-6 flex flex-col flex-1">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="${getBadgeClass(w.category)} text-xs font-semibold px-2.5 py-1 rounded-full inline-flex items-center gap-1">
+          ${getCatIcon(w.category)} ${w.category}
+        </span>
+        <span class="text-xs text-gray-400 ml-auto">${w.nodeCount} nodes</span>
+      </div>
+      <h3 class="font-bold text-gray-900 mb-3 text-[15px] leading-snug">${w.name}</h3>
+      <p class="text-sm text-gray-500 leading-relaxed mb-5">${w.summary}</p>
+      <div class="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-gray-50">
+        ${topNodes.map(n => `<span class="node-tag">${n}</span>`).join('')}
+        ${moreCount > 0 ? `<span class="node-tag bg-blue-50 text-blue-600">+${moreCount}</span>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderLabCard(w) {
+  return `
+  <div class="card-hover bg-amber-50/50 rounded-xl border border-amber-100 p-5" data-id="${w.id}">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-2">
+        <span class="badge-lab text-xs font-semibold px-2 py-0.5 rounded-full shrink-0">${w.category}</span>
+        <span class="text-xs text-amber-600 ml-auto">${w.nodeCount} nodes</span>
+      </div>
+      <h4 class="font-semibold text-gray-800 text-sm leading-snug">${w.name}</h4>
+      <p class="text-xs text-gray-500 leading-relaxed">${w.summary}</p>
+    </div>
+  </div>`;
+}
+
+function applyFilters() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+  const filtered = workflows.filter(w => {
+    // Category filter
+    if (currentFilter !== 'all' && w.category !== currentFilter) return false;
+    // Search filter
+    if (query) {
+      const searchStr = (w.name + ' ' + w.nodes.join(' ') + ' ' + w.summary + ' ' + w.file).toLowerCase();
+      return searchStr.includes(query);
+    }
+    return true;
+  });
+
+  const mainItems = filtered.filter(w => !isLabItem(w));
+  const labItems = filtered.filter(w => isLabItem(w));
+
+  document.getElementById('mainGrid').innerHTML = mainItems.length
+    ? mainItems.map((w, i) => renderMainCard(w, i)).join('')
+    : `<div class="col-span-full text-center py-20 text-gray-400"><div class="text-5xl mb-4">&#128269;</div><p>검색 결과가 없습니다</p></div>`;
+
+  document.getElementById('labGrid').innerHTML = labItems.map(w => renderLabCard(w)).join('');
+  document.getElementById('labCount').textContent = `${labItems.length}개`;
+  document.getElementById('labSection').style.display = labItems.length ? 'block' : 'none';
+  document.getElementById('resultCount').textContent = mainItems.length + labItems.length;
+}
+
+function setFilter(cat) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === cat);
+    if (btn.dataset.filter !== cat) {
+      btn.className = btn.className.replace('active','').trim();
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.boxShadow = '';
+    }
+  });
+  applyFilters();
+}
+
+// Init
+function init() {
+  const total = workflows.length;
+  const work = workflows.filter(w => w.category === '업무자동화').length;
+  const mkt = workflows.filter(w => w.category === '마케팅자동화').length;
+  const cnt = workflows.filter(w => w.category === '컨텐츠자동화').length;
+
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statWork').textContent = work;
+  document.getElementById('statMarketing').textContent = mkt;
+  document.getElementById('statContent').textContent = cnt;
+  document.getElementById('cntAll').textContent = total;
+  document.getElementById('cntWork').textContent = work;
+  document.getElementById('cntMarketing').textContent = mkt;
+  document.getElementById('cntContent').textContent = cnt;
+
+  applyFilters();
+}
+
+init();
+</script>
+</body>
+</html>
