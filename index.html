@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIMIT - n8n Workflow Portfolio</title>
+<title>에이아이밋 - n8n Workflow Portfolio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        brand: { 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 300:'#93c5fd', 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e3a5f', 900:'#0f172a' },
-        surface: { 50:'#f8fafc', 100:'#f1f5f9', 200:'#e2e8f0' }
+        brand: { 50:'#f3f0f8', 100:'#e0d9f0', 200:'#c4b8e0', 300:'#a78fcf', 400:'#8b74b8', 500:'#6c539f', 600:'#5a4488', 700:'#48366e', 800:'#2a1f42', 900:'#0f0a1a' },
+        point: { 400:'#f6a48e', 500:'#f3886c', 600:'#e8734f' },
+        surface: { 50:'#111111', 100:'#1a1a1a', 200:'#222222', 300:'#333333' }
       }
     }
   }
@@ -19,69 +20,70 @@ tailwind.config = {
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-*{font-family:'Inter',sans-serif}
+*{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:smooth}
 .card-enter{animation:cardIn .4s ease-out both}
 @keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.filter-btn.active{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.35)}
-.card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
-.card-hover{transition:all .3s cubic-bezier(.4,0,.2,1)}
+.filter-btn.active{background:linear-gradient(135deg,#f3886c,#6c539f);color:#fff;box-shadow:0 4px 18px rgba(108,83,159,.4)}
+.card-hover{transition:all .3s cubic-bezier(.4,0,.2,1);border:1px solid #222}
+.card-hover:hover{transform:translateY(-6px);box-shadow:0 0 24px rgba(243,136,108,.15),0 20px 40px rgba(0,0,0,.4);border-color:#6c539f}
 .tag{transition:all .2s}
 .tag:hover{transform:scale(1.05)}
-.search-glow:focus{box-shadow:0 0 0 3px rgba(59,130,246,.3)}
-.img-placeholder{background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 50%,#bfdbfe 100%);position:relative;overflow:hidden}
-.img-placeholder::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 2.5s infinite}
+.search-glow:focus{box-shadow:0 0 0 3px rgba(108,83,159,.4)}
+.img-placeholder{background:linear-gradient(135deg,#1a1028 0%,#0f0a1a 50%,#1a1028 100%);position:relative;overflow:hidden}
+.img-placeholder::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(108,83,159,.15),transparent);animation:shimmer 2.5s infinite}
 @keyframes shimmer{to{left:100%}}
-.hero-gradient{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#1d4ed8 100%)}
-.stat-card{backdrop-filter:blur(12px);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
-.badge-work{background:#dbeafe;color:#1d4ed8}
-.badge-marketing{background:#fce7f3;color:#be185d}
-.badge-content{background:#d1fae5;color:#065f46}
-.badge-lab{background:#fef3c7;color:#92400e}
-.node-tag{background:#f1f5f9;color:#475569;font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap}
+.hero-gradient{background:linear-gradient(135deg,#000000 0%,#1a1028 40%,#2a1f42 100%)}
+.stat-card{backdrop-filter:blur(12px);background:rgba(108,83,159,.1);border:1px solid rgba(108,83,159,.2)}
+.badge-work{background:rgba(108,83,159,.2);color:#a78fcf}
+.badge-marketing{background:rgba(243,136,108,.15);color:#f3886c}
+.badge-content{background:rgba(108,83,159,.15);color:#8b74b8}
+.badge-lab{background:rgba(243,136,108,.1);color:#f6a48e}
+.node-tag{background:#1a1a1a;color:#888;font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap;border:1px solid #2a2a2a}
 #labSection,#labGrid,#mainGrid{overflow:visible!important;max-height:none!important}
+.gradient-title{background:linear-gradient(135deg,#f3886c,#6c539f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(max-width:640px){
   .node-tag{font-size:10px;padding:2px 6px}
 }
 </style>
 </head>
-<body class="bg-surface-50 text-gray-800">
+<body class="bg-black text-gray-300">
 
 <!-- ==================== HERO ==================== -->
 <header class="hero-gradient text-white relative overflow-hidden">
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full filter blur-3xl"></div>
-    <div class="absolute bottom-10 right-20 w-96 h-96 bg-indigo-500 rounded-full filter blur-3xl"></div>
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-10 right-20 w-96 h-96 bg-point-500 rounded-full filter blur-3xl opacity-40"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
     <div class="text-center">
-      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6 border border-white/20">
-        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-        100 Workflows Automated
+      <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6 border border-white/10">
+        <span class="w-2 h-2 bg-point-500 rounded-full animate-pulse"></span>
+        100+ Workflows Automated
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-        n8n Automation<br><span class="text-blue-300">Portfolio</span>
+        <span class="gradient-title">실시간 자동화</span><br>엔진룸
       </h1>
-      <p class="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto mb-10">
+      <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
         AI와 자동화로 비즈니스 프로세스를 혁신합니다.<br>
-        실무에 적용 중인 100개의 n8n 워크플로우를 소개합니다.
+        실무에 적용 중인 <span class="text-point-500 font-semibold">100개</span>의 n8n 워크플로우를 소개합니다.
       </p>
       <div id="stats" class="flex flex-wrap justify-center gap-4 md:gap-6">
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
-          <div class="text-3xl font-bold" id="statTotal">100</div>
-          <div class="text-blue-300 text-sm mt-1">Total Workflows</div>
+          <div class="text-3xl font-bold text-white" id="statTotal">100</div>
+          <div class="text-brand-400 text-sm mt-1">Total Workflows</div>
         </div>
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
-          <div class="text-3xl font-bold" id="statWork">0</div>
-          <div class="text-blue-300 text-sm mt-1">업무자동화</div>
+          <div class="text-3xl font-bold text-white" id="statWork">0</div>
+          <div class="text-brand-400 text-sm mt-1">업무자동화</div>
         </div>
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
-          <div class="text-3xl font-bold" id="statMarketing">0</div>
-          <div class="text-blue-300 text-sm mt-1">마케팅자동화</div>
+          <div class="text-3xl font-bold text-white" id="statMarketing">0</div>
+          <div class="text-point-500 text-sm mt-1">마케팅자동화</div>
         </div>
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]">
-          <div class="text-3xl font-bold" id="statContent">0</div>
-          <div class="text-blue-300 text-sm mt-1">컨텐츠자동화</div>
+          <div class="text-3xl font-bold text-white" id="statContent">0</div>
+          <div class="text-brand-300 text-sm mt-1">컨텐츠자동화</div>
         </div>
       </div>
     </div>
@@ -89,28 +91,28 @@ html{scroll-behavior:smooth}
 </header>
 
 <!-- ==================== FILTER & SEARCH ==================== -->
-<section class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-sm">
+<section class="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
   <div class="max-w-7xl mx-auto px-6 py-4">
     <div class="flex flex-col md:flex-row items-center gap-4">
       <!-- Filter -->
       <div class="flex flex-wrap gap-2" id="filterBtns">
-        <button onclick="setFilter('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 transition-all" data-filter="all">
+        <button onclick="setFilter('all')" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold border border-white/10 transition-all" data-filter="all">
           전체 <span class="ml-1 opacity-70" id="cntAll"></span>
         </button>
-        <button onclick="setFilter('업무자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-blue-50 transition-all" data-filter="업무자동화">
+        <button onclick="setFilter('업무자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-brand-500/15 hover:border-brand-500/30 transition-all" data-filter="업무자동화">
           업무자동화 <span class="ml-1 opacity-70" id="cntWork"></span>
         </button>
-        <button onclick="setFilter('마케팅자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-pink-50 transition-all" data-filter="마케팅자동화">
+        <button onclick="setFilter('마케팅자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-point-500/15 hover:border-point-500/30 transition-all" data-filter="마케팅자동화">
           마케팅자동화 <span class="ml-1 opacity-70" id="cntMarketing"></span>
         </button>
-        <button onclick="setFilter('컨텐츠자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-gray-200 bg-white hover:bg-green-50 transition-all" data-filter="컨텐츠자동화">
+        <button onclick="setFilter('컨텐츠자동화')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border border-white/10 bg-white/5 text-gray-300 hover:bg-brand-500/15 hover:border-brand-500/30 transition-all" data-filter="컨텐츠자동화">
           컨텐츠자동화 <span class="ml-1 opacity-70" id="cntContent"></span>
         </button>
       </div>
       <!-- Search -->
       <div class="relative flex-1 max-w-md w-full">
-        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <input id="searchInput" type="text" placeholder="워크플로우 이름 또는 노드 검색 (예: Airtable, Telegram...)" class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 bg-white text-sm focus:outline-none search-glow transition-all" oninput="applyFilters()">
+        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input id="searchInput" type="text" placeholder="워크플로우 이름 또는 노드 검색 (예: Airtable, Telegram...)" class="w-full pl-10 pr-4 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm text-white placeholder-gray-500 focus:outline-none search-glow transition-all" oninput="applyFilters()">
       </div>
       <!-- Result count -->
       <div class="text-sm text-gray-500 whitespace-nowrap">
@@ -128,23 +130,23 @@ html{scroll-behavior:smooth}
   <!-- Lab Section -->
   <div id="labSection" class="mt-12 mb-8">
     <div class="flex items-center gap-3 mb-8">
-      <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">
+      <div class="flex items-center gap-2 bg-point-500/10 border border-point-500/20 rounded-full px-4 py-1.5">
         <span class="text-lg">🧪</span>
-        <span class="font-semibold text-amber-800 text-sm">실험실 / 테스트</span>
+        <span class="font-semibold text-point-500 text-sm">실험실 / 테스트</span>
       </div>
-      <div class="flex-1 h-px bg-amber-200"></div>
-      <span class="text-sm text-amber-600" id="labCount"></span>
+      <div class="flex-1 h-px bg-white/10"></div>
+      <span class="text-sm text-point-400" id="labCount"></span>
     </div>
     <div id="labGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
   </div>
 </main>
 
 <!-- ==================== FOOTER ==================== -->
-<footer class="bg-brand-900 text-white py-12">
+<footer class="bg-black border-t border-white/5 text-white py-12">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <div class="text-2xl font-bold mb-2">AIMIT</div>
-    <p class="text-blue-300 text-sm mb-6">AI &amp; Automation Solutions</p>
-    <p class="text-gray-500 text-xs">&copy; 2026 AIMIT. Built with n8n &amp; AI.</p>
+    <div class="text-2xl font-bold mb-2 gradient-title">에이아이밋</div>
+    <p class="text-brand-400 text-sm mb-6">AI &amp; Automation Solutions</p>
+    <p class="text-gray-600 text-xs">&copy; 2026 에이아이밋. Built with n8n &amp; AI.</p>
   </div>
 </footer>
 
@@ -1227,16 +1229,16 @@ function renderMainCard(w, idx) {
   const topNodes = w.nodes.slice(0, 8);
   const moreCount = Math.max(0, w.nodes.length - 8);
   return `
-  <div class="card-enter card-hover bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col" style="animation-delay:${Math.min(idx,15)*40}ms" data-id="${w.id}">
+  <div class="card-enter card-hover bg-[#111111] rounded-2xl flex flex-col" style="animation-delay:${Math.min(idx,15)*40}ms" data-id="${w.id}">
     <!-- Image / GIF Placeholder -->
     <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl">
       ${imgSrc
         ? `<img src="${imgSrc}" alt="${w.name}" class="w-full h-full object-cover rounded-t-2xl">`
         : `<div class="text-center px-4">
-            <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/60 backdrop-blur flex items-center justify-center text-2xl shadow-sm">
+            <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-2xl border border-white/10">
               ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
             </div>
-            <p class="text-xs text-blue-400 font-medium">${w.file.replace('.json','')}.gif</p>
+            <p class="text-xs text-brand-400 font-medium">${w.file.replace('.json','')}.gif</p>
           </div>`
       }
     </div>
@@ -1246,13 +1248,13 @@ function renderMainCard(w, idx) {
         <span class="${getBadgeClass(w.category)} text-xs font-semibold px-2.5 py-1 rounded-full inline-flex items-center gap-1">
           ${getCatIcon(w.category)} ${w.category}
         </span>
-        <span class="text-xs text-gray-400 ml-auto">${w.nodeCount} nodes</span>
+        <span class="text-xs text-gray-600 ml-auto">${w.nodeCount} nodes</span>
       </div>
-      <h3 class="font-bold text-gray-900 mb-3 text-[15px] leading-snug">${w.name}</h3>
-      <p class="text-sm text-gray-500 leading-relaxed mb-5">${w.summary}</p>
-      <div class="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-gray-50">
+      <h3 class="font-bold text-white mb-3 text-[15px] leading-snug">${w.name}</h3>
+      <p class="text-sm text-gray-400 leading-relaxed mb-5">${w.summary}</p>
+      <div class="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
         ${topNodes.map(n => `<span class="node-tag">${n}</span>`).join('')}
-        ${moreCount > 0 ? `<span class="node-tag bg-blue-50 text-blue-600">+${moreCount}</span>` : ''}
+        ${moreCount > 0 ? `<span class="node-tag" style="background:rgba(108,83,159,.2);color:#a78fcf;border-color:rgba(108,83,159,.3)">+${moreCount}</span>` : ''}
       </div>
     </div>
   </div>`;
@@ -1260,13 +1262,13 @@ function renderMainCard(w, idx) {
 
 function renderLabCard(w) {
   return `
-  <div class="card-hover bg-amber-50/50 rounded-xl border border-amber-100 p-5" data-id="${w.id}">
+  <div class="card-hover bg-[#0a0a0a] rounded-xl border border-white/5 p-5" data-id="${w.id}">
     <div class="flex flex-col gap-2">
       <div class="flex items-center gap-2">
         <span class="badge-lab text-xs font-semibold px-2 py-0.5 rounded-full shrink-0">${w.category}</span>
-        <span class="text-xs text-amber-600 ml-auto">${w.nodeCount} nodes</span>
+        <span class="text-xs text-gray-600 ml-auto">${w.nodeCount} nodes</span>
       </div>
-      <h4 class="font-semibold text-gray-800 text-sm leading-snug">${w.name}</h4>
+      <h4 class="font-semibold text-gray-300 text-sm leading-snug">${w.name}</h4>
       <p class="text-xs text-gray-500 leading-relaxed">${w.summary}</p>
     </div>
   </div>`;
@@ -1291,7 +1293,7 @@ function applyFilters() {
 
   document.getElementById('mainGrid').innerHTML = mainItems.length
     ? mainItems.map((w, i) => renderMainCard(w, i)).join('')
-    : `<div class="col-span-full text-center py-20 text-gray-400"><div class="text-5xl mb-4">&#128269;</div><p>검색 결과가 없습니다</p></div>`;
+    : `<div class="col-span-full text-center py-20 text-gray-600"><div class="text-5xl mb-4">&#128269;</div><p>검색 결과가 없습니다</p></div>`;
 
   document.getElementById('labGrid').innerHTML = labItems.map(w => renderLabCard(w)).join('');
   document.getElementById('labCount').textContent = `${labItems.length}개`;
@@ -1305,8 +1307,8 @@ function setFilter(cat) {
     btn.classList.toggle('active', btn.dataset.filter === cat);
     if (btn.dataset.filter !== cat) {
       btn.className = btn.className.replace('active','').trim();
-      btn.style.background = '';
-      btn.style.color = '';
+      btn.style.background = 'rgba(255,255,255,0.05)';
+      btn.style.color = '#d1d5db';
       btn.style.boxShadow = '';
     }
   });

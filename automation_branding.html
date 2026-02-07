@@ -1265,7 +1265,7 @@ body {
   <p class="footer-sub reveal reveal-delay-2">
     실시간으로 동기화되는 워크플로우를 직접 확인하세요.
   </p>
-  <a href="library.html" target="_top" class="cta-button reveal reveal-delay-3">
+  <a data-path="/32" target="_top" class="cta-button reveal reveal-delay-3" id="ctaEngine">
     에이아이밋 실시간 자동화 엔진룸 입장하기
     <span class="cta-arrow">→</span>
   </a>
@@ -1280,9 +1280,9 @@ body {
    ═══════════════════════════════════════════ */
 var baseUrl = 'https://brainimpactai.imweb.me';
 
-/* 카드 링크 동적 생성 + iframe 탈출(target="_top") */
-document.querySelectorAll('.card[data-path]').forEach(function (card) {
-  card.href = baseUrl + card.getAttribute('data-path');
+/* 모든 data-path 링크 동적 생성 + iframe 탈출(target="_top") */
+document.querySelectorAll('[data-path]').forEach(function (el) {
+  el.href = baseUrl + el.getAttribute('data-path');
 });
 
 /* ═══════════════════════════════════════════
