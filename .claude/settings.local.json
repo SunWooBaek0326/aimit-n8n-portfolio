@@ -8,7 +8,13 @@
       "Bash(ren:*)",
       "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\index.html\")",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git rm:*)",
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\automation_branding.html\")"
     ]
   }
 }
