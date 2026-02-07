@@ -717,14 +717,14 @@ body {
   min-height: 260px;
 }
 
-/* Gradient border effect */
+/* Glow border effect */
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 20px;
   padding: 2px;
-  background: var(--primary);
+  background: var(--point);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -737,8 +737,9 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(108, 83, 159, 0.15);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 20px rgba(243, 136, 108, 0.25),
+              0 20px 50px rgba(243, 136, 108, 0.12);
 }
 
 .card-icon {
@@ -1222,7 +1223,7 @@ body {
 
   <div class="card-grid">
     <!-- Card 1: Work -->
-    <a href="/work-automation" class="card reveal reveal-delay-2">
+    <a data-path="/30" target="_top" class="card reveal reveal-delay-2">
       <div class="card-icon work">⚙️</div>
       <span class="card-label work">Work Automation</span>
       <h3 class="card-title">업무 자동화</h3>
@@ -1231,7 +1232,7 @@ body {
     </a>
 
     <!-- Card 2: Marketing -->
-    <a href="/marketing-automation" class="card reveal reveal-delay-3">
+    <a data-path="/29" target="_top" class="card reveal reveal-delay-3">
       <div class="card-icon marketing">📈</div>
       <span class="card-label marketing">Marketing Automation</span>
       <h3 class="card-title">마케팅 자동화</h3>
@@ -1240,7 +1241,7 @@ body {
     </a>
 
     <!-- Card 3: Content -->
-    <a href="/content-automation" class="card reveal reveal-delay-4">
+    <a data-path="/31" target="_top" class="card reveal reveal-delay-4">
       <div class="card-icon content">✨</div>
       <span class="card-label content">Content Automation</span>
       <h3 class="card-title">콘텐츠 자동화</h3>
@@ -1264,7 +1265,7 @@ body {
   <p class="footer-sub reveal reveal-delay-2">
     실시간으로 동기화되는 워크플로우를 직접 확인하세요.
   </p>
-  <a href="library.html" class="cta-button reveal reveal-delay-3">
+  <a href="library.html" target="_top" class="cta-button reveal reveal-delay-3">
     에이아이밋 실시간 자동화 엔진룸 입장하기
     <span class="cta-arrow">→</span>
   </a>
@@ -1274,6 +1275,16 @@ body {
 </section>
 
 <script>
+/* ═══════════════════════════════════════════
+   Base URL 설정 — 도메인 변경 시 여기만 수정
+   ═══════════════════════════════════════════ */
+var baseUrl = 'https://brainimpactai.imweb.me';
+
+/* 카드 링크 동적 생성 + iframe 탈출(target="_top") */
+document.querySelectorAll('.card[data-path]').forEach(function (card) {
+  card.href = baseUrl + card.getAttribute('data-path');
+});
+
 /* ═══════════════════════════════════════════
    Intersection Observer — Reveal Animations
    ═══════════════════════════════════════════ */
