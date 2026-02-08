@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마케팅 자동화 | 에이아이밋</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#6c539f;--point:#f3886c;--accent:#f3886c;--accent-bg:rgba(243,136,108,.12);--accent-glow:rgba(243,136,108,.2);--black:#000;--white:#fff;--gray-100:#f7f7f8;--gray-400:#9a9aab;--gray-600:#5a5a6e;--gray-800:#2a2a3a}
+body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#e2e8f0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}.reveal-delay-2{transition-delay:.3s}.reveal-delay-3{transition-delay:.45s}.reveal-delay-4{transition-delay:.6s}
+
+/* Back Link */
+.back-link{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 40px;
+}
+.back-link a{
+  color:var(--gray-400);text-decoration:none;font-size:15px;font-weight:500;
+  transition:color .3s;display:inline-flex;align-items:center;gap:6px;
+}
+.back-link a:hover{color:var(--white)}
+
+/* Hero */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 24px 80px;position:relative;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;background:radial-gradient(circle,rgba(243,136,108,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-block;background:var(--point);color:var(--white);
+  font-size:clamp(12px,1.2vw,14px);font-weight:700;padding:8px 20px;border-radius:50px;
+  letter-spacing:.5px;margin-bottom:32px;
+}
+.hero-headline{
+  font-size:clamp(28px,4.5vw,52px);font-weight:800;line-height:1.3;
+  color:var(--white);max-width:800px;margin-bottom:24px;
+}
+.hero-headline .accent{color:var(--point)}
+.hero-subtext{
+  font-size:clamp(15px,1.8vw,19px);color:var(--gray-400);max-width:600px;
+  line-height:1.7;font-weight:400;
+}
+
+/* Section Common */
+.section{padding:100px 24px;max-width:1100px;margin:0 auto}
+.section-title{
+  font-size:clamp(24px,3.5vw,40px);font-weight:800;color:var(--white);
+  text-align:center;margin-bottom:60px;line-height:1.3;
+}
+.section-title .accent{color:var(--point)}
+
+/* Strengths */
+.strengths-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.strength-card{
+  background:#111;border:1px solid #222;border-radius:16px;padding:36px 28px;
+  text-align:center;transition:border-color .3s,transform .3s;
+}
+.strength-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.strength-icon{font-size:36px;margin-bottom:20px;display:block}
+.strength-title{
+  font-size:clamp(16px,1.6vw,19px);font-weight:700;color:var(--white);margin-bottom:12px;
+}
+.strength-desc{
+  font-size:clamp(13px,1.3vw,15px);color:var(--gray-400);line-height:1.7;
+}
+
+/* ===== Killer Card ===== */
+.killer-wrapper{
+  margin-bottom:36px;
+}
+.killer-card{
+  background:#111;border:1px solid rgba(243,136,108,.4);border-radius:24px;overflow:hidden;
+  position:relative;transition:border-color .4s,box-shadow .4s,transform .3s;cursor:default;
+}
+.killer-card::before{
+  content:'';position:absolute;inset:-2px;border-radius:26px;
+  background:radial-gradient(ellipse at 30% 20%,rgba(243,136,108,.3) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 80%,rgba(243,136,108,.12) 0%,transparent 50%);
+  pointer-events:none;z-index:0;
+}
+.killer-card::after{
+  content:'';position:absolute;inset:0;border-radius:24px;
+  box-shadow:0 0 60px rgba(243,136,108,.15),0 0 120px rgba(243,136,108,.06);
+  pointer-events:none;z-index:0;
+}
+.killer-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 80px rgba(243,136,108,.25),0 12px 48px rgba(0,0,0,.5);
+  transform:translateY(-4px);
+}
+.killer-inner{
+  display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;
+}
+.killer-gif{
+  aspect-ratio:16/10;
+  background:linear-gradient(135deg,#1a1018 0%,#0f0a0a 50%,#1a1018 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  position:relative;overflow:hidden;
+}
+.killer-gif::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(243,136,108,.1),transparent);
+  animation:shimmer 3s infinite;
+}
+@keyframes shimmer{to{left:100%}}
+.killer-gif img{width:100%;height:100%;object-fit:cover}
+.killer-gif-placeholder{text-align:center;position:relative;z-index:1}
+.killer-gif-icon{font-size:48px;opacity:.5;display:block;margin-bottom:8px}
+.killer-gif-label{font-size:12px;color:var(--gray-600);font-weight:500;letter-spacing:.5px}
+.killer-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
+.killer-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.badge-top{
+  display:inline-flex;align-items:center;gap:5px;
+  background:linear-gradient(135deg,#f3886c,#e8734f);color:#fff;
+  font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;
+  letter-spacing:.8px;text-transform:uppercase;
+}
+.badge-top svg{width:14px;height:14px}
+.badge-cat{
+  display:inline-block;font-size:12px;font-weight:600;color:var(--accent);
+  background:var(--accent-bg);padding:4px 12px;border-radius:20px;
+}
+.killer-title{
+  font-size:clamp(20px,2.2vw,28px);font-weight:800;color:var(--white);
+  margin-bottom:14px;line-height:1.35;
+}
+.killer-desc{
+  font-size:clamp(14px,1.4vw,16px);color:var(--gray-400);line-height:1.8;
+  margin-bottom:24px;
+}
+.killer-nodes{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:28px}
+.killer-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:var(--white);
+  font-size:15px;font-weight:700;padding:14px 32px;
+  border-radius:50px;text-decoration:none;
+  transition:transform .3s,box-shadow .3s;border:none;cursor:pointer;
+}
+.killer-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 32px rgba(243,136,108,.4);
+}
+.killer-btn svg{width:18px;height:18px}
+
+/* ===== Grid Cards (2x2) ===== */
+.workflows-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px;
+}
+.workflow-card{
+  background:#111;border:1px solid #1a1a2e;border-radius:20px;overflow:hidden;
+  transition:border-color .4s,box-shadow .4s,transform .3s;cursor:default;
+}
+.workflow-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 8px 40px var(--accent-glow),0 0 0 1px var(--accent);
+  transform:translateY(-4px);
+}
+.workflow-gif{
+  width:100%;aspect-ratio:16/9;
+  background:linear-gradient(135deg,#1a1a2e 0%,#111 40%,#1a1025 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  border-bottom:1px solid #1a1a2e;position:relative;overflow:hidden;
+}
+.workflow-gif::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(243,136,108,.08),transparent);
+  animation:shimmer 3s infinite;
+}
+.workflow-gif img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.workflow-gif-placeholder{text-align:center;position:relative;z-index:1}
+.workflow-gif-icon{font-size:32px;opacity:.4;display:block;margin-bottom:4px}
+.workflow-gif-label{font-size:12px;color:var(--gray-600);font-weight:500;letter-spacing:.5px}
+.workflow-body{padding:28px}
+.workflow-category{
+  display:inline-block;font-size:12px;font-weight:600;color:var(--accent);
+  background:var(--accent-bg);padding:4px 12px;border-radius:20px;margin-bottom:14px;
+}
+.workflow-title{
+  font-size:clamp(16px,1.7vw,20px);font-weight:700;color:var(--white);
+  margin-bottom:10px;line-height:1.4;
+}
+.workflow-desc{
+  font-size:clamp(13px,1.3vw,15px);color:var(--gray-400);line-height:1.7;
+  margin-bottom:20px;
+}
+.workflow-nodes{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px}
+.node-tag{
+  background:#1a1a1a;border:1px solid #2a2a2a;color:#888;
+  font-size:12px;padding:5px 12px;border-radius:8px;font-weight:500;
+}
+.node-count{
+  font-size:12px;color:var(--gray-600);margin-left:4px;font-weight:500;
+}
+.card-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(243,136,108,.12);color:var(--accent);
+  font-size:14px;font-weight:600;padding:10px 24px;
+  border-radius:50px;text-decoration:none;
+  transition:background .3s,transform .3s;border:1px solid rgba(243,136,108,.2);
+}
+.card-btn:hover{
+  background:rgba(243,136,108,.25);transform:scale(1.03);
+}
+.card-btn svg{width:16px;height:16px}
+
+/* CTA */
+.cta-section{
+  text-align:center;padding:120px 24px;
+  background:linear-gradient(180deg,transparent 0%,rgba(243,136,108,.04) 50%,transparent 100%);
+}
+.cta-headline{
+  font-size:clamp(22px,3vw,36px);font-weight:800;color:var(--white);margin-bottom:40px;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:var(--white);
+  font-size:clamp(15px,1.5vw,18px);font-weight:700;padding:18px 48px;
+  border-radius:60px;text-decoration:none;
+  transition:transform .3s,box-shadow .3s;
+}
+.cta-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 32px rgba(243,136,108,.4);
+}
+.cta-btn svg{width:20px;height:20px}
+
+/* Responsive */
+@media(max-width:768px){
+  .back-link{padding:16px 20px}
+  .strengths-grid{grid-template-columns:1fr;gap:16px}
+  .workflows-grid{grid-template-columns:1fr;gap:20px}
+  .killer-inner{grid-template-columns:1fr}
+  .killer-gif{aspect-ratio:16/9}
+  .killer-body{padding:28px 24px}
+  .killer-title{font-size:22px}
+  .killer-desc{font-size:14px}
+  .section{padding:80px 20px}
+  .strength-card{padding:28px 20px}
+  .workflow-body{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="back-link">
+  <a href="https://brainimpactai.imweb.me/28" target="_top">
+    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    돌아가기
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="reveal">
+    <span class="hero-badge">Marketing Automation</span>
+  </div>
+  <h1 class="hero-headline reveal reveal-delay-1">
+    잠자는 동안에도 고객을 모으는,<br><span class="accent">마케팅 엔진</span>.
+  </h1>
+  <p class="hero-subtext reveal reveal-delay-2">
+    유입부터 구매 전환까지 끊김 없는 데이터 깔때기를 설계합니다.
+  </p>
+</section>
+
+<!-- Strengths -->
+<section class="section">
+  <h2 class="section-title reveal">왜 <span class="accent">마케팅 자동화</span>인가</h2>
+  <div class="strengths-grid">
+    <div class="strength-card reveal reveal-delay-1">
+      <span class="strength-icon">🎯</span>
+      <h3 class="strength-title">끊김 없는 퍼널 설계</h3>
+      <p class="strength-desc">랜딩페이지 유입부터 DB 수집, 리드 스코어링, 전환까지 자동화합니다.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-2">
+      <span class="strength-icon">📱</span>
+      <h3 class="strength-title">옴니채널 자동 발송</h3>
+      <p class="strength-desc">SMS(SOLAPI), 이메일, 슬랙, 디스코드 등 다채널 메시지를 한 번에 관리합니다.</p>
+    </div>
+    <div class="strength-card reveal reveal-delay-3">
+      <span class="strength-icon">📈</span>
+      <h3 class="strength-title">실시간 성과 트래킹</h3>
+      <p class="strength-desc">UTM 클릭, 단축 URL 통계, 설문 응답률을 자동 대시보드로 시각화합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Best Workflows -->
+<section class="section">
+  <h2 class="section-title reveal">Best <span class="accent">Workflows</span></h2>
+
+  <!-- ★ Killer Content: #033 설문 기반 맞춤 쿠폰 문자발송 -->
+  <div class="killer-wrapper reveal">
+    <div class="killer-card">
+      <div class="killer-inner">
+        <div class="killer-gif">
+          <div class="killer-gif-placeholder">
+            <span class="killer-gif-icon">▶</span>
+            <span class="killer-gif-label">workflow_033.gif</span>
+          </div>
+        </div>
+        <div class="killer-body">
+          <div class="killer-badge-row">
+            <span class="badge-top">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              TOP CONTENT
+            </span>
+            <span class="badge-cat">Survey · Coupon · SMS</span>
+          </div>
+          <h3 class="killer-title">설문 기반 맞춤 쿠폰<br><span style="color:var(--accent)">자동 문자발송 시스템</span></h3>
+          <p class="killer-desc">구글 폼 설문 응답을 AI가 분석하여 서술형 답변자에게는 30% 할인, 미답변자에게는 15% 할인 쿠폰을 SMS/이메일로 자동 발송하는 맞춤형 마케팅 엔진.</p>
+          <div class="killer-nodes">
+            <span class="node-tag">OpenAI</span>
+            <span class="node-tag">Google Sheets</span>
+            <span class="node-tag">Notion</span>
+            <span class="node-tag">Slack</span>
+            <span class="node-tag">HTTP Request</span>
+            <span class="node-count">69 nodes</span>
+          </div>
+          <a class="killer-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+            자세히 보기
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2x2 Grid -->
+  <div class="workflows-grid">
+
+    <!-- ② Tally 설문 AI 분석발송 -->
+    <div class="workflow-card reveal reveal-delay-1">
+      <div class="workflow-gif">
+        <div class="workflow-gif-placeholder">
+          <span class="workflow-gif-icon">▶</span>
+          <span class="workflow-gif-label">workflow_022.gif</span>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">Survey · AI Analysis</span>
+        <h3 class="workflow-title">Tally 설문 AI 분석발송</h3>
+        <p class="workflow-desc">Tally 설문 응답을 AI(Groq/OpenAI)가 분석하여 맞춤 SMS/이메일/노션/슬랙으로 자동 리포트를 발송하는 설문 분석 시스템.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">OpenAI</span>
+          <span class="node-tag">Groq</span>
+          <span class="node-tag">Gmail</span>
+          <span class="node-tag">Notion</span>
+          <span class="node-tag">Slack</span>
+          <span class="node-count">40 nodes</span>
+        </div>
+        <a class="card-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+          자세히 보기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ③ 네이버 키워드 트렌드 AI 분석기 -->
+    <div class="workflow-card reveal reveal-delay-2">
+      <div class="workflow-gif">
+        <div class="workflow-gif-placeholder">
+          <span class="workflow-gif-icon">▶</span>
+          <span class="workflow-gif-label">workflow_030.gif</span>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">Trend · AI Insight</span>
+        <h3 class="workflow-title">네이버 키워드 트렌드 AI 분석기</h3>
+        <p class="workflow-desc">네이버 키워드 트렌드 API 데이터를 Gemini AI가 분석하여 경쟁력 인사이트 리포트를 생성하고 슬랙으로 전달.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">AI Agent</span>
+          <span class="node-tag">Google Gemini</span>
+          <span class="node-tag">Slack</span>
+          <span class="node-tag">HTTP Request</span>
+          <span class="node-tag">Code</span>
+          <span class="node-count">14 nodes</span>
+        </div>
+        <a class="card-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+          자세히 보기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ④ 대량 문자발송 (SOLAPI 실발송) -->
+    <div class="workflow-card reveal reveal-delay-3">
+      <div class="workflow-gif">
+        <div class="workflow-gif-placeholder">
+          <span class="workflow-gif-icon">▶</span>
+          <span class="workflow-gif-label">workflow_076.gif</span>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">SMS · Campaign</span>
+        <h3 class="workflow-title">대량 문자발송 시스템 (SOLAPI)</h3>
+        <p class="workflow-desc">텔레그램 승인 후 SOLAPI를 통해 대량 SMS를 실제 발송하고 잔액/성공/실패를 추적하여 결과를 보고.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">PostgreSQL</span>
+          <span class="node-tag">Telegram</span>
+          <span class="node-tag">HTTP Request</span>
+          <span class="node-tag">Switch</span>
+          <span class="node-tag">Wait</span>
+          <span class="node-count">38 nodes</span>
+        </div>
+        <a class="card-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+          자세히 보기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ⑤ 설문 데이터 DB + 벡터 임베딩 -->
+    <div class="workflow-card reveal reveal-delay-4">
+      <div class="workflow-gif">
+        <div class="workflow-gif-placeholder">
+          <span class="workflow-gif-icon">▶</span>
+          <span class="workflow-gif-label">workflow_059.gif</span>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">Data · Vector RAG</span>
+        <h3 class="workflow-title">설문 데이터 DB + 벡터 임베딩</h3>
+        <p class="workflow-desc">설문 데이터를 PostgreSQL에 저장하고 OpenAI 임베딩으로 PGVector에 벡터화하여 RAG 검색이 가능하도록 구축.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">OpenAI Embeddings</span>
+          <span class="node-tag">PGVector</span>
+          <span class="node-tag">PostgreSQL</span>
+          <span class="node-tag">Google Sheets</span>
+          <span class="node-count">17 nodes</span>
+        </div>
+        <a class="card-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+          자세히 보기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <h2 class="cta-headline">100+ 워크플로우 엔진룸에서 더 보기</h2>
+    <a class="cta-btn" href="https://brainimpactai.imweb.me/32" target="_top">
+      엔진룸 입장하기
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<script>
+var baseUrl = 'https://brainimpactai.imweb.me';
+
+document.addEventListener('DOMContentLoaded', function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    observer.observe(el);
+  });
+});
+</script>
+</body>
+</html>

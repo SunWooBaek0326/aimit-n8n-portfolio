@@ -14,7 +14,10 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "Bash(git rm:*)",
-      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\automation_branding.html\")"
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\automation_branding.html\")",
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\work_automation.html\")",
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\marketing_automation.html\")",
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\content_automation.html\")"
     ]
   }
 }
