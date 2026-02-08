@@ -1318,9 +1318,13 @@ function applyFilters() {
 function setFilter(cat) {
   currentFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.filter === cat);
-    if (btn.dataset.filter !== cat) {
-      btn.className = btn.className.replace('active','').trim();
+    if (btn.dataset.filter === cat) {
+      btn.classList.add('active');
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.boxShadow = '';
+    } else {
+      btn.classList.remove('active');
       btn.style.background = 'rgba(255,255,255,0.05)';
       btn.style.color = '#d1d5db';
       btn.style.boxShadow = '';
