@@ -40,6 +40,8 @@ html{scroll-behavior:smooth}
 .badge-content{background:rgba(52,211,153,.15);color:#34d399}
 .badge-lab{background:rgba(243,136,108,.1);color:#f6a48e}
 .node-tag{background:#1a1a1a;color:#888;font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap;border:1px solid #2a2a2a}
+.node-tag-clickable{cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.node-tag-clickable:hover{background:rgba(108,83,159,.2);border-color:rgba(108,83,159,.4);color:#a78fcf}
 #labSection,#labGrid,#mainGrid{overflow:visible!important;max-height:none!important}
 .gradient-title{background:linear-gradient(135deg,#f3886c,#6c539f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @media(max-width:640px){
@@ -1263,7 +1265,7 @@ function renderMainCard(w, idx) {
       <h3 class="font-bold text-white mb-3 text-[15px] leading-snug">${w.name}</h3>
       <p class="text-sm text-gray-400 leading-relaxed mb-5">${w.summary}</p>
       <div class="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
-        ${topNodes.map(n => `<span class="node-tag">${n}</span>`).join('')}
+        ${topNodes.map(n => `<span class="node-tag node-tag-clickable" title="클릭하면 이 노드 포함 워크플로우만 표시">${n}</span>`).join('')}
         ${moreCount > 0 ? `<span class="node-tag" style="background:rgba(108,83,159,.2);color:#a78fcf;border-color:rgba(108,83,159,.3)">+${moreCount}</span>` : ''}
       </div>
       ${w.n8nId ? `<a href="https://n8n.rediace.com/workflow/${w.n8nId}" target="_top" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(108,83,159,.12);color:#a78fcf;font-size:13px;font-weight:600;padding:8px 20px;border-radius:50px;text-decoration:none;border:1px solid rgba(108,83,159,.2);transition:background .3s,transform .3s" onmouseover="this.style.background='rgba(108,83,159,.25)'" onmouseout="this.style.background='rgba(108,83,159,.12)'">n8n으로 열기 <svg width='14' height='14' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3'/></svg></a>` : ''}
@@ -1344,6 +1346,19 @@ function init() {
   document.getElementById('cntContent').textContent = cnt;
 
   applyFilters();
+
+  // 노드 태그 클릭 시 해당 노드 포함 항목만 필터
+  document.addEventListener('click', function (e) {
+    var tag = e.target.closest('.node-tag-clickable');
+    if (!tag || tag.textContent.trim().startsWith('+')) return;
+    var node = tag.textContent.trim();
+    var searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.value = node;
+      searchInput.focus();
+      applyFilters();
+    }
+  });
 }
 
 init();

@@ -76,16 +76,15 @@
       var src = video.getAttribute('src');
       if (!src || !src.match(/\/assets\/videos\/workflow_[a-zA-Z0-9]+\.mp4/)) return;
 
-      var card = video.closest('.killer-card, .workflow-card, [data-video-lightbox]');
-      if (!card) card = video.parentElement;
-      if (!card) return;
+      var container = video.parentElement;
+      if (!container) return;
 
-      card.classList.add('video-lightbox-trigger');
-      card.style.cursor = card.style.cursor || 'zoom-in';
+      container.classList.add('video-lightbox-trigger');
+      container.style.cursor = 'zoom-in';
 
-      card.addEventListener('click', function (e) {
-        if (e.target.closest('a') || e.target.closest('button')) return;
+      container.addEventListener('click', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         openLightbox(src);
       });
     });
