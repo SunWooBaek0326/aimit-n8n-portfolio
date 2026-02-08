@@ -1,2 +1,14 @@
 n8n workflow/
 n8n_analysis.txt
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp/Log
+*.tmp
+*.log
+*.bak

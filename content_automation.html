@@ -109,6 +109,12 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 .killer-gif-label{font-size:12px;color:var(--gray-600);font-weight:500;letter-spacing:.5px}
 .killer-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
 .killer-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.badge-featured{
+  display:inline-flex;align-items:center;gap:4px;
+  background:linear-gradient(135deg,#34d399,#059669);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 16px;border-radius:20px;
+  letter-spacing:.5px;box-shadow:0 2px 12px rgba(52,211,153,.4);
+}
 .badge-top{
   display:inline-flex;align-items:center;gap:5px;
   background:linear-gradient(135deg,#34d399,#059669);color:#fff;
@@ -295,6 +301,7 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
         </div>
         <div class="killer-body">
           <div class="killer-badge-row">
+            <span class="badge-featured">★ 대표 워크플로우</span>
             <span class="badge-top">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
               TOP CONTENT
@@ -446,8 +453,6 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 </section>
 
 <script>
-var baseUrl = 'https://brainimpactai.imweb.me';
-
 document.addEventListener('DOMContentLoaded', function () {
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -462,6 +467,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-</body>
 <script src="/assets/js/lightbox.js"></script>
+</body>
 </html>
