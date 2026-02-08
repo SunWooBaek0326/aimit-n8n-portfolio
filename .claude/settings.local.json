@@ -17,7 +17,8 @@
       "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\automation_branding.html\")",
       "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\work_automation.html\")",
       "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\marketing_automation.html\")",
-      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\content_automation.html\")"
+      "Bash(start \"\" \"D:\\\\8. claude code\\\\project\\\\content_automation.html\")",
+      "Bash(python -X utf8 -c:*)"
     ]
   }
 }
