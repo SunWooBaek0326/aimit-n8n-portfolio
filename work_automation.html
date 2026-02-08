@@ -94,8 +94,8 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 .killer-gif{
   aspect-ratio:16/10;
   background:linear-gradient(135deg,#1a1028 0%,#0f0a1a 50%,#1a1028 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:12px;
 }
 .killer-gif::before{
   content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
@@ -103,12 +103,23 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
   animation:shimmer 3s infinite;
 }
 @keyframes shimmer{to{left:100%}}
-.killer-gif img{width:100%;height:100%;object-fit:cover}
+.killer-gif video,
+.workflow-gif video{
+  width:100%;height:100%;object-fit:cover;
+  border-radius:12px;border:1px solid #333;
+  flex:1;min-width:0;display:block;
+}
 .killer-gif-placeholder{text-align:center;position:relative;z-index:1}
 .killer-gif-icon{font-size:48px;opacity:.5;display:block;margin-bottom:8px}
 .killer-gif-label{font-size:12px;color:var(--gray-600);font-weight:500;letter-spacing:.5px}
 .killer-body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
 .killer-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.badge-featured{
+  display:inline-flex;align-items:center;gap:4px;
+  background:linear-gradient(135deg,var(--primary),#5a4488);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 16px;border-radius:20px;
+  letter-spacing:.5px;box-shadow:0 2px 12px rgba(108,83,159,.4);
+}
 .badge-top{
   display:inline-flex;align-items:center;gap:5px;
   background:linear-gradient(135deg,#f3886c,#e8734f);color:#fff;
@@ -158,15 +169,14 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 .workflow-gif{
   width:100%;aspect-ratio:16/9;
   background:linear-gradient(135deg,#1a1a2e 0%,#111 40%,#1a1025 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-  border-bottom:1px solid #1a1a2e;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid #1a1a2e;position:relative;overflow:hidden;padding:12px;
 }
 .workflow-gif::before{
   content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(108,83,159,.08),transparent);
   animation:shimmer 3s infinite;
 }
-.workflow-gif img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
 .workflow-gif-placeholder{text-align:center;position:relative;z-index:1}
 .workflow-gif-icon{font-size:32px;opacity:.4;display:block;margin-bottom:4px}
 .workflow-gif-label{
@@ -241,6 +251,7 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
   .workflow-body{padding:22px}
 }
 </style>
+<link rel="stylesheet" href="/assets/css/lightbox.css">
 </head>
 <body>
 
@@ -289,13 +300,11 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
     <div class="killer-card">
       <div class="killer-inner">
         <div class="killer-gif">
-          <div class="killer-gif-placeholder">
-            <span class="killer-gif-icon">▶</span>
-            <span class="killer-gif-label">workflow_069.gif</span>
-          </div>
+          <video autoplay loop muted playsinline src="/assets/videos/workflow_LyKdtQ6C2YTBpc5j.mp4"></video>
         </div>
         <div class="killer-body">
           <div class="killer-badge-row">
+            <span class="badge-featured">★ 대표 워크플로우</span>
             <span class="badge-top">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
               TOP CONTENT
@@ -324,13 +333,10 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
   <!-- 2x2 Grid -->
   <div class="workflows-grid">
 
-    <!-- ② Tavily AGENT AI 개인비서 -->
+    <!-- ② Tavily AGENT AI 개인비서 #024 -->
     <div class="workflow-card reveal reveal-delay-1">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">▶</span>
-          <span class="workflow-gif-label">workflow_024.gif</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_IKyGN4rvH9oSAmwW.mp4"></video>
       </div>
       <div class="workflow-body">
         <span class="workflow-category">AI Agent · Research</span>
@@ -351,13 +357,10 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
       </div>
     </div>
 
-    <!-- ③ 팀 협업 데일리 리포트 시스템 -->
+    <!-- ③ 팀 협업 데일리 리포트 시스템 #018 -->
     <div class="workflow-card reveal reveal-delay-2">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">▶</span>
-          <span class="workflow-gif-label">workflow_018.gif</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_mmRAVASO6eM2tBcz.mp4"></video>
       </div>
       <div class="workflow-body">
         <span class="workflow-category">Team · Report</span>
@@ -378,13 +381,10 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
       </div>
     </div>
 
-    <!-- ④ 견적서/계약서 자동 생성 시스템 -->
+    <!-- ④ 견적서/계약서 자동 생성 시스템 #031 -->
     <div class="workflow-card reveal reveal-delay-3">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">▶</span>
-          <span class="workflow-gif-label">workflow_031.gif</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_tJhtchdgyaNKkNct.mp4"></video>
       </div>
       <div class="workflow-body">
         <span class="workflow-category">Document · Auto</span>
@@ -405,13 +405,10 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
       </div>
     </div>
 
-    <!-- ⑤ 이메일 정리 일간 메일 리포트 -->
+    <!-- ⑤ 이메일 정리 일간 메일 리포트 #094 -->
     <div class="workflow-card reveal reveal-delay-4">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">▶</span>
-          <span class="workflow-gif-label">workflow_094.gif</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_KcgVAbRTF9Piz9Vw.mp4"></video>
       </div>
       <div class="workflow-body">
         <span class="workflow-category">Email · Curation</span>
@@ -462,20 +459,8 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(el);
   });
 
-  // GIF auto-load: if the image file exists, replace placeholder
-  var gifSlots = document.querySelectorAll('[data-gif]');
-  gifSlots.forEach(function (slot) {
-    var src = slot.getAttribute('data-gif');
-    if (!src) return;
-    var img = new Image();
-    img.onload = function () {
-      slot.innerHTML = '';
-      slot.appendChild(img);
-      img.style.cssText = 'width:100%;height:100%;object-fit:cover';
-    };
-    img.src = src;
-  });
 });
 </script>
+<script src="/assets/js/lightbox.js"></script>
 </body>
 </html>
