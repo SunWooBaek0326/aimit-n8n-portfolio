@@ -1495,7 +1495,7 @@ let currentFilter = 'all';
 function isLabItem(w) {
   if (w.isLab) return true;
   const n = w.name.toLowerCase();
-  const f = w.file.toLowerCase();
+  const f = (w.file || '').toLowerCase();
   if (w.nodeCount <= 2) return true;
   if (n.includes('test') || n.includes('테스트') || f.includes('test')) return true;
   if (n.startsWith('my workflow')) return true;
@@ -1522,7 +1522,7 @@ function getCatIcon(cat) {
 function getImgSrc(w) {
   if (w.img) return w.img;
   // placeholder: 파일명 기반 이미지 경로 (나중에 GIF 추가 시 이 경로에 파일을 놓으면 됩니다)
-  const base = w.file.replace('.json', '.gif');
+  const base = (w.file || '').replace('.json', '.gif');
   return '';
 }
 
@@ -1540,7 +1540,7 @@ function renderMainCard(w, idx) {
             <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-2xl border border-white/10">
               ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
             </div>
-            <p class="text-xs text-brand-400 font-medium">${w.file.replace('.json','')}.gif</p>
+            <p class="text-xs text-brand-400 font-medium">${(w.file || w.name).replace('.json','')}.gif</p>
           </div>`
       }
     </div>
@@ -1586,7 +1586,7 @@ function applyFilters() {
     if (currentFilter !== 'all' && w.category !== currentFilter) return false;
     // Search filter
     if (query) {
-      const searchStr = (w.name + ' ' + w.nodes.join(' ') + ' ' + w.summary + ' ' + w.file).toLowerCase();
+      const searchStr = (w.name + ' ' + w.nodes.join(' ') + ' ' + w.summary + ' ' + (w.file || '')).toLowerCase();
       return searchStr.includes(query);
     }
     return true;
