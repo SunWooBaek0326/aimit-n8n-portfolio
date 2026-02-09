@@ -62,18 +62,18 @@ html{scroll-behavior:smooth}
     <div class="text-center">
       <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6 border border-white/10">
         <span class="w-2 h-2 bg-point-500 rounded-full animate-pulse"></span>
-        100+ Workflows Automated
+        128+ Workflows Automated
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
         <span class="gradient-title">실시간 자동화</span><br>엔진룸
       </h1>
       <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
         AI와 자동화로 비즈니스 프로세스를 혁신합니다.<br>
-        실무에 적용 중인 <span class="text-point-500 font-semibold">100개</span>의 n8n 워크플로우를 소개합니다.
+        실무에 적용 중인 <span class="text-point-500 font-semibold">128개</span>의 n8n 워크플로우를 소개합니다.
       </p>
       <div id="stats" class="flex flex-wrap justify-center gap-4 md:gap-6">
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]" style="cursor:pointer" onclick="setFilter('all')">
-          <div class="text-3xl font-bold text-white" id="statTotal">100</div>
+          <div class="text-3xl font-bold text-white" id="statTotal">128</div>
           <div class="text-sm mt-1" style="color:#999">Total Workflows</div>
         </div>
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]" style="background:rgba(108,83,159,.1);border-color:rgba(108,83,159,.3);cursor:pointer" onclick="setFilter('업무자동화')">
@@ -164,7 +164,7 @@ html{scroll-behavior:smooth}
 
 <script>
 // ============================================================
-//  워크플로우 데이터 (100개 전체)
+//  워크플로우 데이터 (128개 전체)
 //  - 수정: 이 배열에서 항목을 추가/삭제/편집하면 즉시 반영됩니다.
 //  - img: 이미지/GIF 파일 경로를 넣으면 카드에 표시됩니다.
 //         기본값은 빈 문자열("")이며, placeholder가 표시됩니다.
@@ -1128,10 +1128,10 @@ const workflows = [
     id: 94,
     file: "이메일 정리 일간 메일 리포트.json", n8nId: "KcgVAbRTF9Piz9Vw",
     name: "이메일 일간 리포트 (Slack)",
-    nodes: ["Code","Gmail","Schedule Trigger","Slack"],
+    nodes: ["Code","Gmail","Manual Trigger","Schedule Trigger","Slack"],
     category: "업무자동화",
     summary: "Gmail의 스스라벨/쿠팡라벨 이메일을 매일 수집·요약하여 슬랙으로 일간 이메일 리포트 발송",
-    nodeCount: 7,
+    nodeCount: 6,
     img: ""
   },
   {
@@ -1192,6 +1192,296 @@ const workflows = [
     nodes: ["AI Agent","OpenAI","Memory","Airtable Tool","Switch","Telegram"],
     category: "업무자동화",
     summary: "텔레그램 메시지를 AI 에이전트가 분석하여 에어테이블 협업 데이터를 자연어로 조회·응답하는 챗봇",
+    nodeCount: 9,
+    img: ""
+  },
+  {
+    id: 101,
+    n8nId: "XM6bFDexnaFdjAPO",
+    name: "AI 솔로프리너 비즈니스 스쿨 참가신청",
+    nodes: ["OpenAI","OpenAI Embeddings","PGVector","Tally Trigger","Telegram","PostgreSQL","Filter","HTTP Request","Set","Wait"],
+    category: "마케팅자동화",
+    summary: "Tally 참가신청 설문을 PGVector 벡터DB에 저장하고 AI 분석 후 텔레그램 알림을 발송하는 멤버십 관리 시스템",
+    nodeCount: 40,
+    img: ""
+  },
+  {
+    id: 102,
+    n8nId: "XKLcEGUh1J0TqSGD",
+    name: "Gemini Batch 이미지 생성 (Submit 본편)",
+    nodes: ["Code","ConvertToFile","Google Cloud Storage","Google Sheets","HTTP Request","Manual Trigger","Set","Slack"],
+    category: "컨텐츠자동화",
+    summary: "구글시트 상품정보를 JSONL로 변환하여 Gemini 배치 API에 이미지 생성 요청하고 GCS 업로드 후 슬랙 알림",
+    nodeCount: 11,
+    img: ""
+  },
+  {
+    id: 103,
+    n8nId: "YLzsmIkWpnysUuxO",
+    name: "Start Workflow (trigger) v2",
+    nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Webhook"],
+    category: "업무자동화",
+    summary: "다양한 트리거 유형을 모아둔 범용 워크플로우 시작점 템플릿 v2",
+    nodeCount: 8,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 104,
+    n8nId: "vLPG2vRI1naIH06g",
+    name: "11st 인증메일 슬랙전송",
+    nodes: ["Code","Filter","Gmail Trigger","Slack"],
+    category: "업무자동화",
+    summary: "11번가 인증메일을 Gmail에서 자동 감지하여 슬랙 채널로 즉시 전달",
+    nodeCount: 5,
+    img: ""
+  },
+  {
+    id: 105,
+    n8nId: "Vz3Nl2YsEpiEpYUi",
+    name: "견적서/계약서 자동 생성 메일발송",
+    nodes: ["Code","ConvertToFile","Form Trigger","Gmail","Google Drive","HTML"],
+    category: "업무자동화",
+    summary: "폼 입력 데이터로 견적서/계약서를 자동 생성하고 Gmail로 고객에게 직접 메일 발송",
+    nodeCount: 8,
+    img: ""
+  },
+  {
+    id: 106,
+    n8nId: "Xpjk4o10JEmmTaYm",
+    name: "협업리포트 생존신고 메시지",
+    nodes: ["HTTP Request","Manual Trigger","Schedule Trigger","Set"],
+    category: "업무자동화",
+    summary: "슬랙 신규방에 생존신고 메시지를 자동 발송하는 협업 리포트 보조 워크플로우",
+    nodeCount: 4,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 107,
+    n8nId: "YWkevBfgIDWvalVS",
+    name: "AIMIT Tally 설문 분석발송 (강의용)",
+    nodes: ["OpenAI","Code","HTTP Request","If","Set","Slack","Wait","Webhook"],
+    category: "마케팅자동화",
+    summary: "AIMIT 1220 강의 설문 응답을 AI가 분석하여 슬랙으로 자동 리포트 발송하는 강의 전용 설문 시스템",
+    nodeCount: 26,
+    img: ""
+  },
+  {
+    id: 108,
+    n8nId: "YMYQXeJbv4EXZtdt",
+    name: "RAG 벡터 데이터 초기 적재 v2",
+    nodes: ["Data Loader","OpenAI Embeddings","Supabase Vector Store","Manual Trigger","Supabase"],
+    category: "업무자동화",
+    summary: "Supabase 벡터스토어에 초기 데이터를 OpenAI 임베딩으로 적재하는 RAG 파이프라인 v2",
+    nodeCount: 7,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 109,
+    n8nId: "x76KXlUc9qUVwvrG",
+    name: "RAG CS 챗봇 (벡터스토어 2단계)",
+    nodes: ["AI Agent","Chat Trigger","Data Loader","OpenAI Embeddings","Google Gemini","Memory","Vector Store Tool","Supabase Vector Store","Form Trigger","Google Sheets","If","Set","Supabase"],
+    category: "업무자동화",
+    summary: "Supabase 벡터스토어와 Gemini AI를 활용한 RAG 기반 CS 챗봇 2단계 (강의용)",
+    nodeCount: 18,
+    img: ""
+  },
+  {
+    id: 110,
+    n8nId: "veStz1f7jDZhnK9W",
+    name: "RAG CS 챗봇 구글시트 v2",
+    nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Google Sheets Tool"],
+    category: "업무자동화",
+    summary: "구글시트 데이터 기반 AI가 고객 문의에 응답하는 RAG CS 챗봇 v2",
+    nodeCount: 5,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 111,
+    n8nId: "VCZqL7JJQAoTTEm8",
+    name: "강제 에러 테스트용 v2",
+    nodes: ["Code","Schedule Trigger"],
+    category: "업무자동화",
+    summary: "에러 알림 시스템을 테스트하기 위한 강제 에러 생성 유틸리티 v2",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 112,
+    n8nId: "WiY-iqHh81XISE6cRdxu7",
+    name: "뉴스레터 자동화 (멀티 에이전트)",
+    nodes: ["AI Agent x2","Google Gemini","Output Parser","Think Tool","ConvertToFile","Gmail","HTTP Request","Limit","Markdown","Perplexity","RSS Feed Read","Twitter"],
+    category: "컨텐츠자동화",
+    summary: "멀티 AI 에이전트가 RSS 뉴스를 수집·분석하여 뉴스레터를 자동 작성하고 이메일/트위터로 발행",
+    nodeCount: 22,
+    img: ""
+  },
+  {
+    id: 113,
+    n8nId: "w1ydPjTde0d6r4jd",
+    name: "뉴스레터 원문생성 & SNS 발행 (연동완료)",
+    nodes: ["Claude","Google Gemini","OpenAI","Code","GitHub","Google Drive","HTML Extract","HTTP Request","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "3종 AI로 뉴스레터를 생성하고 GitHub/드라이브 저장 및 SNS 자동 발행까지 완료된 최종 버전",
+    nodeCount: 24,
+    img: ""
+  },
+  {
+    id: 114,
+    n8nId: "vecVKzCabt3SY9QZ",
+    name: "다이나믹 웹사이트 초안 생성기",
+    nodes: ["AI Agent x2","Google Gemini","OpenAI","Output Parser","Think Tool","Date & Time","Google Drive","Google Sheets","HTML","If","Limit","Perplexity","Reddit"],
+    category: "컨텐츠자동화",
+    summary: "Reddit 트렌드를 분석하고 멀티 AI 에이전트가 다이나믹 웹사이트 초안을 자동 생성하여 HTML로 저장",
+    nodeCount: 29,
+    img: ""
+  },
+  {
+    id: 115,
+    n8nId: "ZPDajxNhtJBb5f30",
+    name: "벤치마킹 리포트 (Tavily)",
+    nodes: ["Code","Gmail","HTTP Request","Manual Trigger","OpenAI","Telegram"],
+    category: "업무자동화",
+    summary: "Tavily 웹 검색과 OpenAI를 활용하여 벤치마킹 리포트를 자동 생성하고 이메일/텔레그램으로 전달",
+    nodeCount: 6,
+    img: ""
+  },
+  {
+    id: 116,
+    n8nId: "Vs52nRY4Xwjiy5pp",
+    name: "지역뉴스 데일리 브리핑 (RSS)",
+    nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","Schedule Trigger","SplitInBatches","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "RSS 지역 뉴스를 수집하고 AI가 요약하여 텔레그램으로 데일리 브리핑을 발송하는 상주교육 시스템",
+    nodeCount: 9,
+    img: ""
+  },
+  {
+    id: 117,
+    n8nId: "ZnpNWQW2hc2ZqndB",
+    name: "Tavily AI 개인비서 (시연용)",
+    nodes: ["AI Agent","LLM Chain","OpenAI","Memory","Code","GitHub","Gmail","Google Drive","HTML","HTTP Request Tool","Notion","Telegram"],
+    category: "업무자동화",
+    summary: "Tavily 웹 검색 연동 AI 개인비서 에이전트의 시연/데모용 버전",
+    nodeCount: 21,
+    img: ""
+  },
+  {
+    id: 118,
+    n8nId: "XorZD69pBYVx8nHU",
+    name: "영수증 AI 입력기 (커뮤니티 버전)",
+    nodes: ["OpenAI","Code","ExtractFromFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","SplitInBatches","Webhook"],
+    category: "업무자동화",
+    summary: "n8n 커뮤니티에서 공유된 영수증 AI OCR 입력기 버전 (확인 필요)",
+    nodeCount: 22,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 119,
+    n8nId: "YFsHkzLqKNzy0u87",
+    name: "웹훅 러버블 연동 테스트",
+    nodes: ["Slack","Webhook"],
+    category: "업무자동화",
+    summary: "Bubble(러버블) 앱과 슬랙을 웹훅으로 연동하는 테스트 워크플로우",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 120,
+    n8nId: "zAnwvVWJrpdWZ5yE",
+    name: "협업 업무등록 시스템 (잔디용)",
+    nodes: ["Airtable","Code","HTTP Request","If","Switch","Wait","Webhook"],
+    category: "업무자동화",
+    summary: "잔디 메신저 웹훅으로 팀 업무를 에어테이블에 등록하고 미제출자를 자동 추적·알림하는 협업 시스템",
+    nodeCount: 44,
+    img: ""
+  },
+  {
+    id: 121,
+    n8nId: "zptre04Mqep2FGqn",
+    name: "Baby Podcasts (AI 비디오 자동 제작)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "폼 입력으로 AI 아기 캐릭터의 팟캐스트 비디오를 자동 제작하고 유튜브에 업로드하는 에이전트랩 프로젝트",
+    nodeCount: 33,
+    img: ""
+  },
+  {
+    id: 122,
+    n8nId: "ZpoGX3a1g5fhXbZH",
+    name: "Tally 완료 웹훅 Redirect 페이지",
+    nodes: ["Respond To Webhook","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 완료 시 웹훅을 수신하여 맞춤 리다이렉트 페이지를 응답하는 유틸리티",
+    nodeCount: 2,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 123,
+    n8nId: "WAtjcCo6QZ5isYE6",
+    name: "Tally 설문 문자발송 (구버전)",
+    nodes: ["LLM Chain","Groq","OpenAI","Code","Gmail","HTML","HTTP Request","If","Merge","Notion","Set","Slack","Wait","Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 응답을 AI가 분석하여 SMS/이메일/노션/슬랙으로 자동 발송하는 설문 시스템 (구버전)",
+    nodeCount: 38,
+    img: ""
+  },
+  {
+    id: 124,
+    n8nId: "_aMI6-QhnHvU1XkrhSL3_",
+    name: "My workflow 7",
+    nodes: ["Manual Trigger"],
+    category: "업무자동화",
+    summary: "수동 트리거만 포함된 빈 테스트 워크플로우",
+    nodeCount: 1,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 125,
+    n8nId: "zGZIgUfYtofJuwfV",
+    name: "YouTube & Telegram FC 에이전트 (Part5)",
+    nodes: ["Apify Tool","AI Agent","LLM Chain","Google Gemini","OpenAI","Memory (PostgreSQL)","Output Parser","Tool Workflow","Google Sheets","Google Sheets Tool","YouTube","YouTube Tool","Telegram","Switch","Set"],
+    category: "컨텐츠자동화",
+    summary: "Apify로 YouTube 영상을 분석하고 멀티 AI 에이전트가 텔레그램/구글시트로 인사이트를 전달하는 FC 에이전트",
+    nodeCount: 47,
+    img: ""
+  },
+  {
+    id: 126,
+    n8nId: "zGlOAO1DoWMAAK7k",
+    name: "Talking Animal (원본)",
+    nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
+    category: "컨텐츠자동화",
+    summary: "폼 입력으로 AI 이미지·음성·립싱크를 생성하여 말하는 동물 캐릭터 비디오를 자동 제작하는 원본 시스템",
+    nodeCount: 33,
+    img: ""
+  },
+  {
+    id: 127,
+    n8nId: "VoNcvQX9ddPEQfKf",
+    name: "Tally_Jenny",
+    nodes: ["Webhook"],
+    category: "마케팅자동화",
+    summary: "Tally 설문 웹훅을 수신하는 Jenny용 테스트 워크플로우",
+    nodeCount: 1,
+    img: "",
+    isLab: true
+  },
+  {
+    id: 128,
+    n8nId: "w8nkrdTmwKrfBMam",
+    name: "Telegram RSS 리더 (ver.1 RSS만)",
+    nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","Schedule Trigger","SplitInBatches","Telegram"],
+    category: "컨텐츠자동화",
+    summary: "RSS 피드에서 최신 글을 수집하고 GPT로 요약하여 텔레그램으로 전송하는 RSS 큐레이션 봇 초기 버전",
     nodeCount: 9,
     img: ""
   }
