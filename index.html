@@ -1198,6 +1198,7 @@ const workflows = [
   {
     id: 101,
     n8nId: "XM6bFDexnaFdjAPO",
+    file: "[AIMIT]⚡[올인원 과정] AI 솔로프리너 비즈니스 스쿨(ASBS) 1기 멤버십_무료설명회 (참가신청서).json",
     name: "AI 솔로프리너 비즈니스 스쿨 참가신청",
     nodes: ["OpenAI","OpenAI Embeddings","PGVector","Tally Trigger","Telegram","PostgreSQL","Filter","HTTP Request","Set","Wait"],
     category: "마케팅자동화",
@@ -1208,6 +1209,7 @@ const workflows = [
   {
     id: 102,
     n8nId: "XKLcEGUh1J0TqSGD",
+    file: "[WF-A] Gemini Batch_BANANA — Submit (JSON).json",
     name: "Gemini Batch 이미지 생성 (Submit 본편)",
     nodes: ["Code","ConvertToFile","Google Cloud Storage","Google Sheets","HTTP Request","Manual Trigger","Set","Slack"],
     category: "컨텐츠자동화",
@@ -1218,6 +1220,7 @@ const workflows = [
   {
     id: 103,
     n8nId: "YLzsmIkWpnysUuxO",
+    file: "0) Start Workflow (trigger).json",
     name: "Start Workflow (trigger) v2",
     nodes: ["Chat Trigger","Form Trigger","Google Sheets","HTTP Request","Manual Trigger","Schedule Trigger","Set","Webhook"],
     category: "업무자동화",
@@ -1229,6 +1232,7 @@ const workflows = [
   {
     id: 104,
     n8nId: "vLPG2vRI1naIH06g",
+    file: "11st 인증메일 슬랙전송.json",
     name: "11st 인증메일 슬랙전송",
     nodes: ["Code","Filter","Gmail Trigger","Slack"],
     category: "업무자동화",
@@ -1239,6 +1243,7 @@ const workflows = [
   {
     id: 105,
     n8nId: "Vz3Nl2YsEpiEpYUi",
+    file: "2) 견적서/계약서 자동 생성 메일발송.json",
     name: "견적서/계약서 자동 생성 메일발송",
     nodes: ["Code","ConvertToFile","Form Trigger","Gmail","Google Drive","HTML"],
     category: "업무자동화",
@@ -1249,6 +1254,7 @@ const workflows = [
   {
     id: 106,
     n8nId: "Xpjk4o10JEmmTaYm",
+    file: "2단계) 협업리포트 _슬랙용(신규방_생존신고 메시지).json",
     name: "협업리포트 생존신고 메시지",
     nodes: ["HTTP Request","Manual Trigger","Schedule Trigger","Set"],
     category: "업무자동화",
@@ -1260,6 +1266,7 @@ const workflows = [
   {
     id: 107,
     n8nId: "YWkevBfgIDWvalVS",
+    file: "3) AIMIT) tally설문 분석발송_1220강의설문.json",
     name: "AIMIT Tally 설문 분석발송 (강의용)",
     nodes: ["OpenAI","Code","HTTP Request","If","Set","Slack","Wait","Webhook"],
     category: "마케팅자동화",
@@ -1270,6 +1277,7 @@ const workflows = [
   {
     id: 108,
     n8nId: "YMYQXeJbv4EXZtdt",
+    file: "강의_1단계) RAG 초기데이터 적재.json",
     name: "RAG 벡터 데이터 초기 적재 v2",
     nodes: ["Data Loader","OpenAI Embeddings","Supabase Vector Store","Manual Trigger","Supabase"],
     category: "업무자동화",
@@ -1281,6 +1289,7 @@ const workflows = [
   {
     id: 109,
     n8nId: "x76KXlUc9qUVwvrG",
+    file: "강의_2단계) RAG CS 워크플로우(벡터스토어).json",
     name: "RAG CS 챗봇 (벡터스토어 2단계)",
     nodes: ["AI Agent","Chat Trigger","Data Loader","OpenAI Embeddings","Google Gemini","Memory","Vector Store Tool","Supabase Vector Store","Form Trigger","Google Sheets","If","Set","Supabase"],
     category: "업무자동화",
@@ -1291,6 +1300,7 @@ const workflows = [
   {
     id: 110,
     n8nId: "veStz1f7jDZhnK9W",
+    file: "강의0단계) RAG CS 워크플로우(구글시트).json",
     name: "RAG CS 챗봇 구글시트 v2",
     nodes: ["AI Agent","Chat Trigger","OpenAI","Memory","Google Sheets Tool"],
     category: "업무자동화",
@@ -1302,6 +1312,7 @@ const workflows = [
   {
     id: 111,
     n8nId: "VCZqL7JJQAoTTEm8",
+    file: "강제 에러 테스트용2.json",
     name: "강제 에러 테스트용 v2",
     nodes: ["Code","Schedule Trigger"],
     category: "업무자동화",
@@ -1313,6 +1324,7 @@ const workflows = [
   {
     id: 112,
     n8nId: "WiY-iqHh81XISE6cRdxu7",
+    file: "뉴스레터 자동화.json",
     name: "뉴스레터 자동화 (멀티 에이전트)",
     nodes: ["AI Agent x2","Google Gemini","Output Parser","Think Tool","ConvertToFile","Gmail","HTTP Request","Limit","Markdown","Perplexity","RSS Feed Read","Twitter"],
     category: "컨텐츠자동화",
@@ -1323,6 +1335,7 @@ const workflows = [
   {
     id: 113,
     n8nId: "w1ydPjTde0d6r4jd",
+    file: "뉴스레터원문생성 and SNS발행 (실행단계) SNS연동완료.json",
     name: "뉴스레터 원문생성 & SNS 발행 (연동완료)",
     nodes: ["Claude","Google Gemini","OpenAI","Code","GitHub","Google Drive","HTML Extract","HTTP Request","Telegram"],
     category: "컨텐츠자동화",
@@ -1333,6 +1346,7 @@ const workflows = [
   {
     id: 114,
     n8nId: "vecVKzCabt3SY9QZ",
+    file: "다이나믹 웹사이트 초안 만들기.json",
     name: "다이나믹 웹사이트 초안 생성기",
     nodes: ["AI Agent x2","Google Gemini","OpenAI","Output Parser","Think Tool","Date & Time","Google Drive","Google Sheets","HTML","If","Limit","Perplexity","Reddit"],
     category: "컨텐츠자동화",
@@ -1343,6 +1357,7 @@ const workflows = [
   {
     id: 115,
     n8nId: "ZPDajxNhtJBb5f30",
+    file: "상주)_Draft4) 3_Benchmarking_Report_Tavily.json",
     name: "벤치마킹 리포트 (Tavily)",
     nodes: ["Code","Gmail","HTTP Request","Manual Trigger","OpenAI","Telegram"],
     category: "업무자동화",
@@ -1353,6 +1368,7 @@ const workflows = [
   {
     id: 116,
     n8nId: "Vs52nRY4Xwjiy5pp",
+    file: "상주2) 지역뉴스 데일리 브리핑 (RSS).json",
     name: "지역뉴스 데일리 브리핑 (RSS)",
     nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","Schedule Trigger","SplitInBatches","Telegram"],
     category: "컨텐츠자동화",
@@ -1363,6 +1379,7 @@ const workflows = [
   {
     id: 117,
     n8nId: "ZnpNWQW2hc2ZqndB",
+    file: "시연용) tavily AGENT AI 개인비서.json",
     name: "Tavily AI 개인비서 (시연용)",
     nodes: ["AI Agent","LLM Chain","OpenAI","Memory","Code","GitHub","Gmail","Google Drive","HTML","HTTP Request Tool","Notion","Telegram"],
     category: "업무자동화",
@@ -1373,6 +1390,7 @@ const workflows = [
   {
     id: 118,
     n8nId: "XorZD69pBYVx8nHU",
+    file: "영수증 입력기 (n8n커뮤니티)__ 확인필요.json",
     name: "영수증 AI 입력기 (커뮤니티 버전)",
     nodes: ["OpenAI","Code","ExtractFromFile","Form Trigger","Google Drive","Google Sheets","HTTP Request","SplitInBatches","Webhook"],
     category: "업무자동화",
@@ -1384,6 +1402,7 @@ const workflows = [
   {
     id: 119,
     n8nId: "YFsHkzLqKNzy0u87",
+    file: "웹훅 러버블 연동테스트.json",
     name: "웹훅 러버블 연동 테스트",
     nodes: ["Slack","Webhook"],
     category: "업무자동화",
@@ -1395,6 +1414,7 @@ const workflows = [
   {
     id: 120,
     n8nId: "zAnwvVWJrpdWZ5yE",
+    file: "협업) 1단계 업무등록 - 잔디용.json",
     name: "협업 업무등록 시스템 (잔디용)",
     nodes: ["Airtable","Code","HTTP Request","If","Switch","Wait","Webhook"],
     category: "업무자동화",
@@ -1405,6 +1425,7 @@ const workflows = [
   {
     id: 121,
     n8nId: "zptre04Mqep2FGqn",
+    file: "baby podcasts (0920 버전_지은길드장).json",
     name: "Baby Podcasts (AI 비디오 자동 제작)",
     nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
     category: "컨텐츠자동화",
@@ -1415,6 +1436,7 @@ const workflows = [
   {
     id: 122,
     n8nId: "ZpoGX3a1g5fhXbZH",
+    file: "Denny) tally 완료 웹훅 redirect page.json",
     name: "Tally 완료 웹훅 Redirect 페이지",
     nodes: ["Respond To Webhook","Webhook"],
     category: "마케팅자동화",
@@ -1426,6 +1448,7 @@ const workflows = [
   {
     id: 123,
     n8nId: "WAtjcCo6QZ5isYE6",
+    file: "Denny) tally설문 문자발송 (구버전).json",
     name: "Tally 설문 문자발송 (구버전)",
     nodes: ["LLM Chain","Groq","OpenAI","Code","Gmail","HTML","HTTP Request","If","Merge","Notion","Set","Slack","Wait","Webhook"],
     category: "마케팅자동화",
@@ -1436,6 +1459,7 @@ const workflows = [
   {
     id: 124,
     n8nId: "_aMI6-QhnHvU1XkrhSL3_",
+    file: "My workflow 7.json",
     name: "My workflow 7",
     nodes: ["Manual Trigger"],
     category: "업무자동화",
@@ -1447,6 +1471,7 @@ const workflows = [
   {
     id: 125,
     n8nId: "zGZIgUfYtofJuwfV",
+    file: "Part5. Youtube & Telgram (FC 에이전트).json",
     name: "YouTube & Telegram FC 에이전트 (Part5)",
     nodes: ["Apify Tool","AI Agent","LLM Chain","Google Gemini","OpenAI","Memory (PostgreSQL)","Output Parser","Tool Workflow","Google Sheets","Google Sheets Tool","YouTube","YouTube Tool","Telegram","Switch","Set"],
     category: "컨텐츠자동화",
@@ -1457,6 +1482,7 @@ const workflows = [
   {
     id: 126,
     n8nId: "zGlOAO1DoWMAAK7k",
+    file: "Talking Animal.json",
     name: "Talking Animal (원본)",
     nodes: ["OpenAI","Code","ConvertToFile","Form Trigger","Google Drive","HTTP Request","Merge","Switch","Wait","YouTube"],
     category: "컨텐츠자동화",
@@ -1467,6 +1493,7 @@ const workflows = [
   {
     id: 127,
     n8nId: "VoNcvQX9ddPEQfKf",
+    file: "Tally_Jenny.json",
     name: "Tally_Jenny",
     nodes: ["Webhook"],
     category: "마케팅자동화",
@@ -1478,6 +1505,7 @@ const workflows = [
   {
     id: 128,
     n8nId: "w8nkrdTmwKrfBMam",
+    file: "Telegram RSS 리더 수집(0단계)_RSS만 (ver.1).json",
     name: "Telegram RSS 리더 (ver.1 RSS만)",
     nodes: ["OpenAI","Code","If","Manual Trigger","RSS Feed Read","Schedule Trigger","SplitInBatches","Telegram"],
     category: "컨텐츠자동화",
