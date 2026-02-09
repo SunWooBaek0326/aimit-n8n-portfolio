@@ -1581,6 +1581,7 @@ function renderMainCard(w, idx) {
         <span class="text-xs text-gray-600 ml-auto">${w.nodeCount} nodes</span>
       </div>
       <h3 class="font-bold text-white mb-3 text-[15px] leading-snug">${w.name}</h3>
+      ${w.n8nId ? `<p class="text-xs text-gray-600 mb-2 font-mono" style="margin-top:-8px">ID: ${w.n8nId}</p>` : ''}
       <p class="text-sm text-gray-400 leading-relaxed mb-5">${w.summary}</p>
       <div class="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
         ${topNodes.map(n => `<span class="node-tag node-tag-clickable" title="클릭하면 이 노드 포함 워크플로우만 표시">${n}</span>`).join('')}
@@ -1600,6 +1601,7 @@ function renderLabCard(w) {
         <span class="text-xs text-gray-600 ml-auto">${w.nodeCount} nodes</span>
       </div>
       <h4 class="font-semibold text-gray-300 text-sm leading-snug">${w.name}</h4>
+      ${w.n8nId ? `<p class="text-xs text-gray-600 font-mono" style="margin-top:-2px">ID: ${w.n8nId}</p>` : ''}
       <p class="text-xs text-gray-500 leading-relaxed">${w.summary}</p>
       ${w.n8nId ? `<a href="https://n8n.rediace.com/workflow/${w.n8nId}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;color:#a78fcf;font-size:12px;font-weight:600;text-decoration:none;transition:color .3s" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#a78fcf'">n8n으로 열기 <svg width='12' height='12' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3'/></svg></a>` : ''}
     </div>
