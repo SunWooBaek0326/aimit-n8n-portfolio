@@ -13,7 +13,7 @@
 - **워크플로우 이름:** (실시간)상품이미지_나노바나나
 - **노드 종류:** airtable, code, convertToFile, extractFromFile, googleDrive, googleSheets, httpRequest, if, manualTrigger, merge, set, slack, splitInBatches, stickyNote, wait, webhook
 - **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 에어테이블 상품정보를 기반으로 나노바나나 AI API에 이미지 생성을 요청하고 결과를 구글 드라이브에 업로드 후 슬랙으로 결과를 알리는 메인 시스템
+- **핵심 기능:** 쇼핑몰 대량 상품 대표이미지 가공을 위한 구글 sheet의 내용의 상품정보를 기반으로 나노바나나 AI API에 이미지 생성을 요청하고 결과를 에어테이블에 업로드 하여 갤러리 형식으로 미리보기. 구글 드라이브에 업로드 후 슬랙으로 결과를 알리는 상품가공 시스템
 
 ---
 
@@ -980,8 +980,8 @@
 - **n8n 링크:** https://n8n.rediace.com/workflow/2QmAbchg5wJnRyWL
 - **워크플로우 이름:** brain impact (보고서_viewtable _ DB-Sheet)
 - **노드 종류:** googleSheets, postgres, scheduleTrigger, stickyNote
-- **카테고리:** 업무자동화
-- **핵심 기능:** PostgreSQL DB의 뷰 테이블 5종을 구글시트 보고서로 자동 변환·동기화하는 데이터 파이프라인 (21노드)
+- **카테고리:** 마케팅자동화
+- **핵심 기능:** PostgreSQL DB의 뷰 테이블 5종을 구글시트 보고서로 자동 변환·동기화하여 Looker Studio 등 외부 분석 툴과 연동하는 데이터 파이프라인. 내부 DB 데이터를 외부 BI 대시보드용으로 export하는 마케팅 데이터 분석 연동 워크플로우 (21노드)
 
 ---
 

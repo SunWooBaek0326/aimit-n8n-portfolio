@@ -556,27 +556,76 @@ body {
 
 .definition-quote {
   position: relative;
-  padding: 40px;
-  max-width: 760px;
+  padding: 48px 56px;
+  max-width: 820px;
+  border-left: 4px solid var(--point);
+  background: linear-gradient(135deg, rgba(243,136,108,0.06) 0%, rgba(108,83,159,0.04) 100%);
+  border-radius: 0 20px 20px 0;
 }
 
 .definition-quote::before {
-  display: none;
+  content: '\201C';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(243, 136, 108, 0.15);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .definition-main {
-  font-size: clamp(1.3rem, 3.2vw, 2.2rem);
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.6;
   color: var(--white);
+  letter-spacing: -0.02em;
 }
 
 .definition-sub {
-  font-size: clamp(1rem, 2.4vw, 1.35rem);
-  font-weight: 400;
-  color: var(--gray-400);
-  margin-top: 24px;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  font-weight: 500;
+  color: var(--gray-200);
+  margin-top: 32px;
   line-height: 1.7;
+}
+
+.definition-sub .gradient-text {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  position: relative;
+  display: inline-block;
+}
+
+.definition-sub .gradient-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--point);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Definition section glow effect */
+.definition-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 136, 108, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  animation: defGlow 5s ease-in-out infinite;
+}
+
+@keyframes defGlow {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
 }
 
 /* ═══════════════════════════════════════════
@@ -1166,10 +1215,11 @@ body {
      Section 4 — DEFINITION (정의)
      ═══════════════════════════════════════════ -->
 <section class="section section-definition" id="sec3" data-theme="dark">
+  <div class="definition-glow"></div>
   <div class="definition-quote reveal">
     <p class="definition-main">
-      딸깍 한 번으로 만들어지는<br>
-      프로그램은 <span class="highlight-point">자동화가 아닙니다.</span>
+      딸깍 한 번으로 만들어지는 프로그램은<br>
+      <span class="highlight-point">자동화가 아닙니다.</span>
     </p>
     <p class="definition-sub reveal reveal-delay-2">
       <span class="gradient-text">자동화</span>는<br>
@@ -1398,7 +1448,7 @@ document.querySelectorAll('[data-path]').forEach(function (el) {
     counterAnimated = true;
 
     var counterEl = document.getElementById('counterNum');
-    var target = 100;
+    var target = 128;
     var duration = 2000;
     var start = performance.now();
 
