@@ -62,14 +62,14 @@ html{scroll-behavior:smooth}
     <div class="text-center">
       <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur px-4 py-1.5 rounded-full text-sm mb-6 border border-white/10">
         <span class="w-2 h-2 bg-point-500 rounded-full animate-pulse"></span>
-        128+ Workflows Automated
+        <span id="heroCount">128</span>+ Workflows Automated
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
         <span class="gradient-title">실시간 자동화</span><br>엔진룸
       </h1>
       <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
         AI와 자동화로 비즈니스 프로세스를 혁신합니다.<br>
-        실무에 적용 중인 <span class="text-point-500 font-semibold">128개</span>의 n8n 워크플로우를 소개합니다.
+        실무에 적용 중인 <span class="text-point-500 font-semibold" id="heroCountText">128개</span>의 n8n 워크플로우를 소개합니다.
       </p>
       <div id="stats" class="flex flex-wrap justify-center gap-4 md:gap-6">
         <div class="stat-card rounded-2xl px-6 py-4 text-center min-w-[140px]" style="cursor:pointer" onclick="setFilter('all')">
@@ -1652,6 +1652,30 @@ function setFilter(cat) {
   });
   applyFilters();
 }
+
+// ── Supabase 실시간 워크플로우 카운트 동기화 ──
+(function fetchSupabaseCount() {
+  var url = 'https://jorrpxxxreisknvinsxg.supabase.co/rest/v1/n8n_workflows?select=id&limit=0';
+  var headers = {
+    'apikey': 'sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+    'Authorization': 'Bearer sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+    'Prefer': 'count=exact'
+  };
+  fetch(url, { headers: headers }).then(function (res) {
+    var range = res.headers.get('content-range');
+    if (range) {
+      var total = parseInt(range.split('/')[1]);
+      if (!isNaN(total) && total > 0) {
+        var heroCount = document.getElementById('heroCount');
+        var heroCountText = document.getElementById('heroCountText');
+        var statTotal = document.getElementById('statTotal');
+        if (heroCount) heroCount.textContent = total;
+        if (heroCountText) heroCountText.textContent = total + '개';
+        if (statTotal) statTotal.textContent = total;
+      }
+    }
+  }).catch(function () { /* 실패 시 로컬 데이터 기준 유지 */ });
+})();
 
 // Init
 function init() {
