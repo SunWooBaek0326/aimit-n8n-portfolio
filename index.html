@@ -19,11 +19,11 @@ tailwind.config = {
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-*{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*{font-family:'Pretendard','Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:smooth}
-.card-enter{animation:cardIn .4s ease-out both}
-@keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.card-enter{animation:cardIn .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .filter-btn.active{background:linear-gradient(135deg,#f3886c,#6c539f);color:#fff;box-shadow:0 4px 18px rgba(108,83,159,.4)}
 .card-hover{transition:all .3s cubic-bezier(.4,0,.2,1);border:1px solid #222}
 .card-hover:hover{transform:translateY(-6px);box-shadow:0 0 24px rgba(243,136,108,.15),0 20px 40px rgba(0,0,0,.4);border-color:#6c539f}
