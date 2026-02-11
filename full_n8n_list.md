@@ -1,8 +1,8 @@
-# n8n 워크플로우 전체 분석 리스트 (128개)
+# n8n 워크플로우 전체 분석 리스트 (132개)
 
-> 분석일: 2026-02-09
+> 분석일: 2026-02-11
 > 대상 폴더: `n8n workflow/`
-> 총 파일 수: **128개** (제외 없이 전수 포함)
+> 총 파일 수: **132개** (제외 없이 전수 포함)
 
 ---
 
@@ -282,10 +282,10 @@
 ---
 
 ## #026
-- **파일명:** `2단계) 협업리포트 _슬랙용(신규방_생존신고 메시지).json`
+- **파일명:** `협업) 신규방_생존신고 메시지요청.json`
 - **n8nId:** `Xpjk4o10JEmmTaYm`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Xpjk4o10JEmmTaYm
-- **워크플로우 이름:** 2단계) 협업리포트 _슬랙용(신규방_생존신고 메시지)
+- **워크플로우 이름:** 협업) 신규방_생존신고 메시지요청
 - **노드 종류:** httpRequest, manualTrigger, scheduleTrigger, set
 - **카테고리:** 업무자동화
 - **핵심 기능:** 슬랙 신규방에 생존신고 메시지를 스케줄 또는 수동으로 자동 발송하는 협업 리포트 보조 워크플로우
@@ -612,10 +612,10 @@
 ---
 
 ## #056
-- **파일명:** `배포_0826) 한국는지금 _윤형선님(최종).json`
+- **파일명:** `배포_0826) 한국는지금_babypodcast(최종).json`
 - **n8nId:** `BuPoXH5A2OuZhU6Y`
 - **n8n 링크:** https://n8n.rediace.com/workflow/BuPoXH5A2OuZhU6Y
-- **워크플로우 이름:** 배포_0826) 한국는지금 _윤형선님(최종)
+- **워크플로우 이름:** 배포_0826) 한국는지금_babypodcast(최종)
 - **노드 종류:** LC:openAi, code, convertToFile, formTrigger, googleDrive, googleSheets, httpRequest, if, merge, rssFeedRead, splitInBatches, stickyNote, stopAndError, wait, youTube
 - **카테고리:** 컨텐츠자동화
 - **핵심 기능:** RSS 한국 뉴스를 수집하고 AI가 이미지(OpenAI)·음성(ElevenLabs)·립싱크 비디오를 자동 생성하는 뉴스 콘텐츠 파이프라인 (58노드)
@@ -1118,10 +1118,10 @@
 ---
 
 ## #102
-- **파일명:** `FC) 데모단_네이버 키워드 트렌드 AI 분석기.json`
+- **파일명:** `네이버 키워드 트렌드 분석기.json`
 - **n8nId:** `fjZhEKGmExk8ZGLc`
 - **n8n 링크:** https://n8n.rediace.com/workflow/fjZhEKGmExk8ZGLc
-- **워크플로우 이름:** FC) 데모단_네이버 키워드 트렌드 AI 분석기
+- **워크플로우 이름:** 네이버 키워드 트렌드 분석기
 - **노드 종류:** LC:agent, LC:chatTrigger, LC:lmChatGoogleGemini, LC:outputParserStructured, code, dateTimeTool, httpRequest, if, slack, stickyNote
 - **카테고리:** 마케팅자동화
 - **핵심 기능:** 네이버 키워드 트렌드 API 데이터를 Gemini AI가 분석하여 경쟁력 인사이트 리포트를 생성하고 슬랙으로 전달
@@ -1414,14 +1414,58 @@
 
 ---
 
+## #129
+- **파일명:** `n8n Workflow 백업 _ 개선중.json`
+- **n8nId:** `i9gW7yYywIKBifFh`
+- **n8n 링크:** https://n8n.rediace.com/workflow/i9gW7yYywIKBifFh
+- **워크플로우 이름:** n8n Workflow 백업 _ 개선중
+- **노드 종류:** code, function, googleSheets, httpRequest, if, scheduleTrigger, set, slack, splitInBatches, telegram
+- **카테고리:** 업무자동화
+- **핵심 기능:** n8n API로 워크플로우를 추출하여 구글시트에 기록하고 슬랙/텔레그램으로 결과를 알리는 백업 시스템 개선 버전 (21노드)
+
+---
+
+## #130
+- **파일명:** `실시간 나노바나나 (웹훅 스타터) - railway.json`
+- **n8nId:** `kr9Pm5KCSeQn8h5Vsnxpt`
+- **n8n 링크:** https://n8n.rediace.com/workflow/kr9Pm5KCSeQn8h5Vsnxpt
+- **워크플로우 이름:** 실시간 나노바나나 (웹훅 스타터) - railway
+- **노드 종류:** httpRequest, manualTrigger
+- **카테고리:** 컨텐츠자동화
+- **핵심 기능:** Railway 환경에서 나노바나나 API를 호출하는 웹훅 스타터 워크플로우
+
+---
+
+## #131
+- **파일명:** `실시간 나노바나나 (웹훅 스타터) - railway (1).json`
+- **n8nId:** `nvIh_V70gKeCDf5gRfMVu`
+- **n8n 링크:** https://n8n.rediace.com/workflow/nvIh_V70gKeCDf5gRfMVu
+- **워크플로우 이름:** 실시간 나노바나나 (웹훅 스타터) - railway
+- **노드 종류:** httpRequest, manualTrigger
+- **카테고리:** 컨텐츠자동화
+- **핵심 기능:** Railway 환경에서 나노바나나 API를 호출하는 웹훅 스타터 워크플로우 (복사본)
+
+---
+
+## #132
+- **파일명:** `협업) 신규멤버 합류 웰컴 트리거.json`
+- **n8nId:** `HAiGbHiBiH1ivmhXANlYP`
+- **n8n 링크:** https://n8n.rediace.com/workflow/HAiGbHiBiH1ivmhXANlYP
+- **워크플로우 이름:** 협업) 신규멤버 합류 웰컴 트리거
+- **노드 종류:** if, switch, telegram, telegramTrigger
+- **카테고리:** 업무자동화
+- **핵심 기능:** 텔레그램 그룹에 신규멤버 합류 시 조건별로 웰컴 메시지를 자동 발송하는 트리거 워크플로우
+
+---
+
 ## 카테고리별 요약 통계
 
 | 카테고리 | 수량 | 비율 |
 |---------|------|------|
-| **업무자동화** | 68개 | 53.1% |
-| **컨텐츠자동화** | 40개 | 31.3% |
-| **마케팅자동화** | 20개 | 15.6% |
-| **합계** | **128개** | 100% |
+| **업무자동화** | 70개 | 53.0% |
+| **컨텐츠자동화** | 42개 | 31.8% |
+| **마케팅자동화** | 20개 | 15.2% |
+| **합계** | **132개** | 100% |
 
 ### 주요 기술 스택 요약
 - **AI 모델:** OpenAI GPT-4, Google Gemini, Anthropic Claude, Groq, Perplexity, Whisper
