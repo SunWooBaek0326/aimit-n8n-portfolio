@@ -1441,14 +1441,33 @@ document.querySelectorAll('[data-path]').forEach(function (el) {
     });
   });
 
-  // ── Counter Animation (Section 7) ──
+  // ── Counter Animation (Section 7) — Supabase 실시간 동기화 ──
   var counterAnimated = false;
+  var workflowCount = 128; // 폴백 기본값
+
+  // Supabase에서 실제 워크플로우 수 가져오기
+  (function fetchCount() {
+    var url = 'https://jorrpxxxreisknvinsxg.supabase.co/rest/v1/n8n_workflows?select=id&limit=0';
+    var headers = {
+      'apikey': 'sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+      'Authorization': 'Bearer sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+      'Prefer': 'count=exact'
+    };
+    fetch(url, { headers: headers }).then(function (res) {
+      var range = res.headers.get('content-range');
+      if (range) {
+        var total = parseInt(range.split('/')[1]);
+        if (!isNaN(total) && total > 0) workflowCount = total;
+      }
+    }).catch(function () { /* 실패 시 폴백값 사용 */ });
+  })();
+
   function animateCounter() {
     if (counterAnimated) return;
     counterAnimated = true;
 
     var counterEl = document.getElementById('counterNum');
-    var target = 128;
+    var target = workflowCount;
     var duration = 2000;
     var start = performance.now();
 
