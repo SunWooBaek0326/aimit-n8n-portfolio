@@ -104,6 +104,7 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 }
 @keyframes shimmer{to{left:100%}}
 .killer-gif img{width:100%;height:100%;object-fit:cover}
+.killer-gif video,.workflow-gif video{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid #333;flex:1;min-width:0;display:block}
 .killer-gif-placeholder{text-align:center;position:relative;z-index:1}
 .killer-gif-icon{font-size:48px;opacity:.5;display:block;margin-bottom:8px}
 .killer-gif-label{font-size:12px;color:var(--gray-600);font-weight:500;letter-spacing:.5px}
@@ -289,36 +290,33 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 <section class="section">
   <h2 class="section-title reveal">Best <span class="accent">Workflows</span></h2>
 
-  <!-- ★ Killer Content: #033 설문 기반 맞춤 쿠폰 문자발송 -->
+  <!-- ★ Killer Content: #005 AIMIT ASBS 참가신청서 AI 고객관리 -->
   <div class="killer-wrapper reveal">
     <div class="killer-card">
       <div class="killer-inner">
         <div class="killer-gif">
-          <div class="killer-gif-placeholder">
-            <span class="killer-gif-icon">🖼️</span>
-            <span class="killer-gif-label">워크플로우 미리보기 준비중</span>
-          </div>
+          <video autoplay loop muted playsinline src="/assets/videos/workflow_XM6bFDexnaFdjAPO.mp4"></video>
         </div>
         <div class="killer-body">
           <div class="killer-badge-row">
             <span class="badge-featured">★ 대표 워크플로우</span>
             <span class="badge-top">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-              TOP CONTENT
+              AIMIT 실사용
             </span>
-            <span class="badge-cat">Survey · Coupon · SMS</span>
+            <span class="badge-cat">Tally · AI · Vector DB</span>
           </div>
-          <h3 class="killer-title">설문 기반 맞춤 쿠폰<br><span style="color:var(--accent)">자동 문자발송 시스템</span></h3>
-          <p class="killer-desc">구글 폼 설문 응답을 AI가 분석하여 서술형 답변자에게는 30% 할인, 미답변자에게는 15% 할인 쿠폰을 SMS/이메일로 자동 발송하는 맞춤형 마케팅 엔진.</p>
+          <h3 class="killer-title">AI 설문 분석 ·벡터 DB<br><span style="color:var(--accent)">고객관리 자동화 시스템</span></h3>
+          <p class="killer-desc">AIMIT 실무 사용 플로우. Tally 설문 신청서 접수 시 AI가 응답을 분석하고 PGVector에 벡터 저장, PostgreSQL에 기록 후 텔레그램으로 알림을 발송하는 고객관리 시스템.</p>
           <div class="killer-nodes">
             <span class="node-tag">OpenAI</span>
-            <span class="node-tag">Google Sheets</span>
-            <span class="node-tag">Notion</span>
-            <span class="node-tag">Slack</span>
-            <span class="node-tag">HTTP Request</span>
-            <span class="node-count">69 nodes</span>
+            <span class="node-tag">PGVector</span>
+            <span class="node-tag">PostgreSQL</span>
+            <span class="node-tag">Tally Forms</span>
+            <span class="node-tag">Telegram</span>
+            <span class="node-count">14 nodes</span>
           </div>
-          <a class="killer-btn" href="https://n8n.rediace.com/workflow/GQXg6oorVrSBAYPy" target="_blank">
+          <a class="killer-btn" href="https://n8n.rediace.com/workflow/XM6bFDexnaFdjAPO" target="_blank">
             n8n으로 열기
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -330,72 +328,15 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
   <!-- 2x2 Grid -->
   <div class="workflows-grid">
 
-    <!-- ② Tally 설문 AI 분석발송 -->
+    <!-- ② 대량 문자발송 (SOLAPI 실발송) #053 -->
     <div class="workflow-card reveal reveal-delay-1">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">🖼️</span>
-          <span class="workflow-gif-label">워크플로우 미리보기 준비중</span>
-        </div>
-      </div>
-      <div class="workflow-body">
-        <span class="workflow-category">Survey · AI Analysis</span>
-        <h3 class="workflow-title">Tally 설문 AI 분석발송</h3>
-        <p class="workflow-desc">Tally 설문 응답을 AI(Groq/OpenAI)가 분석하여 맞춤 SMS/이메일/노션/슬랙으로 자동 리포트를 발송하는 설문 분석 시스템.</p>
-        <div class="workflow-nodes">
-          <span class="node-tag">OpenAI</span>
-          <span class="node-tag">Groq</span>
-          <span class="node-tag">Gmail</span>
-          <span class="node-tag">Notion</span>
-          <span class="node-tag">Slack</span>
-          <span class="node-count">40 nodes</span>
-        </div>
-        <a class="card-btn" href="https://n8n.rediace.com/workflow/FeefrxLPvzzAPNlE" target="_blank">
-          n8n으로 열기
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- ③ 네이버 키워드 트렌드 AI 분석기 -->
-    <div class="workflow-card reveal reveal-delay-2">
-      <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">🖼️</span>
-          <span class="workflow-gif-label">워크플로우 미리보기 준비중</span>
-        </div>
-      </div>
-      <div class="workflow-body">
-        <span class="workflow-category">Trend · AI Insight</span>
-        <h3 class="workflow-title">네이버 키워드 트렌드 AI 분석기</h3>
-        <p class="workflow-desc">네이버 키워드 트렌드 API 데이터를 Gemini AI가 분석하여 경쟁력 인사이트 리포트를 생성하고 슬랙으로 전달.</p>
-        <div class="workflow-nodes">
-          <span class="node-tag">AI Agent</span>
-          <span class="node-tag">Google Gemini</span>
-          <span class="node-tag">Slack</span>
-          <span class="node-tag">HTTP Request</span>
-          <span class="node-tag">Code</span>
-          <span class="node-count">14 nodes</span>
-        </div>
-        <a class="card-btn" href="https://n8n.rediace.com/workflow/fjZhEKGmExk8ZGLc" target="_blank">
-          n8n으로 열기
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- ④ 대량 문자발송 (SOLAPI 실발송) -->
-    <div class="workflow-card reveal reveal-delay-3">
-      <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">🖼️</span>
-          <span class="workflow-gif-label">워크플로우 미리보기 준비중</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_c9NWz6dgU1mnl0ec.mp4"></video>
       </div>
       <div class="workflow-body">
         <span class="workflow-category">SMS · Campaign</span>
         <h3 class="workflow-title">대량 문자발송 시스템 (SOLAPI)</h3>
-        <p class="workflow-desc">텔레그램 승인 후 SOLAPI를 통해 대량 SMS를 실제 발송하고 잔액/성공/실패를 추적하여 결과를 보고.</p>
+        <p class="workflow-desc">텔레그램 승인 후 SOLAPI를 통해 대량 SMS를 실제 발송. 고객명 변수화를 통해 각각의 고객명으로 문자발송 후 잔액·성공·실패를 추적하여 결과를 보고.</p>
         <div class="workflow-nodes">
           <span class="node-tag">PostgreSQL</span>
           <span class="node-tag">Telegram</span>
@@ -411,26 +352,67 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
       </div>
     </div>
 
-    <!-- ⑤ 설문 데이터 DB + 벡터 임베딩 -->
-    <div class="workflow-card reveal reveal-delay-4">
+    <!-- ③ UTM builder (단축 URL 자동생성) #127 -->
+    <div class="workflow-card reveal reveal-delay-2">
       <div class="workflow-gif">
-        <div class="workflow-gif-placeholder">
-          <span class="workflow-gif-icon">🖼️</span>
-          <span class="workflow-gif-label">워크플로우 미리보기 준비중</span>
-        </div>
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_gC6varrytpzqCceK.mp4"></video>
       </div>
       <div class="workflow-body">
-        <span class="workflow-category">Data · Vector RAG</span>
-        <h3 class="workflow-title">설문 데이터 DB + 벡터 임베딩</h3>
-        <p class="workflow-desc">설문 데이터를 PostgreSQL에 저장하고 OpenAI 임베딩으로 PGVector에 벡터화하여 RAG 검색이 가능하도록 구축.</p>
+        <span class="workflow-category">UTM · Short URL</span>
+        <h3 class="workflow-title">UTM 단축 URL 자동 빌더</h3>
+        <p class="workflow-desc">에어테이블에 UTM 파라미터 입력 시 Shlink API로 단축 URL을 자동 생성하여 레코드를 업데이트하는 마케팅 트래킹 시스템.</p>
         <div class="workflow-nodes">
-          <span class="node-tag">OpenAI Embeddings</span>
-          <span class="node-tag">PGVector</span>
-          <span class="node-tag">PostgreSQL</span>
-          <span class="node-tag">Google Sheets</span>
-          <span class="node-count">17 nodes</span>
+          <span class="node-tag">Airtable</span>
+          <span class="node-tag">Airtable Trigger</span>
+          <span class="node-tag">HTTP Request</span>
         </div>
-        <a class="card-btn" href="https://n8n.rediace.com/workflow/ffzjRSOSMEXfWHo3" target="_blank">
+        <a class="card-btn" href="https://n8n.rediace.com/workflow/gC6varrytpzqCceK" target="_blank">
+          n8n으로 열기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ④ DB 보고서 자동 시트 동기화 (Looker 연동) #089 -->
+    <div class="workflow-card reveal reveal-delay-3">
+      <div class="workflow-gif">
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_2QmAbchg5wJnRyWL.mp4"></video>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">Data · BI Export</span>
+        <h3 class="workflow-title">DB 보고서 → Looker Studio 연동</h3>
+        <p class="workflow-desc">PostgreSQL DB의 뷰 테이블 5종을 구글시트 보고서로 자동 변환·동기화하여 Looker Studio 등 외부 BI 분석 툴과 연동하는 데이터 파이프라인.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">Google Sheets</span>
+          <span class="node-tag">PostgreSQL</span>
+          <span class="node-tag">Schedule Trigger</span>
+          <span class="node-count">21 nodes</span>
+        </div>
+        <a class="card-btn" href="https://n8n.rediace.com/workflow/2QmAbchg5wJnRyWL" target="_blank">
+          n8n으로 열기
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ⑤ 네이버 키워드 트렌드 AI 분석기 #102 -->
+    <div class="workflow-card reveal reveal-delay-4">
+      <div class="workflow-gif">
+        <video autoplay loop muted playsinline src="/assets/videos/workflow_fjZhEKGmExk8ZGLc.mp4"></video>
+      </div>
+      <div class="workflow-body">
+        <span class="workflow-category">Trend · AI Insight</span>
+        <h3 class="workflow-title">네이버 키워드 트렌드 AI 분석기</h3>
+        <p class="workflow-desc">네이버 키워드 트렌드 API 데이터를 Gemini AI가 분석하여 경쟁력 인사이트 리포트를 생성하고 텔레그램으로 전달.</p>
+        <div class="workflow-nodes">
+          <span class="node-tag">AI Agent</span>
+          <span class="node-tag">Google Gemini</span>
+          <span class="node-tag">Slack</span>
+          <span class="node-tag">HTTP Request</span>
+          <span class="node-tag">Code</span>
+          <span class="node-count">10 nodes</span>
+        </div>
+        <a class="card-btn" href="https://n8n.rediace.com/workflow/fjZhEKGmExk8ZGLc" target="_blank">
           n8n으로 열기
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
