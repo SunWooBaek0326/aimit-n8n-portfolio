@@ -1,8 +1,8 @@
-# n8n 워크플로우 전체 분석 리스트 (132개)
+# n8n 워크플로우 전체 분석 리스트 (122개)
 
 > 분석일: 2026-02-11
 > 대상 폴더: `n8n workflow/`
-> 총 파일 수: **132개** (제외 없이 전수 포함)
+> 총 파일 수: **122개** (제외 없이 전수 포함)
 
 ---
 
@@ -62,17 +62,6 @@
 ---
 
 ## #006
-- **파일명:** `[WF-A] Gemini Batch_BANANA — Submit (JSON).json`
-- **n8nId:** `XKLcEGUh1J0TqSGD`
-- **n8n 링크:** https://n8n.rediace.com/workflow/XKLcEGUh1J0TqSGD
-- **워크플로우 이름:** [WF-A] Gemini Batch_BANANA — Submit (JSON)
-- **노드 종류:** code, convertToFile, googleCloudStorage, googleSheets, httpRequest, manualTrigger, set, slack, stickyNote
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 구글시트 상품정보를 JSONL로 변환하여 Gemini 배치 API에 대량 이미지 생성을 요청하고 GCS에 업로드 후 슬랙으로 결과 알림
-
----
-
-## #007
 - **파일명:** `[WF-A] Gemini Batch_BANANA — Submit (JSON) - test.json`
 - **n8nId:** `r1tNeDn7WVAQ1zWy`
 - **n8n 링크:** https://n8n.rediace.com/workflow/r1tNeDn7WVAQ1zWy
@@ -83,7 +72,7 @@
 
 ---
 
-## #008
+## #007
 - **파일명:** `[WF-B] Gemini Batch_BANANA — Collect.json`
 - **n8nId:** `AkGGcYzeemxMs2Wf`
 - **n8n 링크:** https://n8n.rediace.com/workflow/AkGGcYzeemxMs2Wf
@@ -94,7 +83,7 @@
 
 ---
 
-## #009
+## #008
 - **파일명:** `0) Start Workflow (trigger).json`
 - **n8nId:** `YLzsmIkWpnysUuxO`
 - **n8n 링크:** https://n8n.rediace.com/workflow/YLzsmIkWpnysUuxO
@@ -105,7 +94,7 @@
 
 ---
 
-## #010
+## #009
 - **파일명:** `0) Start Workflow (trigger) (1).json`
 - **n8nId:** `6RfcnBaZ5TbWL3uU`
 - **n8n 링크:** https://n8n.rediace.com/workflow/6RfcnBaZ5TbWL3uU
@@ -116,7 +105,7 @@
 
 ---
 
-## #011
+## #010
 - **파일명:** `0) Start Workflow (trigger) - AI강사양성.json`
 - **n8nId:** `Rjs95UHQ7eCGryLT`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Rjs95UHQ7eCGryLT
@@ -127,7 +116,7 @@
 
 ---
 
-## #012
+## #011
 - **파일명:** `0단계) Start Workflow (trigger)_25.12.19.json`
 - **n8nId:** `5f83TkJ859IsPYcg`
 - **n8n 링크:** https://n8n.rediace.com/workflow/5f83TkJ859IsPYcg
@@ -138,7 +127,7 @@
 
 ---
 
-## #013
+## #012
 - **파일명:** `1) 텔레그램 음성메모자산화.json`
 - **n8nId:** `b86ZTVdhIHa9KLGZ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/b86ZTVdhIHa9KLGZ
@@ -149,7 +138,7 @@
 
 ---
 
-## #014
+## #013
 - **파일명:** `1) ai-agent financial-advisor-test(텔레그램_주가분석).json`
 - **n8nId:** `DLAiORdFsd02xhCU`
 - **n8n 링크:** https://n8n.rediace.com/workflow/DLAiORdFsd02xhCU
@@ -160,7 +149,7 @@
 
 ---
 
-## #015
+## #014
 - **파일명:** `1) task management agent (심플 챗봇) - AI강사양성.json`
 - **n8nId:** `ABXkGIB9hSv5hkLA`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ABXkGIB9hSv5hkLA
@@ -171,7 +160,7 @@
 
 ---
 
-## #016
+## #015
 - **파일명:** `11st 인증메일 슬랙전송.json`
 - **n8nId:** `vLPG2vRI1naIH06g`
 - **n8n 링크:** https://n8n.rediace.com/workflow/vLPG2vRI1naIH06g
@@ -182,7 +171,7 @@
 
 ---
 
-## #017
+## #016
 - **파일명:** `1단계) RSS 데이터 수집 (오프라인 강의용1220).json`
 - **n8nId:** `IQnKfvhHjbON3PKa`
 - **n8n 링크:** https://n8n.rediace.com/workflow/IQnKfvhHjbON3PKa
@@ -193,7 +182,7 @@
 
 ---
 
-## #018
+## #017
 - **파일명:** `1단계) RSS 데이터 수집_25.12.20.json`
 - **n8nId:** `tnlXuchpD1XA6ly6`
 - **n8n 링크:** https://n8n.rediace.com/workflow/tnlXuchpD1XA6ly6
@@ -204,7 +193,7 @@
 
 ---
 
-## #019
+## #018
 - **파일명:** `2) 견적서/계약서 자동 생성 메일발송.json`
 - **n8nId:** `Vz3Nl2YsEpiEpYUi`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Vz3Nl2YsEpiEpYUi
@@ -215,7 +204,7 @@
 
 ---
 
-## #020
+## #019
 - **파일명:** `2) ai-agent financial-advisor-test(텔레그램_주가분석)-AI강사양성.json`
 - **n8nId:** `nUODJwABKRH4PTmk`
 - **n8n 링크:** https://n8n.rediace.com/workflow/nUODJwABKRH4PTmk
@@ -226,7 +215,7 @@
 
 ---
 
-## #021
+## #020
 - **파일명:** `2) task management agent (심플 챗봇) 수업용-미리방재.json`
 - **n8nId:** `D6NoEv9UX2KLx2eo`
 - **n8n 링크:** https://n8n.rediace.com/workflow/D6NoEv9UX2KLx2eo
@@ -237,7 +226,7 @@
 
 ---
 
-## #022
+## #021
 - **파일명:** `2) task management agent (심플 챗봇) 수업용-미리방재 (1).json`
 - **n8nId:** `jFCjVGIExwQFt5DZ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/jFCjVGIExwQFt5DZ
@@ -248,7 +237,7 @@
 
 ---
 
-## #023
+## #022
 - **파일명:** `2단계) 뉴스레터 SNS 데이터 작성 (오프라인 강의용).json`
 - **n8nId:** `cIiaCZO88OEwpJnh`
 - **n8n 링크:** https://n8n.rediace.com/workflow/cIiaCZO88OEwpJnh
@@ -259,7 +248,7 @@
 
 ---
 
-## #024
+## #023
 - **파일명:** `2단계) 뉴스레터 SNS 데이터 작성_25.12.20.json`
 - **n8nId:** `eavpxado6mUQCSsH`
 - **n8n 링크:** https://n8n.rediace.com/workflow/eavpxado6mUQCSsH
@@ -270,7 +259,7 @@
 
 ---
 
-## #025
+## #024
 - **파일명:** `2단계) 협업리포트 _슬랙용.json`
 - **n8nId:** `GQuvGASnjQCE4BcZ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/GQuvGASnjQCE4BcZ
@@ -281,7 +270,7 @@
 
 ---
 
-## #026
+## #025
 - **파일명:** `협업) 신규방_생존신고 메시지요청.json`
 - **n8nId:** `Xpjk4o10JEmmTaYm`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Xpjk4o10JEmmTaYm
@@ -292,7 +281,7 @@
 
 ---
 
-## #027
+## #026
 - **파일명:** `2단계) 협업리포트 _슬랙용(AB조통합)_251117.json`
 - **n8nId:** `mmRAVASO6eM2tBcz`
 - **n8n 링크:** https://n8n.rediace.com/workflow/mmRAVASO6eM2tBcz
@@ -303,7 +292,7 @@
 
 ---
 
-## #028
+## #027
 - **파일명:** `2단계) 협업리포트 _잔디용.json`
 - **n8nId:** `iaGlSdvLJgHbJ49z`
 - **n8n 링크:** https://n8n.rediace.com/workflow/iaGlSdvLJgHbJ49z
@@ -314,7 +303,7 @@
 
 ---
 
-## #029
+## #028
 - **파일명:** `3) AIMIT) tally설문 분석발송_1220강의설문.json`
 - **n8nId:** `YWkevBfgIDWvalVS`
 - **n8n 링크:** https://n8n.rediace.com/workflow/YWkevBfgIDWvalVS
@@ -325,7 +314,7 @@
 
 ---
 
-## #030
+## #029
 - **파일명:** `3) Denny) tally설문 분석발송 (신버전).json`
 - **n8nId:** `FeefrxLPvzzAPNlE`
 - **n8n 링크:** https://n8n.rediace.com/workflow/FeefrxLPvzzAPNlE
@@ -336,7 +325,7 @@
 
 ---
 
-## #031
+## #030
 - **파일명:** `3) Denny) tally설문 분석발송 (신버전) _강의본(AIMIT).json`
 - **n8nId:** `9ZVOPeuX89GhMAch`
 - **n8n 링크:** https://n8n.rediace.com/workflow/9ZVOPeuX89GhMAch
@@ -347,7 +336,7 @@
 
 ---
 
-## #032
+## #031
 - **파일명:** `3) YouTube AI 분석기.json`
 - **n8nId:** `hpRnagwhwkvI0X49`
 - **n8n 링크:** https://n8n.rediace.com/workflow/hpRnagwhwkvI0X49
@@ -358,7 +347,7 @@
 
 ---
 
-## #033
+## #032
 - **파일명:** `4) tavily AGENT AI 개인비서.json`
 - **n8nId:** `IKyGN4rvH9oSAmwW`
 - **n8n 링크:** https://n8n.rediace.com/workflow/IKyGN4rvH9oSAmwW
@@ -369,7 +358,7 @@
 
 ---
 
-## #034
+## #033
 - **파일명:** `5) Tally 설문 sms (SOLAPI) 회신기.json`
 - **n8nId:** `C6kjCKe9LETTzcwo`
 - **n8n 링크:** https://n8n.rediace.com/workflow/C6kjCKe9LETTzcwo
@@ -380,7 +369,7 @@
 
 ---
 
-## #035
+## #034
 - **파일명:** `강의_1단계) RAG 초기데이터 적재.json`
 - **n8nId:** `GSIIxDHQ84rY4BrL`
 - **n8n 링크:** https://n8n.rediace.com/workflow/GSIIxDHQ84rY4BrL
@@ -391,7 +380,7 @@
 
 ---
 
-## #036
+## #035
 - **파일명:** `강의_1단계) RAG 초기데이터 적재 (1).json`
 - **n8nId:** `YMYQXeJbv4EXZtdt`
 - **n8n 링크:** https://n8n.rediace.com/workflow/YMYQXeJbv4EXZtdt
@@ -402,7 +391,7 @@
 
 ---
 
-## #037
+## #036
 - **파일명:** `강의_2단계) RAG CS 워크플로우(벡터스토어).json`
 - **n8nId:** `x76KXlUc9qUVwvrG`
 - **n8n 링크:** https://n8n.rediace.com/workflow/x76KXlUc9qUVwvrG
@@ -413,7 +402,7 @@
 
 ---
 
-## #038
+## #037
 - **파일명:** `강의) tavily AGENT AI 개인비서.json`
 - **n8nId:** `dkhjSEWTmA2Xjqln`
 - **n8n 링크:** https://n8n.rediace.com/workflow/dkhjSEWTmA2Xjqln
@@ -424,7 +413,7 @@
 
 ---
 
-## #039
+## #038
 - **파일명:** `강의0단계) RAG CS 워크플로우(구글시트).json`
 - **n8nId:** `7saZ9qzWBCjcOpQO`
 - **n8n 링크:** https://n8n.rediace.com/workflow/7saZ9qzWBCjcOpQO
@@ -435,7 +424,7 @@
 
 ---
 
-## #040
+## #039
 - **파일명:** `강의0단계) RAG CS 워크플로우(구글시트) (1).json`
 - **n8nId:** `veStz1f7jDZhnK9W`
 - **n8n 링크:** https://n8n.rediace.com/workflow/veStz1f7jDZhnK9W
@@ -446,7 +435,7 @@
 
 ---
 
-## #041
+## #040
 - **파일명:** `강의초안_완성안됨) firecrawl AI 개인비서 (무료 사용불가).json`
 - **n8nId:** `3RiSmxJNrRAJek5U`
 - **n8n 링크:** https://n8n.rediace.com/workflow/3RiSmxJNrRAJek5U
@@ -457,7 +446,7 @@
 
 ---
 
-## #042
+## #041
 - **파일명:** `강의후_응용) RAG CS 워크플로우(벡터스토어) 웹훅연결(chatwood).json`
 - **n8nId:** `MWi6hMh2iKRPEm7f`
 - **n8n 링크:** https://n8n.rediace.com/workflow/MWi6hMh2iKRPEm7f
@@ -468,7 +457,7 @@
 
 ---
 
-## #043
+## #042
 - **파일명:** `강의fin) RAG CS 워크플로우(벡터스토어) 웹훅연결(typebot).json`
 - **n8nId:** `LyKdtQ6C2YTBpc5j`
 - **n8n 링크:** https://n8n.rediace.com/workflow/LyKdtQ6C2YTBpc5j
@@ -479,7 +468,7 @@
 
 ---
 
-## #044
+## #043
 - **파일명:** `강의fin) RAG CS 워크플로우(벡터스토어) 웹훅연결(typebot) (1).json`
 - **n8nId:** `0LOXqW4MQjYqx9GW`
 - **n8n 링크:** https://n8n.rediace.com/workflow/0LOXqW4MQjYqx9GW
@@ -490,7 +479,7 @@
 
 ---
 
-## #045
+## #044
 - **파일명:** `강제 에러 테스트용2.json`
 - **n8nId:** `VCZqL7JJQAoTTEm8`
 - **n8n 링크:** https://n8n.rediace.com/workflow/VCZqL7JJQAoTTEm8
@@ -501,7 +490,7 @@
 
 ---
 
-## #046
+## #045
 - **파일명:** `강제에러생성.json`
 - **n8nId:** `C1BuDlGsWYM0F0Fi`
 - **n8n 링크:** https://n8n.rediace.com/workflow/C1BuDlGsWYM0F0Fi
@@ -512,7 +501,7 @@
 
 ---
 
-## #047
+## #046
 - **파일명:** `견적서/계약서 자동 생성 시스템.json`
 - **n8nId:** `tJhtchdgyaNKkNct`
 - **n8n 링크:** https://n8n.rediace.com/workflow/tJhtchdgyaNKkNct
@@ -523,7 +512,7 @@
 
 ---
 
-## #048
+## #047
 - **파일명:** `뉴스레터 자동화.json`
 - **n8nId:** `WiY-iqHh81XISE6cRdxu7`
 - **n8n 링크:** https://n8n.rediace.com/workflow/WiY-iqHh81XISE6cRdxu7
@@ -534,18 +523,7 @@
 
 ---
 
-## #049
-- **파일명:** `뉴스레터원문생성 and SNS발행 (실행단계).json`
-- **n8nId:** `GvfOrtwWZCJvyKE7`
-- **n8n 링크:** https://n8n.rediace.com/workflow/GvfOrtwWZCJvyKE7
-- **워크플로우 이름:** 뉴스레터원문생성 and SNS발행 (실행단계)
-- **노드 종류:** LC:anthropic, LC:googleGemini, LC:openAi, code, github, googleDrive, htmlExtract, httpRequest, stickyNote, stopAndError, switch, telegram, telegramTrigger
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 텔레그램 뉴스 데이터를 3종 AI(GPT·Gemini·Claude)로 병렬 처리하여 뉴스레터 원문을 생성하고 GitHub/구글 드라이브에 저장·SNS 발행 (29노드)
-
----
-
-## #050
+## #048
 - **파일명:** `뉴스레터원문생성 and SNS발행 (실행단계) SNS연동완료.json`
 - **n8nId:** `w1ydPjTde0d6r4jd`
 - **n8n 링크:** https://n8n.rediace.com/workflow/w1ydPjTde0d6r4jd
@@ -556,7 +534,7 @@
 
 ---
 
-## #051
+## #049
 - **파일명:** `다이나믹 웹사이트 초안 만들기.json`
 - **n8nId:** `vecVKzCabt3SY9QZ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/vecVKzCabt3SY9QZ
@@ -567,7 +545,7 @@
 
 ---
 
-## #052
+## #050
 - **파일명:** `대량 문자발송(발송 준비 및 승인 요청).json`
 - **n8nId:** `dATCllkCt5DWamQh`
 - **n8n 링크:** https://n8n.rediace.com/workflow/dATCllkCt5DWamQh
@@ -578,7 +556,7 @@
 
 ---
 
-## #053
+## #051
 - **파일명:** `대량 문자발송(실발송).json`
 - **n8nId:** `c9NWz6dgU1mnl0ec`
 - **n8n 링크:** https://n8n.rediace.com/workflow/c9NWz6dgU1mnl0ec
@@ -589,18 +567,7 @@
 
 ---
 
-## #054
-- **파일명:** `매일 아침 날씨 알림 (Slack).json`
-- **n8nId:** `CxfgMGNvUm0QNZ32`
-- **n8n 링크:** https://n8n.rediace.com/workflow/CxfgMGNvUm0QNZ32
-- **워크플로우 이름:** 매일 아침 날씨 알림 (Slack)
-- **노드 종류:** openWeatherMap, scheduleTrigger, slack
-- **카테고리:** 업무자동화
-- **핵심 기능:** 매일 아침 9시 OpenWeatherMap API로 현재 날씨를 가져와 슬랙 채널로 자동 전달
-
----
-
-## #055
+## #052
 - **파일명:** `미리방재 심플2.json`
 - **n8nId:** `MiaEs390dUPI4Q0x`
 - **n8n 링크:** https://n8n.rediace.com/workflow/MiaEs390dUPI4Q0x
@@ -611,7 +578,7 @@
 
 ---
 
-## #056
+## #053
 - **파일명:** `배포_0826) 한국는지금_babypodcast(최종).json`
 - **n8nId:** `BuPoXH5A2OuZhU6Y`
 - **n8n 링크:** https://n8n.rediace.com/workflow/BuPoXH5A2OuZhU6Y
@@ -622,7 +589,7 @@
 
 ---
 
-## #057
+## #054
 - **파일명:** `배포_0830) 라솔파미_세계는지금 (유튭자동업로드) _최종 (윤형선님).json`
 - **n8nId:** `SeZuYpuKwF1vzguO`
 - **n8n 링크:** https://n8n.rediace.com/workflow/SeZuYpuKwF1vzguO
@@ -633,7 +600,7 @@
 
 ---
 
-## #058
+## #055
 - **파일명:** `삼성헬스_인바디 데이터파싱.json`
 - **n8nId:** `7mvkS00bXAbETg0l`
 - **n8n 링크:** https://n8n.rediace.com/workflow/7mvkS00bXAbETg0l
@@ -644,7 +611,7 @@
 
 ---
 
-## #059
+## #056
 - **파일명:** `상주)_Draft4) 3_Benchmarking_Report_Tavily.json`
 - **n8nId:** `ZPDajxNhtJBb5f30`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ZPDajxNhtJBb5f30
@@ -655,7 +622,7 @@
 
 ---
 
-## #060
+## #057
 - **파일명:** `상주)Day3 5실습 음성메모자산화.json`
 - **n8nId:** `Fkq7Kko6d2ZDK81s`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Fkq7Kko6d2ZDK81s
@@ -666,7 +633,7 @@
 
 ---
 
-## #061
+## #058
 - **파일명:** `상주1)_보도자료_카드뉴스_초안생성기(강의전).json`
 - **n8nId:** `IfVrhf5QU2sHIpUP`
 - **n8n 링크:** https://n8n.rediace.com/workflow/IfVrhf5QU2sHIpUP
@@ -677,7 +644,7 @@
 
 ---
 
-## #062
+## #059
 - **파일명:** `상주2) 지역뉴스 데일리 브리핑 (RSS).json`
 - **n8nId:** `Vs52nRY4Xwjiy5pp`
 - **n8n 링크:** https://n8n.rediace.com/workflow/Vs52nRY4Xwjiy5pp
@@ -688,7 +655,7 @@
 
 ---
 
-## #063
+## #060
 - **파일명:** `상주3)Draft 네이버API 1_Sangju_Risk_Alert_System.json`
 - **n8nId:** `1sBRbGz2WKSlnRtR`
 - **n8n 링크:** https://n8n.rediace.com/workflow/1sBRbGz2WKSlnRtR
@@ -699,7 +666,7 @@
 
 ---
 
-## #064
+## #061
 - **파일명:** `상주3일차) 실습6 RAG CS 워크플로우(구글시트).json`
 - **n8nId:** `c2ZgpOUjDgLhXwpA`
 - **n8n 링크:** https://n8n.rediace.com/workflow/c2ZgpOUjDgLhXwpA
@@ -710,7 +677,7 @@
 
 ---
 
-## #065
+## #062
 - **파일명:** `상품이미지_Google IMAGEN3 테스트_ (나노바나나로 고고).json`
 - **n8nId:** `MlAW4n2Jdzd2Txmz`
 - **n8n 링크:** https://n8n.rediace.com/workflow/MlAW4n2Jdzd2Txmz
@@ -721,7 +688,7 @@
 
 ---
 
-## #066
+## #063
 - **파일명:** `시연용) tavily AGENT AI 개인비서.json`
 - **n8nId:** `ZnpNWQW2hc2ZqndB`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ZnpNWQW2hc2ZqndB
@@ -732,7 +699,7 @@
 
 ---
 
-## #067
+## #064
 - **파일명:** `실시간 나노바나나 (웹훅 스타터) - railway.json`
 - **n8nId:** `KDcRJRLzdkRzO5i5`
 - **n8n 링크:** https://n8n.rediace.com/workflow/KDcRJRLzdkRzO5i5
@@ -743,7 +710,7 @@
 
 ---
 
-## #068
+## #065
 - **파일명:** `실시간 나노바나나 (웹훅 스타터) - rediace.json`
 - **n8nId:** `IwhwjQufRur51vM8`
 - **n8n 링크:** https://n8n.rediace.com/workflow/IwhwjQufRur51vM8
@@ -754,7 +721,7 @@
 
 ---
 
-## #069
+## #066
 - **파일명:** `업무자동화) 뉴스레터 구독자 e-book발송(추후연동자동화유료).json`
 - **n8nId:** `BQspIyoAHYCRI5hw`
 - **n8n 링크:** https://n8n.rediace.com/workflow/BQspIyoAHYCRI5hw
@@ -765,7 +732,7 @@
 
 ---
 
-## #070
+## #067
 - **파일명:** `영수증 입력기 (Denny).json`
 - **n8nId:** `8dNnED3qNKOdEPh1`
 - **n8n 링크:** https://n8n.rediace.com/workflow/8dNnED3qNKOdEPh1
@@ -776,7 +743,7 @@
 
 ---
 
-## #071
+## #068
 - **파일명:** `영수증 입력기 (Denny) (1).json`
 - **n8nId:** `n4k8eZMQil0Vo0yJ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/n4k8eZMQil0Vo0yJ
@@ -787,7 +754,7 @@
 
 ---
 
-## #072
+## #069
 - **파일명:** `영수증 입력기 (n8n커뮤니티)__ 확인필요.json`
 - **n8nId:** `XorZD69pBYVx8nHU`
 - **n8n 링크:** https://n8n.rediace.com/workflow/XorZD69pBYVx8nHU
@@ -798,18 +765,7 @@
 
 ---
 
-## #073
-- **파일명:** `옵시디언 원문생성 (A단계).json`
-- **n8nId:** `cqNUhe5bXdFjNR7Q`
-- **n8n 링크:** https://n8n.rediace.com/workflow/cqNUhe5bXdFjNR7Q
-- **워크플로우 이름:** 옵시디언 원문생성 (A단계)
-- **노드 종류:** LC:anthropic, LC:googleGemini, LC:openAi, code, github, googleDrive, htmlExtract, httpRequest, telegram, telegramTrigger
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 뉴스 링크를 스크래핑하고 3종 AI(GPT·Gemini·Claude)로 원문을 생성하여 옵시디언 호환 마크다운으로 저장
-
----
-
-## #074
+## #070
 - **파일명:** `워크플로우에러_텔레그램_알림.json`
 - **n8nId:** `ECgPIwX97pR2vGxH`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ECgPIwX97pR2vGxH
@@ -820,7 +776,7 @@
 
 ---
 
-## #075
+## #071
 - **파일명:** `웹훅 러버블 연동테스트.json`
 - **n8nId:** `YFsHkzLqKNzy0u87`
 - **n8n 링크:** https://n8n.rediace.com/workflow/YFsHkzLqKNzy0u87
@@ -831,7 +787,7 @@
 
 ---
 
-## #076
+## #072
 - **파일명:** `이메일 정리 일간 메일 리포트.json`
 - **n8nId:** `KcgVAbRTF9Piz9Vw`
 - **n8n 링크:** https://n8n.rediace.com/workflow/KcgVAbRTF9Piz9Vw
@@ -842,29 +798,7 @@
 
 ---
 
-## #077
-- **파일명:** `ㅈㅈ.json`
-- **n8nId:** `bbjX8zSyAw0PgS9T`
-- **n8n 링크:** https://n8n.rediace.com/workflow/bbjX8zSyAw0PgS9T
-- **워크플로우 이름:** ㅈㅈ
-- **노드 종류:** executeWorkflowTrigger, stickyNote
-- **카테고리:** 업무자동화
-- **핵심 기능:** 서브 워크플로우 트리거만 포함된 빈 테스트 워크플로우
-
----
-
-## #078
-- **파일명:** `제니) 뉴스레터발송_draft 작업중.json`
-- **n8nId:** `foidFJL9CKY3zxVr`
-- **n8n 링크:** https://n8n.rediace.com/workflow/foidFJL9CKY3zxVr
-- **워크플로우 이름:** 제니) 뉴스레터발송_draft 작업중
-- **노드 종류:** LC:openAi, code, merge, rssFeedRead, set, splitOut, switch, webhook
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 18개 카테고리(AI자동화/ChatGPT/디지털마케팅/커뮤니티/그로스 등)별 한/영 RSS를 수집·AI 요약하여 뉴스레터 자동 작성 (97노드)
-
----
-
-## #079
+## #073
 - **파일명:** `제니) 뉴스레터발송_draft 작업중 (1).json`
 - **n8nId:** `dbszGmGkv1tRDef3`
 - **n8n 링크:** https://n8n.rediace.com/workflow/dbszGmGkv1tRDef3
@@ -875,7 +809,7 @@
 
 ---
 
-## #080
+## #074
 - **파일명:** `주식분석_FC기반내용.json`
 - **n8nId:** `NOAfhok1lqYLYEm1`
 - **n8n 링크:** https://n8n.rediace.com/workflow/NOAfhok1lqYLYEm1
@@ -886,7 +820,7 @@
 
 ---
 
-## #081
+## #075
 - **파일명:** `쿠팡 메일정리 (draft).json`
 - **n8nId:** `IAzOWfK8mmMQDJtG`
 - **n8n 링크:** https://n8n.rediace.com/workflow/IAzOWfK8mmMQDJtG
@@ -897,7 +831,7 @@
 
 ---
 
-## #082
+## #076
 - **파일명:** `협업) 1단계 업무등록 - 슬랙용.json`
 - **n8nId:** `7SNi9mgNSaRK7Hf5`
 - **n8n 링크:** https://n8n.rediace.com/workflow/7SNi9mgNSaRK7Hf5
@@ -908,7 +842,7 @@
 
 ---
 
-## #083
+## #077
 - **파일명:** `협업) 1단계 업무등록 - 잔디용.json`
 - **n8nId:** `zAnwvVWJrpdWZ5yE`
 - **n8n 링크:** https://n8n.rediace.com/workflow/zAnwvVWJrpdWZ5yE
@@ -919,7 +853,7 @@
 
 ---
 
-## #084
+## #078
 - **파일명:** `협업)챗봇 채팅응답 _ 텔레그램.json`
 - **n8nId:** `1DeH5r1SZoPBjVtf`
 - **n8n 링크:** https://n8n.rediace.com/workflow/1DeH5r1SZoPBjVtf
@@ -930,7 +864,7 @@
 
 ---
 
-## #085
+## #079
 - **파일명:** `AI Image Editor 25 Oct (SK강의) - Agent 기능.json`
 - **n8nId:** `T59o6ZKwLZEG0apw`
 - **n8n 링크:** https://n8n.rediace.com/workflow/T59o6ZKwLZEG0apw
@@ -941,7 +875,7 @@
 
 ---
 
-## #086
+## #080
 - **파일명:** `ai-agent financial-advisor-test(텔레그램_주가분석).json`
 - **n8nId:** `jIkCxRyTKH5iv9rk`
 - **n8n 링크:** https://n8n.rediace.com/workflow/jIkCxRyTKH5iv9rk
@@ -952,7 +886,7 @@
 
 ---
 
-## #087
+## #081
 - **파일명:** `baby podcasts (0920 버전_지은길드장).json`
 - **n8nId:** `zptre04Mqep2FGqn`
 - **n8n 링크:** https://n8n.rediace.com/workflow/zptre04Mqep2FGqn
@@ -963,7 +897,7 @@
 
 ---
 
-## #088
+## #082
 - **파일명:** `brain impact (고객정보 Sheet동기화).json`
 - **n8nId:** `uRvVMzzuOk5Kcidh`
 - **n8n 링크:** https://n8n.rediace.com/workflow/uRvVMzzuOk5Kcidh
@@ -974,7 +908,7 @@
 
 ---
 
-## #089
+## #083
 - **파일명:** `brain impact (보고서_viewtable _ DB-Sheet).json`
 - **n8nId:** `2QmAbchg5wJnRyWL`
 - **n8n 링크:** https://n8n.rediace.com/workflow/2QmAbchg5wJnRyWL
@@ -985,7 +919,7 @@
 
 ---
 
-## #090
+## #084
 - **파일명:** `brainimpact _shlink tracking.json`
 - **n8nId:** `jh0A4wBgoBm4xgZ6`
 - **n8n 링크:** https://n8n.rediace.com/workflow/jh0A4wBgoBm4xgZ6
@@ -996,7 +930,7 @@
 
 ---
 
-## #091
+## #085
 - **파일명:** `brainimpact 고객정보 내부챗봇 (실무적용중).json`
 - **n8nId:** `7etW7PiRZHXmPCgN`
 - **n8n 링크:** https://n8n.rediace.com/workflow/7etW7PiRZHXmPCgN
@@ -1007,7 +941,7 @@
 
 ---
 
-## #092
+## #086
 - **파일명:** `brainimpact Class DB.json`
 - **n8nId:** `5OUXb0jzx2bu7Cgx`
 - **n8n 링크:** https://n8n.rediace.com/workflow/5OUXb0jzx2bu7Cgx
@@ -1018,7 +952,7 @@
 
 ---
 
-## #093
+## #087
 - **파일명:** `brainimpact CS DB (user만_라클데이터입력).json`
 - **n8nId:** `8k85D2ttPm7zjTXY`
 - **n8n 링크:** https://n8n.rediace.com/workflow/8k85D2ttPm7zjTXY
@@ -1029,7 +963,7 @@
 
 ---
 
-## #094
+## #088
 - **파일명:** `brainimpact survey DB.json`
 - **n8nId:** `ffzjRSOSMEXfWHo3`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ffzjRSOSMEXfWHo3
@@ -1040,7 +974,7 @@
 
 ---
 
-## #095
+## #089
 - **파일명:** `brainimpact user_events DB_밀어넣기(라클데이터).json`
 - **n8nId:** `FMAiLbJvrlAL8Pjl`
 - **n8n 링크:** https://n8n.rediace.com/workflow/FMAiLbJvrlAL8Pjl
@@ -1051,7 +985,7 @@
 
 ---
 
-## #096
+## #090
 - **파일명:** `Denny) tally 완료 웹훅 redirect page.json`
 - **n8nId:** `ZpoGX3a1g5fhXbZH`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ZpoGX3a1g5fhXbZH
@@ -1062,7 +996,7 @@
 
 ---
 
-## #097
+## #091
 - **파일명:** `Denny) tally설문 문자발송 (구버전).json`
 - **n8nId:** `WAtjcCo6QZ5isYE6`
 - **n8n 링크:** https://n8n.rediace.com/workflow/WAtjcCo6QZ5isYE6
@@ -1073,7 +1007,7 @@
 
 ---
 
-## #098
+## #092
 - **파일명:** `Denny) tally설문 분석발송 (신버전).json`
 - **n8nId:** `6v8tJ4J1nhqYNZg7`
 - **n8n 링크:** https://n8n.rediace.com/workflow/6v8tJ4J1nhqYNZg7
@@ -1084,7 +1018,7 @@
 
 ---
 
-## #099
+## #093
 - **파일명:** `email 자동화.json`
 - **n8nId:** `LO6o0lNIKtMhzDDE`
 - **n8n 링크:** https://n8n.rediace.com/workflow/LO6o0lNIKtMhzDDE
@@ -1095,7 +1029,7 @@
 
 ---
 
-## #100
+## #094
 - **파일명:** `ESM 인증메일 슬랙전송.json`
 - **n8nId:** `NWsimghNiD7R7iCZ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/NWsimghNiD7R7iCZ
@@ -1106,7 +1040,7 @@
 
 ---
 
-## #101
+## #095
 - **파일명:** `ESM 인증메일 슬랙전송_copy.json`
 - **n8nId:** `E4BiXP3oF7olM23L`
 - **n8n 링크:** https://n8n.rediace.com/workflow/E4BiXP3oF7olM23L
@@ -1117,7 +1051,7 @@
 
 ---
 
-## #102
+## #096
 - **파일명:** `네이버 키워드 트렌드 분석기.json`
 - **n8nId:** `fjZhEKGmExk8ZGLc`
 - **n8n 링크:** https://n8n.rediace.com/workflow/fjZhEKGmExk8ZGLc
@@ -1128,7 +1062,7 @@
 
 ---
 
-## #103
+## #097
 - **파일명:** `FC)데모단_PRD 자동화.json`
 - **n8nId:** `3in8BhdlW8zXEq8E`
 - **n8n 링크:** https://n8n.rediace.com/workflow/3in8BhdlW8zXEq8E
@@ -1139,7 +1073,7 @@
 
 ---
 
-## #104
+## #098
 - **파일명:** `FC)설문 문자발송.json`
 - **n8nId:** `GQXg6oorVrSBAYPy`
 - **n8n 링크:** https://n8n.rediace.com/workflow/GQXg6oorVrSBAYPy
@@ -1150,18 +1084,7 @@
 
 ---
 
-## #105
-- **파일명:** `maily 수신확인 webhook.json`
-- **n8nId:** `erKLM6SSXarcdBE7`
-- **n8n 링크:** https://n8n.rediace.com/workflow/erKLM6SSXarcdBE7
-- **워크플로우 이름:** maily 수신확인 webhook
-- **노드 종류:** googleSheets, respondToWebhook, webhook
-- **카테고리:** 마케팅자동화
-- **핵심 기능:** 이메일 수신확인(open tracking) 웹훅을 수신하여 구글시트에 열람 기록을 자동 저장
-
----
-
-## #106
+## #099
 - **파일명:** `MCP로 n8n을 더 똑똑하게.json`
 - **n8nId:** `H8F3vhtjwKhWFucJ`
 - **n8n 링크:** https://n8n.rediace.com/workflow/H8F3vhtjwKhWFucJ
@@ -1172,7 +1095,7 @@
 
 ---
 
-## #107
+## #100
 - **파일명:** `My workflow.json`
 - **n8nId:** `6HTHQRPtvkqFOb9s`
 - **n8n 링크:** https://n8n.rediace.com/workflow/6HTHQRPtvkqFOb9s
@@ -1183,7 +1106,7 @@
 
 ---
 
-## #108
+## #101
 - **파일명:** `My workflow 2.json`
 - **n8nId:** `hO5mD99J4kFgbmFu`
 - **n8n 링크:** https://n8n.rediace.com/workflow/hO5mD99J4kFgbmFu
@@ -1194,7 +1117,7 @@
 
 ---
 
-## #109
+## #102
 - **파일명:** `My workflow 3.json`
 - **n8nId:** `EA1i2ATmD71erBpS`
 - **n8n 링크:** https://n8n.rediace.com/workflow/EA1i2ATmD71erBpS
@@ -1205,7 +1128,7 @@
 
 ---
 
-## #110
+## #103
 - **파일명:** `My workflow 4.json`
 - **n8nId:** `00kyvwyC7xXYqYq2`
 - **n8n 링크:** https://n8n.rediace.com/workflow/00kyvwyC7xXYqYq2
@@ -1216,18 +1139,7 @@
 
 ---
 
-## #111
-- **파일명:** `My workflow 5.json`
-- **n8nId:** `pCbgLxSZQ8ji4EDN`
-- **n8n 링크:** https://n8n.rediace.com/workflow/pCbgLxSZQ8ji4EDN
-- **워크플로우 이름:** My workflow 5
-- **노드 종류:** formTrigger
-- **카테고리:** 업무자동화
-- **핵심 기능:** 견적서/계약서 입력 폼만 포함된 테스트 워크플로우
-
----
-
-## #112
+## #104
 - **파일명:** `My workflow 6.json`
 - **n8nId:** `ATCJfQpDQXCZ3xtS`
 - **n8n 링크:** https://n8n.rediace.com/workflow/ATCJfQpDQXCZ3xtS
@@ -1238,7 +1150,7 @@
 
 ---
 
-## #113
+## #105
 - **파일명:** `My workflow 7.json`
 - **n8nId:** `_aMI6-QhnHvU1XkrhSL3_`
 - **n8n 링크:** https://n8n.rediace.com/workflow/_aMI6-QhnHvU1XkrhSL3_
@@ -1249,7 +1161,7 @@
 
 ---
 
-## #114
+## #106
 - **파일명:** `MyTally.json`
 - **n8nId:** `sJSsTLLdOrtW9pOi`
 - **n8n 링크:** https://n8n.rediace.com/workflow/sJSsTLLdOrtW9pOi
@@ -1260,7 +1172,7 @@
 
 ---
 
-## #115
+## #107
 - **파일명:** `n8n Workflow 백업.json`
 - **n8nId:** `iwDBbWKGWF1UajUT`
 - **n8n 링크:** https://n8n.rediace.com/workflow/iwDBbWKGWF1UajUT
@@ -1271,7 +1183,7 @@
 
 ---
 
-## #116
+## #108
 - **파일명:** `Part5. Youtube & Telgram (FC 에이전트).json`
 - **n8nId:** `zGZIgUfYtofJuwfV`
 - **n8n 링크:** https://n8n.rediace.com/workflow/zGZIgUfYtofJuwfV
@@ -1282,7 +1194,7 @@
 
 ---
 
-## #117
+## #109
 - **파일명:** `Start Workflow (trigger).json`
 - **n8nId:** `9I5CjrqgDlHBzgmu`
 - **n8n 링크:** https://n8n.rediace.com/workflow/9I5CjrqgDlHBzgmu
@@ -1293,7 +1205,7 @@
 
 ---
 
-## #118
+## #110
 - **파일명:** `Talking Animal.json`
 - **n8nId:** `zGlOAO1DoWMAAK7k`
 - **n8n 링크:** https://n8n.rediace.com/workflow/zGlOAO1DoWMAAK7k
@@ -1304,7 +1216,7 @@
 
 ---
 
-## #119
+## #111
 - **파일명:** `Talking Animal_2.json`
 - **n8nId:** `2L1rP0aa3v9u2If8`
 - **n8n 링크:** https://n8n.rediace.com/workflow/2L1rP0aa3v9u2If8
@@ -1315,7 +1227,7 @@
 
 ---
 
-## #120
+## #112
 - **파일명:** `Talking Baby (원본).json`
 - **n8nId:** `JzHAefKmtleXkhDH`
 - **n8n 링크:** https://n8n.rediace.com/workflow/JzHAefKmtleXkhDH
@@ -1326,7 +1238,7 @@
 
 ---
 
-## #121
+## #113
 - **파일명:** `Talking Pet(지은길드장).json`
 - **n8nId:** `RFNOb7IEGKRSlgRm`
 - **n8n 링크:** https://n8n.rediace.com/workflow/RFNOb7IEGKRSlgRm
@@ -1337,7 +1249,7 @@
 
 ---
 
-## #122
+## #114
 - **파일명:** `Tally_Jenny.json`
 - **n8nId:** `VoNcvQX9ddPEQfKf`
 - **n8n 링크:** https://n8n.rediace.com/workflow/VoNcvQX9ddPEQfKf
@@ -1348,7 +1260,7 @@
 
 ---
 
-## #123
+## #115
 - **파일명:** `Telegram AI Calendar EX (FC 에이전트 - pt5).json`
 - **n8nId:** `iXHVh28MhYZnIzC6`
 - **n8n 링크:** https://n8n.rediace.com/workflow/iXHVh28MhYZnIzC6
@@ -1359,18 +1271,7 @@
 
 ---
 
-## #124
-- **파일명:** `Telegram RSS 리더 수집(0단계) _ 업그레이드중 RSS subWF.json`
-- **n8nId:** `C00SgYXai5K9ejBd`
-- **n8n 링크:** https://n8n.rediace.com/workflow/C00SgYXai5K9ejBd
-- **워크플로우 이름:** Telegram RSS 리더 수집(0단계) _ 업그레이드중 RSS subWF
-- **노드 종류:** LC:openAi, code, executeWorkflowTrigger, if, rssFeedRead
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** 다른 워크플로우에서 호출되어 RSS 피드를 읽고 24시간 이내 글을 GPT로 요약하는 서브 워크플로우
-
----
-
-## #125
+## #116
 - **파일명:** `Telegram RSS 리더 수집(0단계)_RSS만 (ver.1).json`
 - **n8nId:** `w8nkrdTmwKrfBMam`
 - **n8n 링크:** https://n8n.rediace.com/workflow/w8nkrdTmwKrfBMam
@@ -1381,18 +1282,7 @@
 
 ---
 
-## #126
-- **파일명:** `Telegram RSS 리더 수집(0단계)_Tavily연동 (ver.2).json`
-- **n8nId:** `dOzfucGQTk6C29Hd`
-- **n8n 링크:** https://n8n.rediace.com/workflow/dOzfucGQTk6C29Hd
-- **워크플로우 이름:** Telegram RSS 리더 수집(0단계)_Tavily연동 (ver.2)
-- **노드 종류:** LC:openAi, code, httpRequest, if, manualTrigger, rssFeedRead, scheduleTrigger, set, splitInBatches, switch, telegram
-- **카테고리:** 컨텐츠자동화
-- **핵심 기능:** RSS 피드와 Tavily 웹 검색(요즘IT)을 결합하여 최신 뉴스를 수집·GPT 요약 후 텔레그램으로 전송하는 큐레이션 봇
-
----
-
-## #127
+## #117
 - **파일명:** `UTM builder (s.brainimpact).json`
 - **n8nId:** `gC6varrytpzqCceK`
 - **n8n 링크:** https://n8n.rediace.com/workflow/gC6varrytpzqCceK
@@ -1403,7 +1293,7 @@
 
 ---
 
-## #128
+## #118
 - **파일명:** `UTM Clicks Tracker.json`
 - **n8nId:** `nmNIx6vqMYkUAMs7`
 - **n8n 링크:** https://n8n.rediace.com/workflow/nmNIx6vqMYkUAMs7
@@ -1414,7 +1304,7 @@
 
 ---
 
-## #129
+## #119
 - **파일명:** `n8n Workflow 백업 _ 개선중.json`
 - **n8nId:** `i9gW7yYywIKBifFh`
 - **n8n 링크:** https://n8n.rediace.com/workflow/i9gW7yYywIKBifFh
@@ -1425,7 +1315,7 @@
 
 ---
 
-## #130
+## #120
 - **파일명:** `실시간 나노바나나 (웹훅 스타터) - railway.json`
 - **n8nId:** `kr9Pm5KCSeQn8h5Vsnxpt`
 - **n8n 링크:** https://n8n.rediace.com/workflow/kr9Pm5KCSeQn8h5Vsnxpt
@@ -1436,7 +1326,7 @@
 
 ---
 
-## #131
+## #121
 - **파일명:** `실시간 나노바나나 (웹훅 스타터) - railway (1).json`
 - **n8nId:** `nvIh_V70gKeCDf5gRfMVu`
 - **n8n 링크:** https://n8n.rediace.com/workflow/nvIh_V70gKeCDf5gRfMVu
@@ -1447,7 +1337,7 @@
 
 ---
 
-## #132
+## #122
 - **파일명:** `협업) 신규멤버 합류 웰컴 트리거.json`
 - **n8nId:** `HAiGbHiBiH1ivmhXANlYP`
 - **n8n 링크:** https://n8n.rediace.com/workflow/HAiGbHiBiH1ivmhXANlYP
@@ -1462,10 +1352,10 @@
 
 | 카테고리 | 수량 | 비율 |
 |---------|------|------|
-| **업무자동화** | 70개 | 53.0% |
-| **컨텐츠자동화** | 42개 | 31.8% |
-| **마케팅자동화** | 20개 | 15.2% |
-| **합계** | **132개** | 100% |
+| **업무자동화** | 66개 | 54.1% |
+| **컨텐츠자동화** | 36개 | 29.5% |
+| **마케팅자동화** | 20개 | 16.4% |
+| **합계** | **122개** | 100% |
 
 ### 주요 기술 스택 요약
 - **AI 모델:** OpenAI GPT-4, Google Gemini, Anthropic Claude, Groq, Perplexity, Whisper
