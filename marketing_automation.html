@@ -425,7 +425,7 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
 <!-- CTA -->
 <section class="cta-section">
   <div class="reveal">
-    <h2 class="cta-headline">128+ 워크플로우 엔진룸에서 더 보기</h2>
+    <h2 class="cta-headline"><span id="ctaCount">100+</span> 워크플로우 엔진룸에서 더 보기</h2>
     <a class="cta-btn" href="https://brainimpactai.imweb.me/32" target="_top">
       엔진룸 입장하기
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -446,6 +446,23 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.reveal').forEach(function (el) {
     observer.observe(el);
   });
+
+  // Supabase 실시간 워크플로우 카운트
+  fetch('https://jorrpxxxreisknvinsxg.supabase.co/rest/v1/n8n_workflows?select=id&limit=0', {
+    headers: {
+      'apikey': 'sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+      'Authorization': 'Bearer sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b',
+      'Prefer': 'count=exact'
+    }
+  }).then(function (res) {
+    var range = res.headers.get('content-range');
+    if (range) {
+      var total = parseInt(range.split('/')[1]);
+      if (!isNaN(total) && total > 0) {
+        document.getElementById('ctaCount').textContent = total + '+';
+      }
+    }
+  }).catch(function () {});
 });
 </script>
 <script src="/assets/js/lightbox.js"></script>
