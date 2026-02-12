@@ -236,6 +236,23 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
   box-shadow:0 8px 32px rgba(108,83,159,.4);
 }
 .cta-btn svg{width:20px;height:20px}
+.page-nav{
+  display:flex;justify-content:center;gap:24px;margin-top:48px;flex-wrap:wrap;
+}
+.page-nav-item{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--gray-400);font-size:14px;font-weight:600;
+  text-decoration:none;padding:10px 20px;
+  border:1px solid rgba(255,255,255,.08);border-radius:40px;
+  transition:all .3s;
+}
+.page-nav-item:hover{
+  color:var(--white);border-color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.04);
+}
+.page-nav-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+}
 
 /* Responsive */
 @media(max-width:768px){
@@ -442,6 +459,17 @@ body{font-family:'Pretendard','Inter',sans-serif;background:var(--black);color:#
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
     </a>
   </div>
+  <nav class="page-nav reveal">
+    <a class="page-nav-item" href="https://brainimpactai.imweb.me/29" target="_top">
+      <span class="page-nav-dot" style="background:#f3886c"></span>마케팅 자동화
+    </a>
+    <a class="page-nav-item" href="https://brainimpactai.imweb.me/31" target="_top">
+      <span class="page-nav-dot" style="background:#34d399"></span>컨텐츠 자동화
+    </a>
+    <a class="page-nav-item" href="https://brainimpactai.imweb.me/32" target="_top">
+      <span class="page-nav-dot" style="background:#6c539f"></span>포트폴리오
+    </a>
+  </nav>
 </section>
 
 <script>
