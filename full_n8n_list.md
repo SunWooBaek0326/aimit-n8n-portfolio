@@ -1,8 +1,8 @@
-# n8n 워크플로우 전체 분석 리스트 (122개)
+# n8n 워크플로우 전체 분석 리스트 (123개)
 
 > 분석일: 2026-02-11
 > 대상 폴더: `n8n workflow/`
-> 총 파일 수: **122개** (제외 없이 전수 포함)
+> 총 파일 수: **123개** (제외 없이 전수 포함)
 
 ---
 
@@ -1354,3 +1354,21 @@
 - **노드 종류:** formTrigger
 - **카테고리:** 업무자동화
 - **핵심 기능:** 폼 트리거를 활용한 테스트 워크플로우
+
+## #122
+- **파일명:** `Telegram RSS 리더 수집(0단계)_Tavily연동 (ver.2).json`
+- **n8nId:** `dOzfucGQTk6C29Hd`
+- **n8n 링크:** https://n8n.rediace.com/workflow/dOzfucGQTk6C29Hd
+- **워크플로우 이름:** Telegram RSS 리더 Tavily연동 (ver.2)
+- **노드 종류:** Telegram, Manual Trigger, Schedule Trigger, Code, SplitInBatches, Switch, RSS Feed Read, If, OpenAI, Set, HTTP Request
+- **카테고리:** 컨텐츠자동화
+- **핵심 기능:** RSS 피드와 Tavily 웹 검색을 연동하여 최신 글을 수집하고 GPT로 요약 후 텔레그램으로 전송하는 큐레이션 봇 v2
+
+## #123
+- **파일명:** `[WF-A] Gemini Batch_BANANA — Submit (JSON).json`
+- **n8nId:** `XKLcEGUh1J0TqSGD`
+- **n8n 링크:** https://n8n.rediace.com/workflow/XKLcEGUh1J0TqSGD
+- **워크플로우 이름:** [WF-A] Gemini Batch_BANANA — Submit (JSON)
+- **노드 종류:** Manual Trigger, Code, HTTP Request, Google Sheets, Convert to File, Google Cloud Storage, Set, Slack, Sticky Note
+- **카테고리:** 컨텐츠자동화
+- **핵심 기능:** Gemini Batch API로 대량 요청을 JSON 형태로 제출하고 Google Sheets/Cloud Storage에 저장하며 Slack으로 알림하는 배치 처리 워크플로우
