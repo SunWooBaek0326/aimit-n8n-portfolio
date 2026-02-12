@@ -1437,6 +1437,26 @@ const workflows = [
     summary: "n8n 워크플로우를 Google Sheets에 백업하고 Slack/Telegram으로 알림을 보내는 자동 백업 시스템",
     nodeCount: 21,
     img: ""
+  },
+  {
+    n8nId: "dOzfucGQTk6C29Hd",
+    file: "Telegram RSS 리더 수집(0단계)_Tavily연동 (ver.2).json",
+    name: "Telegram RSS 리더 Tavily연동 (ver.2)",
+    nodes: ["Telegram","Manual Trigger","Schedule Trigger","Code","SplitInBatches","Switch","RSS Feed Read","If","OpenAI","Set","HTTP Request"],
+    category: "컨텐츠자동화",
+    summary: "RSS 피드와 Tavily 웹 검색을 연동하여 최신 글을 수집하고 GPT로 요약 후 텔레그램으로 전송하는 큐레이션 봇 v2",
+    nodeCount: 13,
+    img: ""
+  },
+  {
+    n8nId: "XKLcEGUh1J0TqSGD",
+    file: "[WF-A] Gemini Batch_BANANA — Submit (JSON).json",
+    name: "[WF-A] Gemini Batch_BANANA — Submit (JSON)",
+    nodes: ["Manual Trigger","Code","HTTP Request","Google Sheets","Convert to File","Google Cloud Storage","Set","Slack","Sticky Note"],
+    category: "컨텐츠자동화",
+    summary: "Gemini Batch API로 대량 요청을 JSON 형태로 제출하고 Google Sheets/Cloud Storage에 저장하며 Slack으로 알림하는 배치 처리 워크플로우",
+    nodeCount: 11,
+    img: ""
   }
 ];
 
@@ -1474,8 +1494,7 @@ function getCatIcon(cat) {
 
 function getImgSrc(w) {
   if (w.img) return w.img;
-  // placeholder: 파일명 기반 이미지 경로 (나중에 GIF 추가 시 이 경로에 파일을 놓으면 됩니다)
-  const base = (w.file || '').replace('.json', '.gif');
+  if (w.n8nId) return `assets/img/img_${w.n8nId}.jpg`;
   return '';
 }
 
@@ -1486,16 +1505,14 @@ function renderMainCard(w, idx) {
   return `
   <div class="card-enter card-hover bg-[#111111] rounded-2xl flex flex-col" style="animation-delay:${Math.min(idx,15)*40}ms" data-id="${w.id}">
     <!-- Image / GIF Placeholder -->
-    <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl">
-      ${imgSrc
-        ? `<img src="${imgSrc}" alt="${w.name}" class="w-full h-full object-cover rounded-t-2xl">`
-        : `<div class="text-center px-4">
-            <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-2xl border border-white/10">
-              ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
-            </div>
-            <p class="text-xs text-brand-400 font-medium">워크플로우 미리보기 준비중</p>
-          </div>`
-      }
+    <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl" style="background:#0a0a0a">
+      <img src="${imgSrc || 'data:,'}" alt="${w.name}" class="w-full h-full rounded-t-2xl" style="object-fit:contain;cursor:zoom-in" onclick="openLightbox(this.src)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="text-center px-4" style="display:${imgSrc?'none':'flex'};flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%">
+        <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-2xl border border-white/10">
+          ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
+        </div>
+        <p class="text-xs text-brand-400 font-medium">워크플로우 미리보기 준비중</p>
+      </div>
     </div>
     <!-- Content -->
     <div class="p-6 flex flex-col flex-1">
@@ -1635,6 +1652,26 @@ function init() {
 }
 
 init();
+
+// Image Lightbox
+function openLightbox(src) {
+  if (!src || src === 'data:,') return;
+  var overlay = document.getElementById('img-lightbox');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'img-lightbox';
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;cursor:zoom-out';
+    overlay.innerHTML = '<img style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:8px"><button style="position:absolute;top:20px;right:24px;color:rgba(255,255,255,.6);font-size:32px;background:none;border:none;cursor:pointer;line-height:1" aria-label="닫기">&times;</button>';
+    overlay.addEventListener('click', function(){ overlay.style.opacity='0'; overlay.style.pointerEvents='none'; document.body.style.overflow=''; });
+    overlay.querySelector('img').addEventListener('click', function(e){ e.stopPropagation(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ overlay.style.opacity='0'; overlay.style.pointerEvents='none'; document.body.style.overflow=''; }});
+    document.body.appendChild(overlay);
+  }
+  overlay.querySelector('img').src = src;
+  overlay.style.opacity = '1';
+  overlay.style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+}
 </script>
 </body>
 <script src="/assets/js/lightbox.js"></script>
