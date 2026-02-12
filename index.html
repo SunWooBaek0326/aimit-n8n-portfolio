@@ -166,6 +166,20 @@ html{scroll-behavior:smooth}
     </div>
     <div id="labGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
   </div>
+
+  <!-- Archive Section (정리대기) — 기본 접힘 -->
+  <div id="archiveSection" class="mt-12 mb-8" style="display:none">
+    <div class="flex items-center gap-3 mb-8 cursor-pointer" onclick="toggleArchive()">
+      <div class="flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5">
+        <span class="text-lg">🗑</span>
+        <span class="font-semibold text-red-400 text-sm">정리대기</span>
+      </div>
+      <div class="flex-1 h-px bg-white/10"></div>
+      <span class="text-sm text-red-400" id="archiveCount"></span>
+      <svg id="archiveChevron" class="w-5 h-5 text-red-400 transition-transform" style="transform:rotate(0deg)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div id="archiveGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" style="display:none"></div>
+  </div>
 </main>
 
 <!-- ==================== FOOTER ==================== -->
@@ -264,14 +278,14 @@ function loadWorkflows() {
   };
 
   // summary 컬럼이 아직 없을 수 있으므로 먼저 포함하여 시도, 실패 시 제외
-  var cols = 'id,name,category,node_count,image_url,nodes,summary,publish_bool,updated_at';
+  var cols = 'id,name,category,node_count,image_url,nodes,summary,publish_bool,updated_at,is_active_in_n8n';
   var apiUrl = SUPABASE_URL + '/rest/v1/n8n_workflows?select=' + cols + '&order=name.asc';
 
   fetch(apiUrl, { headers: headers })
     .then(function(res) {
       if (res.ok) return res.json();
       // summary 컬럼 없으면 제외하고 재시도
-      var fallbackCols = 'id,name,category,node_count,image_url,nodes,publish_bool,updated_at';
+      var fallbackCols = 'id,name,category,node_count,image_url,nodes,publish_bool,updated_at,is_active_in_n8n';
       return fetch(SUPABASE_URL + '/rest/v1/n8n_workflows?select=' + fallbackCols + '&order=name.asc', { headers: headers })
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     })
@@ -287,7 +301,8 @@ function loadWorkflows() {
           summary: row.summary || '',
           img: row.image_url || '',
           isLab: false, // isLabItem() 함수의 이름 기반 휴리스틱으로 판별
-          updatedAt: row.updated_at || ''
+          updatedAt: row.updated_at || '',
+          isArchived: row.is_active_in_n8n === false
         };
       });
 
@@ -408,8 +423,12 @@ function applyFilters() {
     return true;
   });
 
-  const mainItems = filtered.filter(w => !isLabItem(w));
-  const labItems = filtered.filter(w => isLabItem(w));
+  // 정리대기(n8n 삭제) 항목 분리
+  const activeItems = filtered.filter(w => !w.isArchived);
+  const archiveItems = filtered.filter(w => w.isArchived);
+
+  const mainItems = activeItems.filter(w => !isLabItem(w));
+  const labItems = activeItems.filter(w => isLabItem(w));
 
   document.getElementById('mainGrid').innerHTML = mainItems.length
     ? mainItems.map((w, i) => renderMainCard(w, i)).join('')
@@ -418,6 +437,11 @@ function applyFilters() {
   document.getElementById('labGrid').innerHTML = labItems.map(w => renderLabCard(w)).join('');
   document.getElementById('labCount').textContent = `${labItems.length}개`;
   document.getElementById('labSection').style.display = labItems.length ? 'block' : 'none';
+
+  document.getElementById('archiveGrid').innerHTML = archiveItems.map(w => renderLabCard(w)).join('');
+  document.getElementById('archiveCount').textContent = `${archiveItems.length}개`;
+  document.getElementById('archiveSection').style.display = archiveItems.length ? 'block' : 'none';
+
   document.getElementById('resultCount').textContent = mainItems.length + labItems.length;
 }
 
@@ -441,10 +465,11 @@ function setFilter(cat) {
 
 // Init — Supabase 데이터 로드 완료 후 호출
 function init() {
-  var total = workflows.length;
-  var work = workflows.filter(function(w){ return w.category === '업무자동화'; }).length;
-  var mkt = workflows.filter(function(w){ return w.category === '마케팅자동화'; }).length;
-  var cnt = workflows.filter(function(w){ return w.category === '컨텐츠자동화'; }).length;
+  var active = workflows.filter(function(w){ return !w.isArchived; });
+  var total = active.length;
+  var work = active.filter(function(w){ return w.category === '업무자동화'; }).length;
+  var mkt = active.filter(function(w){ return w.category === '마케팅자동화'; }).length;
+  var cnt = active.filter(function(w){ return w.category === '컨텐츠자동화'; }).length;
 
   // Hero 카운터 업데이트
   var heroCount = document.getElementById('heroCount');
@@ -476,6 +501,19 @@ document.addEventListener('click', function (e) {
     applyFilters();
   }
 });
+
+// 정리대기 섹션 토글
+function toggleArchive() {
+  var grid = document.getElementById('archiveGrid');
+  var chevron = document.getElementById('archiveChevron');
+  if (grid.style.display === 'none') {
+    grid.style.display = '';
+    chevron.style.transform = 'rotate(180deg)';
+  } else {
+    grid.style.display = 'none';
+    chevron.style.transform = 'rotate(0deg)';
+  }
+}
 
 // 페이지 로드 시 Supabase에서 데이터 가져오기
 loadWorkflows();
