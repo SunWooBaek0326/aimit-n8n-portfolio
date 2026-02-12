@@ -338,8 +338,7 @@ function getCatIcon(cat) {
 
 function getImgSrc(w) {
   if (w.img) return w.img;
-  // Supabase image_url이 없으면 로컬 assets 폴백
-  if (w.n8nId) return 'assets/img/img_' + w.n8nId + '.jpg';
+  if (w.n8nId) return '/assets/img/workflow_' + w.n8nId + '.jpg';
   return '';
 }
 
