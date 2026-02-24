@@ -39,10 +39,11 @@ html{scroll-behavior:smooth}
 .badge-marketing{background:rgba(243,136,108,.15);color:#f3886c}
 .badge-content{background:rgba(52,211,153,.15);color:#34d399}
 .badge-lab{background:rgba(243,136,108,.1);color:#f6a48e}
-.new-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#6c539f,#a78fcf);color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;animation:newPulse 2s ease-in-out infinite}
-@keyframes newPulse{0%,100%{box-shadow:0 0 8px rgba(108,83,159,.4)}50%{box-shadow:0 0 20px rgba(108,83,159,.7)}}
-.new-placeholder{background:linear-gradient(135deg,#0f0a1a 0%,#1a1028 50%,#12091e 100%);position:relative}
-.new-placeholder::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(108,83,159,.08) 0%,transparent 70%)}
+.new-wrap{position:relative;width:100%;height:100%;background:#080810}
+.new-tag{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:4px;background:rgba(108,83,159,.85);backdrop-filter:blur(6px);color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:6px;z-index:2}
+.new-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#a78fcf;animation:newDot 1.5s ease-in-out infinite}
+@keyframes newDot{0%,100%{opacity:.4}50%{opacity:1}}
+.new-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;opacity:.35}
 .node-tag{background:#1a1a1a;color:#888;font-size:11px;padding:3px 10px;border-radius:9999px;white-space:nowrap;border:1px solid #2a2a2a}
 .node-tag-clickable{cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .node-tag-clickable:hover{background:rgba(108,83,159,.2);border-color:rgba(108,83,159,.4);color:#a78fcf}
@@ -370,12 +371,14 @@ function renderMainCard(w, idx) {
     <!-- Image / GIF Placeholder -->
     <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl" style="background:#0a0a0a">
       <img src="${imgSrc || 'data:,'}" alt="${w.name}" class="w-full h-full rounded-t-2xl" style="object-fit:contain;cursor:zoom-in" onclick="openLightbox(this.src)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="new-placeholder text-center px-4" style="display:${imgSrc?'none':'flex'};flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%">
-        <span class="new-badge mb-3">NEW</span>
-        <div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-xl border border-white/[.06]">
-          ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
+      <div class="new-wrap" style="display:${imgSrc?'none':'block'}">
+        <span class="new-tag">NEW</span>
+        <div class="new-inner">
+          <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-lg border border-white/[.06] mb-1">
+            ${w.category==='업무자동화'?'&#9881;':w.category==='마케팅자동화'?'&#128227;':'&#9997;'}
+          </div>
+          <p class="text-[10px] text-gray-600">미리보기 준비중</p>
         </div>
-        <p class="text-[11px] text-gray-500 font-medium">신규 등록 워크플로우</p>
       </div>
     </div>
     <!-- Content -->
