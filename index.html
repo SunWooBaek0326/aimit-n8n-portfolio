@@ -202,6 +202,7 @@ html{scroll-behavior:smooth}
 var SUPABASE_URL = 'https://jorrpxxxreisknvinsxg.supabase.co';
 var SUPABASE_ANON_KEY = 'sb_publishable_T8RSfYdBZ0d2sROMQeHQWA_Qs6ztL4b';
 var workflows = [];
+var noImageSet = new Set();
 
 // ── 노드 타입명 정리 맵 ──
 var NODE_TYPE_MAP = {
@@ -367,7 +368,7 @@ function renderMainCard(w, idx) {
   <div class="card-enter card-hover bg-[#111111] rounded-2xl flex flex-col" style="animation-delay:${Math.min(idx,15)*40}ms" data-id="${w.id}">
     <!-- Image / GIF Placeholder -->
     <div class="img-placeholder h-48 sm:h-44 flex items-center justify-center rounded-t-2xl" style="background:#0a0a0a">
-      <img src="${imgSrc || 'data:,'}" alt="${w.name}" class="w-full h-full rounded-t-2xl" style="object-fit:contain;cursor:zoom-in" onclick="openLightbox(this.src)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="${imgSrc || 'data:,'}" alt="${w.name}" class="w-full h-full rounded-t-2xl" style="object-fit:contain;cursor:zoom-in" onclick="openLightbox(this.src)" onerror="noImageSet.add('${w.n8nId}');this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="text-center px-4" style="display:${imgSrc?'none':'flex'};flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%">
         <span class="new-ribbon">NEW</span>
         <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-white/5 backdrop-blur flex items-center justify-center text-2xl border border-white/10">
@@ -420,6 +421,10 @@ function applyFilters() {
     if (currentFilter !== 'all' && w.category !== currentFilter) return false;
     // Search filter
     if (query) {
+      if (query === 'new') {
+        var imgSrc = getImgSrc(w);
+        return !imgSrc || noImageSet.has(w.n8nId);
+      }
       const searchStr = (w.name + ' ' + w.nodes.join(' ') + ' ' + w.summary + ' ' + (w.file || '') + ' ' + w.n8nId).toLowerCase();
       return searchStr.includes(query);
     }
